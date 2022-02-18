@@ -27,12 +27,13 @@ else if($_GET['send'] === 'del') {
   header("location:./displaytablecategorie.php");
 }
 
-// else if(isset($_POST['update']{
-//   $nom_categorie = $_POST['nom_categorie'];
-//   $NvelleCATE->DeleCate($id_categorie);
+else if(isset($_POST['update'])){
+  $nom_categorie = $_POST['nom_categorie'];
+  $NvelleCATE->DeleCate($id_categorie);
 
-//   header("location:./displaytablecategorie.php");
-// }
+  header("location:./displaytablecategorie.php");
+}
+
 
 ?>
 

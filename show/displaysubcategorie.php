@@ -5,69 +5,97 @@ require_once("../classes/couleur.class.php");
 require_once("../classes/souscategorie.class.php");
 require_once("../classes/produit.class.php");
 
-require_once("../adminhtmlcss/slideadmin.php");
-require_once("../adminhtmlcss/barreadmin.php");
-require_once("../adminhtmlcss/footeradmin.php");
+// require_once("../adminhtmlcss/slideadmin.php");
+// require_once("../adminhtmlcss/barreadmin.php");
+// require_once("../adminhtmlcss/footeradmin.php");
 
 // $list= new Souscategorie();
 // $NvelleCoul = new Souscategorie();
 // echo " <br>";
-
 $souscategorie = new Souscategorie();
-print_r($souscategorie->getCateSou());
+// print_r($souscategorie->getCateSou());
+
+
+
+ var_dump($_POST);
 
 if (isset($_POST['submit'])) {
+  $id_categorie = $_POST['id'];
+  $nom_sous_catégorie = $_POST['nom_sous_catégorie'];
+  $souscategorie->CreateCateSOU($id_categorie,$nom_sous_catégorie);
+} 
 
-  $couleur = $_POST['nom_sous_categorie'];
-  $NvelleCoul->CreateCateSOU($couleur);
-}
+var_dump($_GET);
+if ($_GET['send'] === 'del') {
+  $id_sous_catégorie = $_GET['id'];
+  $souscategorie->DeleSubCate($id_sous_catégorie);
+
+  header("location:./displaysubcategorie.php");
+ }
+
+ 
+ var_dump($_GET);
+//  else if (isset($_POST['update'])) {
+// //   $nom_sous_categorie = $_POST['nom_categorie'];
+// //   $NvelleCATE->DeleCate($id_sous_categorie);
+
+// //   header("location:./displaytablecategorie.php");
+// // }
+
+
+
 
 ?>
-<!DOCTYPE html>
-<html>
-<style>
-    table,
-    th,
-    td {
-        border: 1px solid black;
-    }
-</style>
-
-<body>
-
-<h2>Sous-categorie Forms</h2>
 
 
-<form method="POST">
-  <label for="lname">nom de la sous-categorie:</label><br>
-  <input type="text" name="nom_sous_catégorie" value=""><br><br>
-  <input type="submit" name="submit" value="submit">
-</form>
-    <h2>couleur table</h2>
+  <h2>categorie table</h2>
 
-    <table style="width:100%">
+  <table style="width:100%">
+    <tr>
+      <th>id_categorie</th>
+      <th>id_sous_categorie</th>
+      <th>nom_sous_categorie</th>
+      <th>supprimer</th>
+      <th>modifier</th>
+
+    </tr>
+    <?php $categories = new Souscategorie(); ?>
+
+    <?php if ($categories->getCateSou()) : ?>
+      <?php foreach ($categories->getCateSou() as $categorie) : ?>
         <tr>
-            <th>id_categorie</th>
-            <th>nom_sous_categorie</th>
-            <th>supprimer</th>
-            <th>modifier</th>
-
-            <?php  $couleurs= new Souscategorie();?>
-
-<?php if($couleurs->getCateSou()) : ?>
-<?php foreach($couleurs->getCateSou()as $couleur): ?>
-  <tr>
-    <td><?=  $couleur["id_categorie"] ?></td>
-    <td><?=  $couleur["nom_sous_catégorie"]  ?></td>
-    <td>supprimer</td>
-    <td>modifier</td>
- 
-
-<?php endforeach; ?>
-<?php else: ?>
-<?php endif; ?>
+          <td><?= $categorie["id_categorie"] ?></td>
+          <td><?= $categorie["id_sous_catégorie"]  ?></td>
+          <td><?= $categorie["nom_sous_catégorie"]  ?></td>
+          <td> <a href="displaysubcategorie.php? id=<?= $categorie['id_sous_catégorie'] ?>"><button>modifier</button></a></td>
+          <td><a href="displaysubcategorie.php? id=<?= $categorie['id_sous_catégorie'] ?> &send=del"><button>supprimer</button></a></td>
 
 
-</body>
+        <?php endforeach; ?>
+      <?php else : ?>
+      <?php endif; ?>
 
-</html>
+
+        </tr>
+
+
+  </table>
+
+  <form method="POST">
+  <label for="pet-select">Choisir une categotrie</label>
+  <select name="id_categorie" id="per1">
+    <option selected="selected">un seul choix</option>
+    <?php $categories = new Categorie(); ?>
+
+<?php if ($categories->getCate()) : ?>
+  <?php foreach ($categories->getCate() as $categorie) : ?>
+        <option value="<?=  $categorie['id_categorie'] ?>"><?=  $categorie['nom_categorie'] ?></option>
+
+  <?php endforeach; ?>
+      <?php else : ?>
+    <?php endif; ?>
+  </select>
+    <label for="lname">nom de la sous_categorie:</label><br>
+    <input type="text" name="nom_sous_catégorie" value=""><br><br>
+    <input type="submit" name="submit" value="submit">
+  </form>
