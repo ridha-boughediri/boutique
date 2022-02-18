@@ -14,10 +14,10 @@ class Produit extends DataBase{
         return $result;
       }}
 
-      public function CreateCate($produit_titre,$libellé,$produit_prix,$id_categorie,$id_couleur,$id_contenance,$images) {
-      $sql = "INSERT INTO produit(produit_titre,libellé,produit_prix,id_categorie,id_couleur,id_contenance,images) VALUES (?,?,?,?,?,?,?)";
+      public function CreateCate($produit_titre,$description,$produit_prix,$id_categorie,$id_couleur,$id_sous_categorie,$images) {
+      $sql = "INSERT INTO produit(produit_titre,description,produit_prix,id_categorie,id_couleur,id_sous_categorie,images) VALUES (?,?,?,?,?,?,?)";
       $stmt = $this->connect()->prepare($sql);
-      $stmt->execute([$produit_titre,$libellé,$produit_prix,$id_categorie,$id_couleur,$id_contenance,$images]);
+      $stmt->execute([$produit_titre,$description,$produit_prix,$id_categorie,$id_couleur,$id_sous_categorie,$images]);
     }
 
 

@@ -26,16 +26,16 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="./affichageaddproduct.php">
                     <i class='bx bx-list-ul'></i>
                     <span class="links_name">Produit</span>
                 </a>
             </li>
 
             <li>
-                <a href="#">
+                <a href="./displaytableproduit.php">
                     <i class='bx bx-list-ul'></i>
-                    <span class="links_name">Liste des achats</span>
+                    <span class="links_name">Table produits</span>
                 </a>
             </li>
             <li>
@@ -63,9 +63,9 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="./displaytableproduit.php">
                     <i class='bx bx-message'></i>
-                    <span class="links_name">Messages</span>
+                    <span class="links_name">Produit</span>
                 </a>
             </li>
             <li>

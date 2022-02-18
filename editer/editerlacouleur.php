@@ -7,7 +7,7 @@ require_once("./classes/couleur.class.php");
 require_once("./classes/contance.class.php");
 require_once("./classes/produit.class.php");
 require_once("./classes/souscategorie.class.php");
-
+require_once("displaytablecouleur.php");
 require_once("displaytablecategorie.php");
 require_once("./adminhtml/slideadmin.php");
 require_once("./adminhtml/barreadmin.php");
@@ -16,14 +16,14 @@ require_once("./adminhtml/footeradmin.php");
 
 
 
-  $categoupdate= new Categorie();
-  $categoupdate=$categoupdate->UpdateCA($_GET["id"]);
-  print_r($categoupdate);
-  $id_categorie=$categoupdate["id_categorie"];
-  $nom_categorie=$categoupdate["nom_categorie"];
+  $couleur1= new Couleur();
+  $couleur1=$couleur1->UpdateCoul($_GET["id"]);
+  print_r($couleur1);
+  $id_couleur=$couleur1["id_couleur"];
+  $nom_categorie=$couleur1["nom_couleur"];
   if(isset($_POST['update'])){
-    $nom_categorie = $_POST['nom_categorie'];
-    $categoupdate->editeCate();
+    $nom_categorie = $_POST['nom_couleur'];
+    $couleur1->UpdateCoul();
   
     header("location:./displaytablecategorie.php");
   }

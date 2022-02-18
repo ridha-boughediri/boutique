@@ -1,13 +1,13 @@
 <?php 
-require_once("./classes/dataBase.class.php");
-require_once("./classes/categorie.class.php");
-require_once("./classes/couleur.class.php");
-require_once("./classes/contance.class.php");
-require_once("./classes/produit.class.php");
-require_once("./classes/souscategorie.class.php");
-require_once("./adminhtml/slideadmin.php");
-require_once("./adminhtml/barreadmin.php");
-require_once("./adminhtml/footeradmin.php");
+require_once("../classes/dataBase.class.php");
+require_once("../classes/categorie.class.php");
+require_once("../classes/couleur.class.php");
+require_once("../classes/souscategorie.class.php");
+require_once("../classes/produit.class.php");
+
+require_once("../adminhtmlcss/slideadmin.php");
+require_once("../adminhtmlcss/barreadmin.php");
+require_once("../adminhtmlcss/footeradmin.php");
 
 
 ?>
@@ -23,7 +23,7 @@ require_once("./adminhtml/footeradmin.php");
                         <label>Name</label>
                     </td>
                     <td>
-// I added the name as per our database table filed as name="productName"
+
   <input type="text" name="productName" placeholder="Enter Product Name..." class="medium" />
                     </td>
                 </tr>
@@ -125,6 +125,7 @@ require_once("./adminhtml/footeradmin.php");
   <tr>
     <th>id_produit</th>
     <th>nom_produit</th>
+    <th>description</th>
     <th>prix_produit</th>
     <th>id_categorie</th>
     <th>id_couleur</th>
@@ -141,6 +142,7 @@ require_once("./adminhtml/footeradmin.php");
       <tr>
       <th><?= $produit["id_produit"] ?></th>
     <th><?= $produit["nom_produit"] ?></th>
+    <th><?= $produit["description"] ?></th>
     <th><?= $produit["prix_produit"] ?>€</th>
     <th><?= $produit["id_couleur"] ?></th>
     <th><?= $produit["id_produit"] ?></th>

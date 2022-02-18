@@ -1,13 +1,13 @@
 <?php
-require_once("./classes/dataBase.class.php");
-require_once("./classes/categorie.class.php");
-require_once("./classes/couleur.class.php");
-require_once("./classes/contance.class.php");
-require_once("./classes/produit.class.php");
-require_once("./classes/souscategorie.class.php");
-require_once("./adminhtml/slideadmin.php");
-require_once("./adminhtml/barreadmin.php");
-require_once("./adminhtml/footeradmin.php");
+require_once("../classes/dataBase.class.php");
+require_once("../classes/categorie.class.php");
+require_once("../classes/couleur.class.php");
+require_once("../classes/souscategorie.class.php");
+require_once("../classes/produit.class.php");
+
+require_once("../adminhtmlcss/slideadmin.php");
+require_once("../adminhtmlcss/barreadmin.php");
+require_once("../adminhtmlcss/footeradmin.php");
 
 // $list= new Souscategorie();
 // $NvelleCoul = new Souscategorie();
@@ -16,11 +16,11 @@ require_once("./adminhtml/footeradmin.php");
 $souscategorie = new Souscategorie();
 print_r($souscategorie->getCateSou());
 
-// if (isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {
 
-//   $couleur = $_POST['nom_sous_categorie'];
-//   $NvelleCoul->CreateCateSOU($couleur);
-// }
+  $couleur = $_POST['nom_sous_categorie'];
+  $NvelleCoul->CreateCateSOU($couleur);
+}
 
 ?>
 <!DOCTYPE html>

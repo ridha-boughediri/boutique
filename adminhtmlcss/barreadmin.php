@@ -1,3 +1,5 @@
+
+<link rel="stylesheet" href="style.css">
 <section class="home-section">
         <nav>
             <div class="sidebar-button">

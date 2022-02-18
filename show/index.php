@@ -1,10 +1,10 @@
 <?php
-require_once("./classes/dataBase.class.php");
-require_once("./classes/categorie.class.php");
-require_once("./classes/couleur.class.php");
-require_once("./classes/contance.class.php");
-require_once("./classes/produit.class.php");
-require_once("./classes/souscategorie.class.php");
+require_once("../classes/dataBase.class.php");
+require_once("../classes/categorie.class.php");
+require_once("../classes/couleur.class.php");
+require_once("../classes/contance.class.php");
+require_once("../classes/produit.class.php");
+require_once("../classes/souscategorie.class.php");
 
 
 // $list= new Categorie();
