@@ -9,35 +9,30 @@ require_once("../classes/produit.class.php");
 // require_once("../adminhtmlcss/barreadmin.php");
 // require_once("../adminhtmlcss/footeradmin.php");
 
-$couleposts = new Couleur();
-$coulepost=$couleposts->ShowIDCoul($_GET['id']);
-var_dump($coulepost);
+$cateposts = new Categorie();
+$catepost=$cateposts->Editecategorie($_GET['id']);
 
-$id_couleur=$coulepost['id_couleur'];
-$nom_couleur=$coulepost['nom_couleur'];
+$id_categorie=$catepost['id_categorie'];
+$nom_categorie=$catepost['nom_categorie'];
 echo " <br>";
 
 if(isset($_POST['update'])){
-    echo "couleur rajoutée avec success";
-    $id_couleur =$_GET['id'];
-    $nom_couleur =$_POST['nom_couleur'];
-    $couleposts->UpdateCouleurTong($nom_couleur,$id_couleur);
+    echo "categorie rajoutée avec success";
+    $id_categorie =$_GET['id'];
+    $nom_categorie =$_POST['nom_categorie'];
+    $cateposts->UpdateCategorie($nom_categorie,$id_categorie);
     // var_dump($catepost['nom_categorie']);
     // var_dump($nom_categorie);
     // var_dump($id_categorie);
-    header("location:../show/displaytablecouleur.php");
-
 }
-
-
 
 ?>
 
-<h2>Couleur Forms</h2>
+<h2>CATEGORIE Forms</h2>
 
 
 <form  method="POST">
-    <label for="lname">nom de la nouvelle couleur:</label><br>
-    <input type="text" name="nom_couleur" value="<?= $nom_couleur; ?>"><br><br>
+    <label for="lname">nom de la categorie:</label><br>
+    <input type="text" name="nom_categorie" value="<?= $nom_categorie; ?>"><br><br>
     <input type="submit" name="update" value="modifier">
 </form>

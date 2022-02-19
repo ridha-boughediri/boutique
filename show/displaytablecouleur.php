@@ -29,12 +29,6 @@ else if($_GET['send'] === 'del') {
   header("location:./displaytablecategorie.php");
 }
 
-else if(isset($_POST['update'])){
-  $nom_couleur = $_POST['nom_couleur'];
-  $NvelleCoul->UpdateCoul($nom_couleur );
-
-  header("location:./displaytablecouleur.php");
-}
 
 ?>
 
@@ -51,13 +45,7 @@ else if(isset($_POST['update'])){
 <body>
 
 
-<h2>modifier une couleur</h2>
-<form method="POST">
-<label for="lname" >nom de la categorie:</label><br>
-    <input type="text" name="id_categorie" value="<?=  $couleur["id_categorie"]?>"><br><br>
-    <input type="text" name="nom_categorie" value="<?=  $couleur["nom_categorie"]?>"><br><br>
-    <input type="submit" name="update" value="modifier">
-</form>
+
 
 <h2>rajouter une couleur</h2>
 
@@ -88,7 +76,7 @@ else if(isset($_POST['update'])){
     <td><?=  $couleur["id_couleur"] ?></td>
     <td><?=  $couleur["nom_couleur"]  ?></td>
    
-    <td> <a href="editelacouleur.php? id=<?= $couleur['id_couleur']?>"><button>modifier</button></a> </td>
+    <td> <a href="../editer/editerlacouleur.php? id=<?= $couleur['id_couleur']?>"><button>modifier</button></a> </td>
     <td><a href="displaytablecouleur.php? id=<?= $couleur['id_couleur']?>&send=del" ><button>supprimer</button></a></td>
 <?php endforeach; ?>
 <?php else: ?>

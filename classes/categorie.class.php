@@ -20,7 +20,7 @@ class Categorie extends DataBase{
       $stmt->execute([$nom_categorie]);
     }
     
-    public function UpdateCA($id_categorie) {
+    public function Editecategorie($id_categorie) {
       $sql = "SELECT * FROM categories where id_categorie =?";
       $stmt = $this->connect()->prepare($sql);
       $stmt->execute(["$id_categorie"]);
@@ -29,7 +29,13 @@ class Categorie extends DataBase{
 
     }
 
+    public function UpdateCategorie($nom_categorie,$id_categorie){
 
+      $sql="UPDATE `categories` SET `nom_categorie`= ? Where `id_categorie` = ?";
+      $stmt=$this->connect()->prepare($sql);
+      $stmt->execute([$nom_categorie,$id_categorie]);
+  
+      }
     
     public function DeleCate($id_categorie){
       $sql= "DELETE FROM categories WHERE id_categorie=?";
@@ -37,13 +43,7 @@ class Categorie extends DataBase{
       $stmt->execute([$id_categorie]);
     }
 
-    public function editeCate($nom_categorie,$id_categorie){
-
-    $sql="UPDATE categories SET nom_categorie=? Where id_categorie=?";
-    $stmt=$this->connect()->prepare($sql);
-    $stmt->execute($nom_categorie,$id_categorie);   
-
-    }
+   
 
   }
 

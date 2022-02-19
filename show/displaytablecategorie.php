@@ -74,7 +74,7 @@ else if(isset($_POST['update'])){
         <tr>
           <td><?= $categorie["id_categorie"] ?></td>
           <td><?= $categorie["nom_categorie"]  ?></td>
-          <td> <a href="editerlacategorie.php? id=<?= $categorie['id_categorie']?>"><button>modifier</button></a> </td>
+          <td> <a href="../editer/editercategorie.php? id=<?= $categorie['id_categorie']?>"><button>modifier</button></a> </td>
           <td><a href="displaytablecategorie.php? id=<?= $categorie['id_categorie']?>&send=del" ><button>supprimer</button></a></td>
 
 

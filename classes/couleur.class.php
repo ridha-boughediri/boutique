@@ -23,7 +23,7 @@ class Couleur extends DataBase
     $stmt->execute([$nom_couleur]);
   }
 
-  public function UpdateCoul($id_couleur)
+  public function ShowIDCoul($id_couleur)
   {
     $sql = "SELECT * FROM couleur where id_couleur =?";
     $stmt = $this->connect()->prepare($sql);
@@ -39,7 +39,13 @@ class Couleur extends DataBase
     $stmt->execute([$id_couleur]);
   }
 
+  public function UpdateCouleurTong($nom_couleur,$id_couleur){
 
+    $sql="UPDATE `couleur` SET `nom_couleur`= ? Where `id_couleur` = ?";
+    $stmt=$this->connect()->prepare($sql);
+    $stmt->execute([$nom_couleur,$id_couleur]);
+
+    }
   // public function editeCate($nom_couleur, $id_couleur)
   // {
 

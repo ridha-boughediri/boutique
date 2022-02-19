@@ -5,9 +5,9 @@ require_once("../classes/couleur.class.php");
 require_once("../classes/souscategorie.class.php");
 require_once("../classes/produit.class.php");
 
-// require_once("../adminhtmlcss/slideadmin.php");
-// require_once("../adminhtmlcss/barreadmin.php");
-// require_once("../adminhtmlcss/footeradmin.php");
+require_once("../adminhtmlcss/slideadmin.php");
+require_once("../adminhtmlcss/barreadmin.php");
+require_once("../adminhtmlcss/footeradmin.php");
 
 // $list= new Souscategorie();
 // $NvelleCoul = new Souscategorie();
@@ -35,12 +35,7 @@ if ($_GET['send'] === 'del') {
 
  
  var_dump($_GET);
-//  else if (isset($_POST['update'])) {
-// //   $nom_sous_categorie = $_POST['nom_categorie'];
-// //   $NvelleCATE->DeleCate($id_sous_categorie);
 
-// //   header("location:./displaytablecategorie.php");
-// // }
 
 
 
