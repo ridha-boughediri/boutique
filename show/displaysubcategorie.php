@@ -1,9 +1,5 @@
 <?php
-require_once("../classes/dataBase.class.php");
-require_once("../classes/categorie.class.php");
-require_once("../classes/couleur.class.php");
-require_once("../classes/souscategorie.class.php");
-require_once("../classes/produit.class.php");
+require_once("../includes/class.autoload.inc.php");
 
 require_once("../adminhtmlcss/slideadmin.php");
 require_once("../adminhtmlcss/barreadmin.php");
@@ -62,7 +58,7 @@ if ($_GET['send'] === 'del') {
           <td><?= $categorie["id_categorie"] ?></td>
           <td><?= $categorie["id_sous_catégorie"]  ?></td>
           <td><?= $categorie["nom_sous_catégorie"]  ?></td>
-          <td> <a href="displaysubcategorie.php? id=<?= $categorie['id_sous_catégorie'] ?>"><button>modifier</button></a></td>
+          <td> <a href="../editer/editersubcategorie.php? id=<?= $categorie['id_sous_catégorie'] ?>"><button>modifier</button></a></td>
           <td><a href="displaysubcategorie.php? id=<?= $categorie['id_sous_catégorie'] ?> &send=del"><button>supprimer</button></a></td>
 
 

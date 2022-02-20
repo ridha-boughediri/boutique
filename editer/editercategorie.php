@@ -1,13 +1,10 @@
 <?php
 
-require_once("../classes/dataBase.class.php");
-require_once("../classes/categorie.class.php");
-require_once("../classes/couleur.class.php");
-require_once("../classes/souscategorie.class.php");
-require_once("../classes/produit.class.php");
-// require_once("../adminhtmlcss/slideadmin.php");
-// require_once("../adminhtmlcss/barreadmin.php");
-// require_once("../adminhtmlcss/footeradmin.php");
+require_once("../includes/class.autoload.inc.php");
+
+require_once("../adminhtmlcss/slideadmin.php");
+require_once("../adminhtmlcss/barreadmin.php");
+require_once("../adminhtmlcss/footeradmin.php");
 
 $cateposts = new Categorie();
 $catepost=$cateposts->Editecategorie($_GET['id']);

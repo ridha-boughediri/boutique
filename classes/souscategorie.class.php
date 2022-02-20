@@ -21,11 +21,12 @@ class Souscategorie extends DataBase{
         $stmt->execute([$id_categorie,$nom_sous_catégorie]);
       }
       
-      // public function UpdatePost($nom_sous_catégorie) {
-      //   $sql = "UPDATE sous_categorie SET title = ?, body = ?, author = ? WHERE id_categorie= ?";
-      //   $stmt = $this->connect()->prepare($sql);
-      //   $stmt->execute([$nom_sous_catégorie]);
-      // }
+      public function ShowIdSubcate($id_categorie,$nom_sous_catégorie,$id_sous_catégorie) {
+        $sql="UPDATE sous_catégorie SET id_categorie=?,nom_sous_catégorie=? WHERE id_sous_catégorie= ?";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$id_categorie,$nom_sous_catégorie,$id_sous_catégorie]);
+      }
+
   
   
       

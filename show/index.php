@@ -1,18 +1,23 @@
 <?php
-require_once("../classes/dataBase.class.php");
-require_once("../classes/categorie.class.php");
-require_once("../classes/couleur.class.php");
-require_once("../classes/contance.class.php");
-require_once("../classes/produit.class.php");
-require_once("../classes/souscategorie.class.php");
+require_once("../includes/class.autoload.inc.php");
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<?php
 
 
-// $list= new Categorie();
-// print_r($list->getCate());
+// $listcou= new Couleur();
+// print_r($listcou->getCoul());
 // echo "<br>";
-$listcou= new Couleur();
-print_r($listcou->getCoul());
-echo "<br>";
 
 
 
@@ -27,7 +32,6 @@ print_r($showproduct->getProduit());
 
 
 
-
-?>
-
-
+?> 
+</body>
+</html>
