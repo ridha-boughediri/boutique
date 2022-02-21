@@ -12,6 +12,7 @@ while(list($id, $title, $description) = mysql_fetch_row($res)){
           echo (" Subcategory: {stitle} {sdescription}<br />");
      }
 }
+
 ?>
 <?php
 
