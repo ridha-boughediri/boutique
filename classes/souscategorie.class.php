@@ -49,6 +49,18 @@ class Souscategorie extends DataBase{
       }
       
 
+       
+      public function Getid($id_categorie){
+       
+        $sql= "SELECT * FROM sous_catégorie WHERE id_categorie=?";
+        $stmt=$this->connect()->prepare("SELECT * FROM sous_catégorie WHERE id_categorie=?");
+        $stmt->execute([$id_categorie]);
+        var_dump($stmt->execute([$id_categorie]));
+
+        $result=$stmt->fetchall();
+        return $result;
+        
+      }
       
     
 

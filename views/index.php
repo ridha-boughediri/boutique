@@ -18,14 +18,16 @@ require_once("../includes/class.autoload.inc.php");
 // $listcou= new Couleur();
 // print_r($listcou->getCoul());
 // echo "<br>";
+// $untype= new Type();
+// print_r($untype->getidTypeproduct());
 
 
 
-$souscategorie = new Souscategorie();
-print_r($souscategorie->getCateSou());
-echo "<br>";
-echo "<br>";
-echo "<br>";
+// $souscategorie = new Souscategorie();
+// print_r($souscategorie->getCateSou());
+// echo "<br>";
+// echo "<br>";
+// echo "<br>";
 
 $showproduct= new Produit();
 print_r($showproduct->getProduit());

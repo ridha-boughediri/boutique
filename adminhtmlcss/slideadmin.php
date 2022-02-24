@@ -75,6 +75,12 @@
                 </a>
             </li>
             <li>
+                <a href="./displaytableproduittype.php">
+                    <i class='bx bx-heart'></i>
+                    <span class="links_name">Le genre produit</span>
+                </a>
+            </li>
+            <li>
                 <a href="./displaytablecategorie.php">
                     <i class='bx bx-heart'></i>
                     <span class="links_name">Categorie</span>
