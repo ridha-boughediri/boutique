@@ -6,7 +6,7 @@ spl_autoload_register("autoloadhtmlcss");
 
 
 function autoloadhtmlcss($className){
-    $pash='../classes/';
+    $pash='./classes/';
     $ex='.class.php';
     $fileName= $pash.$className.$ex;
     $pathFileName=strtolower($fileName);
