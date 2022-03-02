@@ -1,15 +1,11 @@
 <?php
-<<<<<<< Updated upstream
-require_once("./includes/class.autoload.inc.php");
-=======
 session_start();
-require_once("./classes/database.class.php");
-require_once("./classes/user.class.php");
+require_once("../includes/class.autoload.inc.php");
 
-$bdd = new Database('localhost', 'lahavane', 'root', '');
-$pdo = $bdd->bdd();
-$user = new User($pdo);
->>>>>>> Stashed changes
+
+
+
+
 
 ?>
 
