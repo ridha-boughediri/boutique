@@ -1,4 +1,5 @@
 <footer>
+<<<<<<< Updated upstream
     <div class="footer-container grid-x">
         <div class="footer-links-wrapper small-8 medium-10 grid-x grid-padding-x">
             <div class="cell medium-3">
@@ -243,3 +244,23 @@
         });
     });
 </script>
+=======
+    <div class="top-footer">
+        <div class="logo-container">
+            <img src="./img/logo.png" class="logo" alt="">
+        </div>
+    </div>
+    <div class="bottom-footer">
+        <ul class="list-footer-container">
+            <li class="list-footer">..........</li>
+            <li class="list-footer">..........</li>
+            <li class="list-footer">..........</li>
+            <li class="list-footer">..........</li>
+            <li class="list-footer">..........</li>
+            <li class="list-footer">..........</li>
+            <li class="list-footer">..........</li>
+        </ul>
+        <p>© 2021-2022, Energix Inc</p>
+    </div>
+</footer>
+>>>>>>> Stashed changes

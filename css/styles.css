@@ -6,21 +6,112 @@
   padding: 0;
 }
 
+<<<<<<< Updated upstream
 html {
   -webkit-text-size-adjust: 100%;
   line-height: 1.15;
+=======
+.search-logo {
+  width: 80%;
+  height: 80%;
+  margin: 0 15% 0 0;
+}
+
+.cart-container .search-btn:first-child .search-logo {
+  width: 60%;
+  height: 60%;
+}
+
+.avatar-img {
+  border-radius: 100%;
+  width: 80%;
+  height: 80%;
+  margin: 0 15% 0 0;
+}
+
+.search-input {
+  width: 70%;
+  height: 5vh;
+  border: none;
+  border-bottom: 1px solid black;
+>>>>>>> Stashed changes
 }
 
 body,
 html {
   min-height: 100vh;
   height: 100%;
+<<<<<<< Updated upstream
+=======
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.account-container,
+.bag-container {
+  display: none;
+  position: absolute;
+  border: 1px solid #d3d3d3;
+  border-radius: 15px;
+  background-color: white;
+  top: 20vh;
+  right: 0;
+  width: 20%;
+  height: 40%;
+  padding: 1%;
+  z-index: 100;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.account-container.hover,
+.bag-container.hover {
+  display: flex;
+}
+
+.account-container-title {
+>>>>>>> Stashed changes
   width: 100%;
 }
 
+<<<<<<< Updated upstream
 body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+=======
+.account-container-name {
+  width: 75%;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  font-size: 80%;
+}
+
+button {
+  outline: none;
+}
+
+.btn-acc-cont {
+  width: 100%;
+  height: 55%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.btn-close {
+  position: absolute;
+  top: 3vh;
+  right: 3vh;
+  width: 2vh;
+  height: 2vh;
+>>>>>>> Stashed changes
   margin: 0;
   overflow-x: hidden;
   padding: 0;
@@ -30,9 +121,34 @@ body {
   user-select: none;
 }
 
+<<<<<<< Updated upstream
 .block-logo {
   width: 20%;
   height: 100%;
+=======
+.btn-deco {
+  position: absolute;
+  top: 3vh;
+  right: 3vh;
+  width: 2vh;
+  height: 2vh;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../img/deco.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.logo-container {
+  width: 100%;
+  height: 10vh;
+>>>>>>> Stashed changes
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,11 +166,33 @@ body {
   transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
 }
 
+<<<<<<< Updated upstream
 .elem-scale:hover {
   transform: scale(1.1, 1.1) translateZ(0px) translate3d(0px, 0px, 0px);
   transition-duration: 300ms;
   transition-property: transform, box-shadow;
   transition-timing-function: ease-out;
+=======
+.button-third {
+  border: none;
+  border-bottom: 1px solid burlywood;
+  width: 30vh;
+  height: 5vh;
+  background-color: white;
+  color: burlywood;
+  cursor: pointer;
+}
+
+.button-third:hover {
+  color: rgba(222, 184, 135, 0.5);
+}
+
+.button-none {
+  border: 1px solid grey;
+  background-color: white;
+  color: grey;
+  cursor: not-allowed;
+>>>>>>> Stashed changes
 }
 
 main {
@@ -89,8 +227,20 @@ main {
   font: 20px;
 }
 
+<<<<<<< Updated upstream
 .user-links {
   width: 340px;
+=======
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 35%;
+  border-top: grey 1px solid;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  z-index: 1;
+>>>>>>> Stashed changes
 }
 
 .user-link {
@@ -163,6 +313,7 @@ main {
   }
 }
 
+<<<<<<< Updated upstream
 .user-info:hover .svg-inline {
   opacity: 0.5;
 }
@@ -210,4 +361,127 @@ main {
 @font-face {
   font-family: "Havana";
   src: url("../font/Havana.ttf");
+=======
+.view-container .inputs-container {
+  width: 100%;
+}
+
+.login-input {
+  width: 50%;
+  height: 5vh;
+  margin: 1vh 0;
+  padding: 0 1vh;
+  outline: none;
+}
+
+.field {
+  margin: 0;
+}
+
+.field.error {
+  font-size: 1.5vh;
+  color: red;
+  margin: 1em;
+}
+
+.field.success {
+  font-size: 1.5vh;
+  color: green;
+  margin: 1em;
+}
+
+.lost-pass {
+  font-size: 1.4vh;
+  cursor: pointer;
+  margin: 2vh 0;
+}
+
+.edit-container {
+  width: 100%;
+  height: max-content;
+  border-top: 1px solid #d3d3d3;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 2vh;
+}
+
+.list-container {
+  width: 30%;
+  height: max-content;
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  border: 1px solid #d3d3d3;
+  border-radius: 15px;
+  padding: 2vh;
+}
+
+.view-container {
+  width: 50%;
+  height: max-content;
+  min-height: 40vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid #d3d3d3;
+  border-radius: 15px;
+  padding: 2vh;
+}
+
+/* FOOTER */
+
+footer {
+  width: 100%;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-footer {
+  width: 100%;
+  height: 35%;
+  border-top: 1px solid #d3d3d3;
+}
+
+.bottom-footer {
+  width: 100%;
+  height: 65%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.list-footer-container {
+  width: 80%;
+  height: 65%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+  list-style: none;
+}
+
+.button-file {
+  border: none;
+  /* border-bottom: 1px solid burlywood; */
+  width: 30vh;
+  height: max-content;
+  background-color: white;
+  color: burlywood;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+  border: 1px solid burlywood;
+  /* border-radius: 15px; */
+  width: 20vh;
+  height: 5vh;
+  background-color: white;
+  color: burlywood;
+  margin: 1vh 1vh 1vh 0;
+  cursor: pointer;
+>>>>>>> Stashed changes
 }
