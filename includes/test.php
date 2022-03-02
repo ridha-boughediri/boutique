@@ -1,11 +1,11 @@
 <?php
 
-spl_autoload_register("myautoloader");
+spl_autoload_register("autoloadhtmlcss");
 
 
 
 
-function myautoloader($className){
+function autoloadhtmlcss($className){
     $pash='../classes/';
     $ex='.class.php';
     $fileName= $pash.$className.$ex;

@@ -3,7 +3,7 @@
 class DataBase{
     private $host="localhost";
     private $username="root";
-    private $dbname="rb_shop";
+    private $dbname="havana";
     private $pswd="";
 
     public function connect() {

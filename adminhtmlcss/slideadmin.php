@@ -26,7 +26,7 @@
                 </a>
             </li>
             <li>
-                <a href="./affichageaddproduct.php">
+                <a href="./showproductadd.php">
                     <i class='bx bx-list-ul'></i>
                     <span class="links_name">Produit</span>
                 </a>
@@ -41,15 +41,10 @@
             <li>
                 <a href="#">
                     <i class='bx bx-pie-chart-alt-2'></i>
-                    <span class="links_name">Statistique</span>
+                    <span class="links_name">Panier</span>
                 </a>
             </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-coin-stack'></i>
-                    <span class="links_name">Stock</span>
-                </a>
-            </li>
+           
             <li>
                 <a href="#">
                     <i class='bx bx-book-alt'></i>
