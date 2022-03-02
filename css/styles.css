@@ -1,16 +1,56 @@
-* {
-  box-sizing: border-box;
-  font-family: "Havana";
-  letter-spacing: 0.2vh;
-  margin: 0;
-  padding: 0;
+header {
+  width: 100%;
+  height: 35vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-<<<<<<< Updated upstream
-html {
-  -webkit-text-size-adjust: 100%;
-  line-height: 1.15;
-=======
+.bar-top {
+  width: 100%;
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid black;
+}
+
+.bar-top-text {
+  color: burlywood;
+  letter-spacing: 2px;
+}
+
+.searchandcart {
+  width: 100%;
+  height: 30vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search-container {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-btn {
+  width: 5vh;
+  height: 5vh;
+  margin: 0 5% 0 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
 .search-logo {
   width: 80%;
   height: 80%;
@@ -34,15 +74,11 @@ html {
   height: 5vh;
   border: none;
   border-bottom: 1px solid black;
->>>>>>> Stashed changes
 }
 
-body,
-html {
-  min-height: 100vh;
+.cart-container {
+  width: 10%;
   height: 100%;
-<<<<<<< Updated upstream
-=======
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -72,15 +108,14 @@ html {
 }
 
 .account-container-title {
->>>>>>> Stashed changes
   width: 100%;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: underline black;
 }
 
-<<<<<<< Updated upstream
-body {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-=======
 .account-container-name {
   width: 75%;
   height: 15%;
@@ -111,21 +146,19 @@ button {
   right: 3vh;
   width: 2vh;
   height: 2vh;
->>>>>>> Stashed changes
   margin: 0;
-  overflow-x: hidden;
   padding: 0;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../img/close.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
-<<<<<<< Updated upstream
-.block-logo {
-  width: 20%;
-  height: 100%;
-=======
 .btn-deco {
   position: absolute;
   top: 3vh;
@@ -148,31 +181,37 @@ button {
 .logo-container {
   width: 100%;
   height: 10vh;
->>>>>>> Stashed changes
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
-.block-logo img {
+.logo {
   width: auto;
-  height: 80%;
+  height: 100%;
+}
+
+.button-first {
+  border: 1px solid #d3d3d3;
+  border-radius: 15px;
+  width: 20vh;
+  height: 5vh;
+  background-color: burlywood;
+  color: white;
   cursor: pointer;
 }
 
-.elem-scale {
+.button-secondary {
+  border: 1px solid burlywood;
+  border-radius: 15px;
+  width: 20vh;
+  height: 5vh;
+  background-color: white;
+  color: burlywood;
   cursor: pointer;
-  transform: scale(1);
-  transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
 }
 
-<<<<<<< Updated upstream
-.elem-scale:hover {
-  transform: scale(1.1, 1.1) translateZ(0px) translate3d(0px, 0px, 0px);
-  transition-duration: 300ms;
-  transition-property: transform, box-shadow;
-  transition-timing-function: ease-out;
-=======
 .button-third {
   border: none;
   border-bottom: 1px solid burlywood;
@@ -192,45 +231,51 @@ button {
   background-color: white;
   color: grey;
   cursor: not-allowed;
->>>>>>> Stashed changes
 }
 
-main {
-  margin-top: 15vh;
+.menu {
+  width: 100%;
+  height: 20%;
 }
 
-.user-panel {
-  display: none;
+.menu ol {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-.user-info.hover {
-  display: block;
-  position: absolute;
-  top: calc(100% - 30px);
-  right: 0;
-  z-index: 2;
-  background-color: #fff;
+.dropbtn {
+  background-color: transparent;
+  padding: 10px;
+  height: 100%;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  transform: scale(1);
+  transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+  color: #707172;
+  font-style: normal;
+  font-weight: bold;
 }
 
-.user-panel-container {
-  position: relative;
-  border: 1px solid #d3d3d3;
-  margin-top: 30px;
-  padding: 0 76px 37px 38px;
+.dropbtn .btn-link {
+  text-decoration: none;
 }
 
-.user-panel-title {
-  font-weight: 600;
-  letter-spacing: 1px;
-  margin: 38px 0 40px;
-  color: #fb373c;
-  font: 20px;
+.dropdown {
+  display: flex;
+  height: 100%;
+  width: 15%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-<<<<<<< Updated upstream
-.user-links {
-  width: 340px;
-=======
 .dropdown-content {
   display: none;
   position: absolute;
@@ -240,128 +285,64 @@ main {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   background-color: white;
   z-index: 1;
->>>>>>> Stashed changes
 }
 
-.user-link {
-  display: -webkit-box;
-  display: flex;
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
-.user-login {
-  display: inline-block;
-  background-color: #fb373c;
-  color: #fff;
-  font: 12px;
-  margin: 0 auto;
-  padding: 11px 0;
-  text-align: center;
+.dropdown-content .btn-link {
+  color: #707172;
+  padding: 12px 16px;
   text-decoration: none;
-  border-radius: 20px;
-  margin: 20px 0;
+  display: block;
   width: 100%;
-  margin-bottom: 29px;
+  background-color: transparent;
+  border: none;
 }
 
-@media print, screen and (min-width: 56.25em) {
-  .user-login {
-    padding: 7px 0;
-    border-radius: 29px;
-    font-size: 13px;
-  }
+.dropdown-content .btn-link:hover {
+  background-color: white;
+  color: rgb(203, 188, 178);
+  cursor: pointer;
 }
 
-.user-register {
-  display: inline-block;
-  border: 1px solid #fb373c;
-  color: #fb373c;
-  font: 12px Poppins-SemiBold, sans-serif;
-  margin: 0 auto;
-  padding: 10px 0;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 20px;
-  margin: 20px 0;
-  width: 100%;
-  margin-bottom: 50px;
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
-@media print, screen and (min-width: 56.25em) {
-  .user-register {
-    font-size: 13px;
-    padding: 6px 0;
-    border-radius: 29px;
-  }
+.dropdown:hover .dropbtn {
+  transform: scale(1.05, 1.05) translateZ(0px) translate3d(0px, 0px, 0px);
+  transition-duration: 300ms;
+  transition-property: transform, box-shadow;
+  transition-timing-function: ease-out;
 }
 
-.user-links-item {
-  display: inline-block;
-  font-family: Poppins-SemiBold, sans-serif;
-  font-size: 18px;
-  height: 30px;
-  line-height: 30px;
+.dropdown:hover .dropbtn .btn-link {
+  color: rgb(203, 188, 178);
+}
+
+.title-main {
+  text-decoration: underline black;
   letter-spacing: 1px;
-  margin-bottom: 22px;
-  background: 0 0;
-  color: inherit;
-  text-decoration: none;
+  width: 100%;
 }
 
-@media print, screen and (min-width: 56.25em) {
-  .svg-inline {
-    margin-right: 20px;
-  }
+.sign-container {
+  width: 100%;
+  height: max-content;
+  margin-top: 2vh;
+  border-top: 1px solid #d3d3d3;
 }
 
-<<<<<<< Updated upstream
-.user-info:hover .svg-inline {
-  opacity: 0.5;
+.inputs-container {
+  border-radius: 15px;
+  width: 50%;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
 }
 
-.user-info .trackmyorder-icon {
-  width: 27px;
-  height: 30px;
-}
-
-.user-info .wishlist-icon {
-  width: 34px;
-  height: 34px;
-}
-
-.cart-panel {
-  position: absolute;
-  right: 0;
-  top: 100%;
-  background-color: #fff;
-  z-index: 10;
-  cursor: auto;
-  background-color: #fdfdfd;
-  max-width: 455px;
-  min-width: 140px;
-  height: 100vh;
-  display: none;
-  max-height: 89vh;
-  overflow-y: auto;
-  width: calc(100% - 20px);
-  z-index: 1000;
-  padding: 0 76px 37px 38px;
-}
-
-@media print, screen and (min-width: 56.25em) {
-  .cart-panel {
-    border: 1px solid #d3d3d3;
-    max-width: none;
-    min-width: 0;
-    width: 600px;
-    height: auto;
-    max-height: calc(100vh - 128px);
-  }
-}
-
-@font-face {
-  font-family: "Havana";
-  src: url("../font/Havana.ttf");
-=======
 .view-container .inputs-container {
   width: 100%;
 }
@@ -431,6 +412,91 @@ main {
   padding: 2vh;
 }
 
+/* SLIDE */
+
+#home-collection {
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  margin-top: 0px;
+}
+
+.slick-slider {
+  margin-bottom: 12px;
+  z-index: 6;
+  display: block;
+  position: relative;
+}
+
+@media (min-width: 480px) {
+  .slick-slider {
+    margin-top: 18px;
+  }
+}
+
+.slick-track {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  display: block;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+  transform: translate3d(0px, 0px, 0px);
+}
+
+.slick-track::before,
+.slick-track::after {
+  display: table;
+  content: "";
+}
+
+.slick-track::after {
+  clear: both;
+}
+
+.slick-slide {
+  height: 100%;
+  min-height: 1px;
+  display: none;
+  float: left;
+  padding: 10px;
+  opacity: 0.5;
+  transition: opacity 300ms ease 0s;
+}
+
+.slick-slide.slick-active {
+  opacity: 1;
+}
+
+.slick-initialized .slick-slide {
+  display: block;
+}
+
+
+.card-img {
+  background-size: cover;
+  height: 0px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.image-overlay {
+  inset: 0px;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  position: absolute;
+  transition: opacity 500ms ease-in-out 0s;
+  width: 100%;
+}
+
+.image-overlay.hover-image {
+  opacity: 0;
+}
+
 /* FOOTER */
 
 footer {
@@ -483,5 +549,4 @@ input[type="file"]::-webkit-file-upload-button {
   color: burlywood;
   margin: 1vh 1vh 1vh 0;
   cursor: pointer;
->>>>>>> Stashed changes
 }

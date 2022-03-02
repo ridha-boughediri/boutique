@@ -6,7 +6,6 @@ extract($_FILES);
 require_once("../classes/database.class.php");
 require_once("../classes/user.class.php");
 
-$bdd = new Database('localhost', 'lahavane', 'root', '');
 $pdo = $bdd->bdd();
 $user = new User($pdo);
 

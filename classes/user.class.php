@@ -168,7 +168,8 @@ class Couleur extends DataBase
 
     public function update($firstname, $lastname, $mail, $password, $phone, $avatarname, $avatartype, $avatartmp_name, $avatarerror, $avatarsize)
     {
-        if (!empty($firstname)) {
+        // if (!empty($firstname)) {
+        if ($firstname != '') {
             $firstnamelenght = strlen($_POST['firstname']);
             if ($firstnamelenght >= 2 && $firstnamelenght <= 18) {
                 $updatefirstname = $this->pdo->prepare("UPDATE utilisateurs SET firstname = ? WHERE id = ?");
