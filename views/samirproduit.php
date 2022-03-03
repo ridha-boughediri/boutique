@@ -31,49 +31,12 @@ if (isset($_POST['submit'])) {
 
 
 
-    if (empty($nom_produit)) {
-        $errMSG = "svp entrer le nom du produit.";
-    } else if (empty($description_produit)) {
-        $errMSG = "Entrer la description.";
-    } else if (empty($prix_produit)) {
-        $errMSG = "Entrer le prix.";
-    } else if (empty($id_categorie)) {
-        $errMSG = "Entrer la categorie.";
-    } else if (empty($id_sous_catégorie)) {
-        $errMSG = "Entrer la sous_categorie.";
-    } else if (empty($id_couleur)) {
-        $errMSG = "Entrer la couleur.";
-    } else if (empty($id_produit_type)) {
-        $errMSG = "Le genre ou le type.";
-    } else if (empty($qte_stock)) {
-        $errMSG = "Il faut mettre un stock.";
-    } else {
-        $upload_dir = 'images/'; // upload directory
-
-        $imgExt = strtolower(pathinfo($imgFile, PATHINFO_EXTENSION)); // get image extension
-
-        // valid image extensions
-        $valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // valid extensions
-
-        // rename uploading image
-        $userpic = rand(1000, 1000000) . "." . $imgExt;
-
-        // allow valid image file formats
-        if (in_array($imgExt, $valid_extensions)) {
-            // Check file size '5MB'
-            if ($imgSize < 5000000) {
-                move_uploaded_file($tmp_dir, $upload_dir . $userpic);
-            } else {
-                $errMSG = "Désole, your file is too large.";
-            }
-        } else {
-            $errMSG = "Désole, only JPG, JPEG, PNG & GIF files are allowed.";
-        }
+    
 
 
 
         $test = $monproduit->insert($nom_produit, $description_produit, $prix_produit, $id_categorie, $id_sous_catégorie, $id_couleur, $id_produit_type, $images, $qte_stock);
-    }
+    
 }
 
 

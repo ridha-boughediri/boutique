@@ -1,5 +1,5 @@
 <?php
-
+echo exec("whoami");
 echo exec("whoami");
 
 require_once("../includes/class.autoload.inc.php");
@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
 
 
 
-    move_uploaded_file($file_images_tmp_name,'../img/' . $file_images_name);
+    move_uploaded_file($file_images_tmp_name,'../imgadmin/product/' . $file_images_name);
 
 
 
