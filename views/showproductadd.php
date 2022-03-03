@@ -3,93 +3,86 @@ require_once("../includes/class.autoload.inc.php");
 
 
 
-
-
-
-
-
 $monproduit = new Produit();
-var_dump($_POST);
 
-if (isset($_POST['submit'])) {
 
-    echo "produit rajoute avec success petit loup";
-    $nom_produit = $_POST['nom_produit'];
-    $description_produit = $_POST['description_produit'];
-    $prix_produit = $_POST['prix_produit'];
-    $id_categorie = $_POST['id_categorie'];
-    $id_sous_catégorie = $_POST['id_sous_catégorie'];
-    $id_couleur = $_POST['id_couleur'];
-    $id_produit_type = $_POST['id_produit_type'];
-    $imgFile = $_FILES['images']['name'];
-    $tmp_dir = $_FILES['images']['tmp_name'];
-    $imgSize = $_FILES['images']['size'];
-    $qte_stock = $_POST['qte_stock'];
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if(isset($_POST['submit'])) {
+
+
+        echo "produit rajoute avec success petit loup";
+        $nom_produit = filter_input(INPUT_POST,'nom_produit' , FILTER_SANITIZE_STRING);
+        $description_produit = filter_input(INPUT_POST,'description_produit ' , FILTER_SANITIZE_STRING);
+        $prix_produit = filter_input(INPUT_POST,'prix_produit' , FILTER_SANITIZE_STRING);
+        $id_categorie = filter_input(INPUT_POST,'id_categorie' , FILTER_SANITIZE_STRING);
+
+        $id_sous_catégorie = filter_input(INPUT_POST,'id_sous_catégorie' , FILTER_SANITIZE_STRING);
+        $id_couleur = filter_input(INPUT_POST,'id_couleur' , FILTER_SANITIZE_STRING);
+
+
+
+      
+
+     
+        
+
+        $image = $_FILES['image'];
+
+        $img_name = $image['name'];
+        $img_tmp_name = $image['tmp_name'];
+        $img_size = $image['size'];
+
 
     
 
+            if(! empty($img_name)) { 
+                $img_extension = strtolower(explode('.', $img_name)[1]); // gfdgdfg.jpg
 
+                $allowed_extensions = array('jpg' , 'png' , 'jpeg');
 
-
-    if (empty($nom_produit)) {
-        $errMSG = "svp entrer le nom du produit.";
-    } else if (empty($description_produit)) {
-        $errMSG = "Entrer la description.";
-    } else if (empty($prix_produit)) {
-        $errMSG = "Entrer le prix.";
-    } else if (empty($id_categorie)) {
-        $errMSG = "Entrer la categorie.";
-    } else if (empty($id_sous_catégorie)) {
-        $errMSG = "Entrer la sous_categorie.";
-    } else if (empty($id_couleur)) {
-        $errMSG = "Entrer la couleur.";
-    } else if (empty($id_produit_type)) {
-        $errMSG = "Le genre ou le type.";
-    } else if (empty($qte_stock)) {
-        $errMSG = "Il faut mettre un stock.";
-    } else {
-        $upload_dir = 'images/'; // upload directory
-
-        $imgExt = strtolower(pathinfo($imgFile, PATHINFO_EXTENSION)); // get image extension
-
-        // valid image extensions
-        $valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // valid extensions
-
-        // rename uploading image
-        $userpic = rand(1000, 1000000) . "." . $imgExt;
-
-        // allow valid image file formats
-        if (in_array($imgExt, $valid_extensions)) {
-            // Check file size '5MB'
-            if ($imgSize < 5000000) {
-                move_uploaded_file($tmp_dir, $upload_dir . $userpic);
-            } else {
-                $errMSG = "Désole, your file is too large.";
+                if(! in_array($img_extension, $allowed_extensions)) {
+                    $error_msg = "Allowed Extensions are jpg, png and jpeg ";
+                }else if( $img_size > 1000000) {
+                    $error_msg = "Image size must be less than 1M";
+                }
             }
-        } else {
-            $errMSG = "Désole, only JPG, JPEG, PNG & GIF files are allowed.";
         }
 
-
-
+            if( insert_post($datetime, $title, $content, $author, $excerpt, $img_name, $category, $tags) ) {
+                if(! empty($img_name)) {
+                    $new_path = "uploads/posts/".$img_name;
+                    move_uploaded_file( $img_tmp_name, $new_path);
+                }
+         
+        }
+    
+    
         $test = $monproduit->insert($nom_produit, $description_produit, $prix_produit, $id_categorie, $id_sous_catégorie, $id_couleur, $id_produit_type, $images, $qte_stock);
     }
-}
 
-
-
-
-
-
-// var_dump($_POST['sumit']);
-
-
+       
+    
 
 
 
 
 
 ?>
+
+
+
+
+
+
+
+
+      
+    
+
+
+
+
+
 
 <div class="home-content">
     <div class="box round first grid">
