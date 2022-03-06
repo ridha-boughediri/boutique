@@ -1,9 +1,10 @@
 <?php
 session_start();
-require("./classes/database.class.php");
-require("./classes/user.class.php");
+// require("./classes/database.class.php");
+require_once("./includes/class.autoload.inc.php");
+// require("./classes/user.class.php");
 
-$pdo = $bdd->bdd();
+// $pdo = $bdd->bdd();
 $user = new User($pdo);
 
 if (!isset($_SESSION['id'])) {

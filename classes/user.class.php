@@ -1,7 +1,7 @@
 <?php
 
 
-class Couleur extends DataBase
+class User extends DataBase
 {
 
     private $pdo;

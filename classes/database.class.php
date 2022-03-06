@@ -5,7 +5,6 @@
 class DataBase{
     private $host="localhost";
     private $username="root";
-
     private $dbname="havana";
     private $pswd="";
 
@@ -16,7 +15,6 @@ class DataBase{
         return $pdo;
       }
 
-      
 }
 
 ?>

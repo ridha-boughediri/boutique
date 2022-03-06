@@ -1,15 +1,18 @@
 <?php
 require_once("../includes/class.autoload.inc.php");
 
-
-
-
+require_once("../adminhtmlcss/slideadmin.php");
+require_once("../adminhtmlcss/barreadmin.php");
+require_once("../adminhtmlcss/footeradmin.php");
 
 
 
 
 $monproduit = new Produit();
+echo '<pre>';
 var_dump($_POST);
+echo '<pre>';
+
 
 if (isset($_POST['submit'])) {
 
@@ -21,11 +24,20 @@ if (isset($_POST['submit'])) {
     $id_sous_catégorie = $_POST['id_sous_catégorie'];
     $id_couleur = $_POST['id_couleur'];
     $id_produit_type = $_POST['id_produit_type'];
-    $imgFile = $_FILES['images']['name'];
-    $tmp_dir = $_FILES['images']['tmp_name'];
-    $imgSize = $_FILES['images']['size'];
+    
     $qte_stock = $_POST['qte_stock'];
+    $file_images=$_FILES['file_images']['name'];
+    $tmp_dir=$_FILES['file_images']['tmp_name'];
+    $imageSize=$_FILES['file_images']['size'];
 
+    $upload_dir='../imgadmin/';
+    $imgExt=strtolower(pathinfo($file_images,PATHINFO_EXTENSION));
+    $valid_extensions=array('jpeg', 'jpg', 'png', 'gif', 'pdf');
+    $picProfile=rand(1000, 1000000).".".$imgExt;
+    move_uploaded_file($tmp_dir, $upload_dir.$picProfile);
+    $test = $monproduit->insert($nom_produit, $description_produit, $prix_produit, $id_categorie, $id_sous_catégorie, $id_couleur, $id_produit_type, $file_images, $qte_stock);
+
+ 
 
 
 
@@ -35,7 +47,7 @@ if (isset($_POST['submit'])) {
 
 
 
-        $test = $monproduit->insert($nom_produit, $description_produit, $prix_produit, $id_categorie, $id_sous_catégorie, $id_couleur, $id_produit_type, $images, $qte_stock);
+       
     
 }
 
@@ -83,7 +95,7 @@ if (isset($_POST['submit'])) {
 
                                 <?php if ($couleur->getCate()) : ?>
                                     <?php foreach ($couleur->getCate() as $coul) : ?>
-                                        <option name="<?= $coul['id_categorie'] ?>"><?= $coul['nom_categorie'] ?></option>
+                                        <option  value="<?= $coul['id_categorie'] ?>"><?= $coul['nom_categorie'] ?></option>
 
                                     <?php endforeach; ?>
                                 <?php else : ?>
@@ -112,7 +124,7 @@ if (isset($_POST['submit'])) {
 
                                         <optgroup name="<?= $categorie['id_categorie'] ?>" label="<?= $categorie['nom_categorie'] ?>">
                                             <?php foreach ($souscate as $categorie) : var_dump($categorie); ?>
-                                                <option value="<?= $categorie['nom_sous_catégorie'] ?>" name="<?= $categorie['id_sous_catégorie'] ?>"><?= $categorie['nom_sous_catégorie'] ?></option>
+                                                <option value="<?= $categorie['id_sous_catégorie'] ?>" name="<?= $categorie['id_sous_catégorie'] ?>"><?= $categorie['nom_sous_catégorie'] ?></option>
 
 
                                                 </option>
@@ -142,7 +154,7 @@ if (isset($_POST['submit'])) {
 
                                 <?php if ($couleur->getCoul()) : ?>
                                     <?php foreach ($couleur->getCoul() as $coul) : ?>
-                                        <option name="<?= $coul['id_couleur'] ?>"><?= $coul['nom_couleur'] ?></option>
+                                        <option value="<?= $coul['id_couleur'] ?>"><?= $coul['nom_couleur'] ?></option>
 
                                     <?php endforeach; ?>
                                 <?php else : ?>
@@ -176,7 +188,7 @@ if (isset($_POST['submit'])) {
                             <label>Upload Image</label>
                         </td>
                         <td>
-                            <input type="file" name="images" />
+                            <input type="file" name="file_images" />
                         </td>
                     </tr>
 

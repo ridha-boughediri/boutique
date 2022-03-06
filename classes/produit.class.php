@@ -16,7 +16,7 @@ class Produit extends DataBase{
 
 
       public function insert($nom_produit,$description_produit,$prix_produit,$id_categorie,$id_sous_catégorie,$id_couleur,$id_produit_type,$file_images,$qte_stock){
-      $sql="INSERT INTO produit(nom_produit,description_produit,prix_produit,id_categorie,id_sous_catégorie,id_couleur,id_produit_type,images,qte_stock) VALUES (?,?,?,?,?,?,?,?,?)";      
+      $sql="INSERT INTO produit(nom_produit,description_produit,prix_produit,id_categorie,id_sous_catégorie,id_couleur,id_produit_type,file_images,qte_stock) VALUES (?,?,?,?,?,?,?,?,?)";      
       $stmt = $this->connect()->prepare($sql);
       $stmt->execute([$nom_produit,$description_produit,$prix_produit,$id_categorie,$id_sous_catégorie,$id_couleur,$id_produit_type,$file_images,$qte_stock]);
       
