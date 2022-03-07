@@ -1,16 +1,16 @@
 <?php
 session_start();
-require_once("../includes/class.autoload.inc.php");
+// require_once("../includes/class.autoload.inc.php");
 
 
 
 
 
-<<<<<<< HEAD
-=======
-$pdo = $bdd->bdd();
-$user = new User($pdo);
->>>>>>> 4e3adec32bb29f0ba30bc2516c83a4737fd2081c
+// <<<<<<< HEAD
+// =======
+// $pdo = $bdd->bdd();
+// $user = new User($pdo);
+// >>>>>>> 4e3adec32bb29f0ba30bc2516c83a4737fd2081c
 
 ?>
 
@@ -180,20 +180,7 @@ $user = new User($pdo);
 <?php
 
 
-// $listcou= new Couleur();
-// print_r($listcou->getCoul());
-// echo "<br>";
 
-
-
-// $souscategorie = new Souscategorie();
-// print_r($souscategorie->getCateSou());
-// echo "<br>";
-// echo "<br>";
-// echo "<br>";
-
-// $showproduct = new Produit();
-// print_r($showproduct->getProduit());
 
 
 
