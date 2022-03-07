@@ -31,7 +31,7 @@ class Produit extends DataBase{
       $stmt->execute([$id_produit]);
     }
 
-
+  public function displayproduit()
 
 
     }
