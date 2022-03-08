@@ -71,18 +71,6 @@ class User extends DataBase
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     public function connection($mail, $password)
     {
 
@@ -117,17 +105,6 @@ class User extends DataBase
 
 
 
-
-
-
-
-
-
-
-
-
-
-
     public function disconnect()
     {
         session_destroy();
@@ -138,28 +115,12 @@ class User extends DataBase
 
 
 
-
-
-
-
-
-
-
     public function delete()
     {
         $delete = $this->connect()->prepare('DELETE FROM utilisateurs WHERE id = ?');
         $delete->execute(array($_SESSION['id']));
         header('Location: ./index.php');
     }
-
-
-
-
-
-
-
-
-
 
 
     public function update($firstname, $lastname, $mail, $password, $phone, $avatarname, $avatartype, $avatartmp_name, $avatarerror, $avatarsize)

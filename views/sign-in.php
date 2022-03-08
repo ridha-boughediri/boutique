@@ -1,11 +1,15 @@
 <?php
 session_start();
-require("../models/database.class.php");
-require("../models/user.class.php");
+// require("../models/database.class.php");
+// require("../models/user.class.php");
+require_once("/includes/class.autoload.inc.php");
 
-// $bdd = $pdo->connect();
-// $user = new User($bdd);
-// print_r($user);
+
+$bdd = $pdo->connect();
+
+$user = new User($bdd);
+
+print_r($user);
 
 if (!isset($_SESSION['id'])) {
 

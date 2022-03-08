@@ -1,15 +1,26 @@
 <?php
 
-require_once("./classes/database.class.php");
-require_once("./classes/user.class.php");
+require_once("../includes/class.autoload.inc.php");
 
-$pdo = $bdd->bdd();
-$user = new User($pdo);
+// require_once("./models/database.class.php");
+// require_once("./models/user.class.php");
 
+// $pdo = $bdd->bdd();
+$user = new User();
+print_r($user);
+
+
+$test= new Produit();
+// var_dump($test);
+$test2=$test->getProduit();
+print_r($test2);
+
+
+// On a reussi a faire les test d aulolaoder pour eviter de require les deux database
 
 ?>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="fr-FR">
 
 <head>
@@ -61,4 +72,4 @@ $user = new User($pdo);
     <script src="./js/header.js"></script>
 </body>
 
-</html>
+</html> -->
