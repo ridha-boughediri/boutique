@@ -8,7 +8,7 @@ spl_autoload_register("myautoloader");
 
 function myautoloader($className)
 {
-    $pash = '../classes/';
+    $pash = '../models/';
     $ex = '.class.php';
     $fileName = $pash . $className . $ex;
     $pathFileName = strtolower($fileName);

@@ -17,10 +17,6 @@ class User extends DataBase
     public string $country;
     public string $birthday;
 
-    public function __construct($pdo)
-    {
-        $this->pdo = $pdo;
-    }
 
     public function register($firstname, $lastname, $mail, $confirm_mail, $password, $confirm_password, $phone, $country, $birthday)
     {
@@ -38,11 +34,11 @@ class User extends DataBase
                     if ($mail == $confirm_mail) {
 
                         if ($password == $confirm_password) {
-                            $getmail = $this->pdo->prepare("SELECT * FROM utilisateurs WHERE mail = ?");
+                            $getmail = $this->connect()->prepare("SELECT * FROM utilisateurs WHERE mail = ?");
                             $getmail->execute(array($mail));
                             $getmailcount = $getmail->rowCount();
                             if ($getmailcount == 0) {
-                                $register = $this->pdo->prepare("INSERT INTO utilisateurs (firstname, lastname, mail, password, phone, country_code, birthday, avatar) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+                                $register = $this->connect()->prepare("INSERT INTO utilisateurs (firstname, lastname, mail, password, phone, country_code, birthday, avatar) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
                                 $register->execute(array($firstname, $lastname, $mail, $password, $phone, $country, $birthday, 'avatar.png'));
                                 $success = "Votre Compte à été créer";
                                 return $success;
@@ -87,22 +83,22 @@ class User extends DataBase
 
 
 
-    public function connect($mail, $password)
+    public function connection($mail, $password)
     {
 
         if (isset($mail) and isset($password)) {
-            $getmail = $this->pdo->prepare("SELECT * FROM utilisateurs WHERE mail = ?");
+            $getmail = $this->connect()->prepare("SELECT * FROM utilisateurs WHERE mail = ?");
             $getmail->execute(array($mail));
             $mailcount = $getmail->rowCount();
 
             if ($mailcount == 1) {
-                $getusers = $this->pdo->prepare("SELECT * FROM utilisateurs WHERE mail = ? AND password = ?");
+                $getusers = $this->connect()->prepare("SELECT * FROM utilisateurs WHERE mail = ? AND password = ?");
                 $getusers->execute(array($mail, $password));
                 $usersexist = $getusers->rowCount();
 
                 if ($usersexist == 1) {
                     $usersinfo = $getusers->fetch();
-                    $_SESSION['id'] = $usersinfo['id'];
+                    $_SESSION['id'] = $usersinfo['id_utilisateur'];
                     $success = "Vous êtes connecté !";
                     return $success;
                 } else {
@@ -151,7 +147,7 @@ class User extends DataBase
 
     public function delete()
     {
-        $delete = $this->pdo->prepare('DELETE FROM utilisateurs WHERE id = ?');
+        $delete = $this->connect()->prepare('DELETE FROM utilisateurs WHERE id = ?');
         $delete->execute(array($_SESSION['id']));
         header('Location: ./index.php');
     }
@@ -172,7 +168,7 @@ class User extends DataBase
         if ($firstname != '') {
             $firstnamelenght = strlen($_POST['firstname']);
             if ($firstnamelenght >= 2 && $firstnamelenght <= 18) {
-                $updatefirstname = $this->pdo->prepare("UPDATE utilisateurs SET firstname = ? WHERE id = ?");
+                $updatefirstname = $this->connect()->prepare("UPDATE utilisateurs SET firstname = ? WHERE id = ?");
                 $updatefirstname->execute(array($firstname, $_SESSION['id']));
             }
         }
@@ -180,28 +176,28 @@ class User extends DataBase
         if (!empty($lastname)) {
             $lastnamelenght = strlen($_POST['lastname']);
             if ($lastnamelenght >= 2 && $lastnamelenght <= 18) {
-                $updatelastname = $this->pdo->prepare("UPDATE utilisateurs SET lastname = ? WHERE id = ?");
+                $updatelastname = $this->connect()->prepare("UPDATE utilisateurs SET lastname = ? WHERE id = ?");
                 $updatelastname->execute(array($lastname, $_SESSION['id']));
             }
         }
 
         if (!empty($mail)) {
-            $getmail = $this->pdo->prepare("SELECT * FROM utilisateurs WHERE mail = ?");
+            $getmail = $this->connect()->prepare("SELECT * FROM utilisateurs WHERE mail = ?");
             $getmail->execute(array($mail));
             $mailcount = $getmail->rowCount();
             if ($mailcount == 0) {
-                $updatemail = $this->pdo->prepare("UPDATE utilisateurs SET mail = ? WHERE id = ?");
+                $updatemail = $this->connect()->prepare("UPDATE utilisateurs SET mail = ? WHERE id = ?");
                 $updatemail->execute(array($mail, $_SESSION['id']));
             }
         }
 
         if (!empty($password) && $password != '') {
-            $updatepassword = $this->pdo->prepare("UPDATE utilisateurs SET password = ? WHERE id = ?");
+            $updatepassword = $this->connect()->prepare("UPDATE utilisateurs SET password = ? WHERE id = ?");
             $updatepassword->execute(array($password, $_SESSION['id']));
         }
 
         if (!empty($phone)) {
-            $updatephone = $this->pdo->prepare("UPDATE utilisateurs SET phone = ? WHERE id = ?");
+            $updatephone = $this->connect()->prepare("UPDATE utilisateurs SET phone = ? WHERE id = ?");
             $updatephone->execute(array($phone, $_SESSION['id']));
         }
 
@@ -215,7 +211,7 @@ class User extends DataBase
                     $chemin = "../img/avatar/" . $_SESSION['id'] . "." . $extensionUpload;
                     $resultat = move_uploaded_file($avatartmp_name, $chemin);
                     if ($resultat) {
-                        $modavatar = $this->pdo->prepare('UPDATE utilisateurs SET avatar = ? WHERE id = ?');
+                        $modavatar = $this->connect()->prepare('UPDATE utilisateurs SET avatar = ? WHERE id = ?');
                         $modavatar->execute(array($_SESSION['id'] . "." . $extensionUpload, $_SESSION['id']));
                         $success = "Votre photo de profil a bien été modifié";
                         return $success;
@@ -263,7 +259,7 @@ class User extends DataBase
 
     public function getAllInfos($getid)
     {
-        $getallinfos = $this->pdo->prepare("SELECT * FROM utilisateurs WHERE id = ?");
+        $getallinfos = $this->connect()->prepare("SELECT * FROM utilisateurs WHERE id_utilisateur = ?");
         $getallinfos->execute(array($getid));
         $getallinfosinfo = $getallinfos->fetch();
         return $getallinfosinfo;
@@ -273,35 +269,35 @@ class User extends DataBase
 
     public function getFirstname($firstname)
     {
-        $getfirstname = $this->pdo->prepare("SELECT * FROM utilisateurs WHERE firstname = ?");
+        $getfirstname = $this->connect()->prepare("SELECT * FROM utilisateurs WHERE firstname = ?");
         $getfirstname->execute(array($firstname));
         $getfirstnameinfo = $getfirstname->fetch();
     }
 
     public function getLastname($lastname)
     {
-        $getlastname = $this->pdo->prepare("SELECT * FROM utilisateurs WHERE lastname = ?");
+        $getlastname = $this->connect()->prepare("SELECT * FROM utilisateurs WHERE lastname = ?");
         $getlastname->execute(array($lastname));
         $getlastnameinfo = $getlastname->fetch();
     }
 
     public function getmail($mail)
     {
-        $getmail = $this->pdo->prepare("SELECT * FROM utilisateurs WHERE mail = ?");
+        $getmail = $this->connect()->prepare("SELECT * FROM utilisateurs WHERE mail = ?");
         $getmail->execute(array($mail));
         $getmailinfo = $getmail->fetch();
     }
 
     public function getPhone($phone)
     {
-        $getphone = $this->pdo->prepare("SELECT * FROM utilisateurs WHERE phone = ?");
+        $getphone = $this->connect()->prepare("SELECT * FROM utilisateurs WHERE phone = ?");
         $getphone->execute(array($phone));
         $getphoneinfo = $getphone->fetch();
     }
 
     public function getAllCountry()
     {
-        $getallcountry = $this->pdo->prepare("SELECT * FROM country");
+        $getallcountry = $this->connect()->prepare("SELECT * FROM country");
         $getallcountry->execute();
         $getallcountryinfo = $getallcountry->fetchall();
         return $getallcountryinfo;
@@ -313,7 +309,7 @@ class User extends DataBase
         if (!empty($forgetmail)) {
 
             if (filter_var($forgetmail, FILTER_VALIDATE_EMAIL)) {
-                $mailexist = $this->pdo->prepare('SELECT * FROM utilisateurs WHERE mail = ?');
+                $mailexist = $this->connect()->prepare('SELECT * FROM utilisateurs WHERE mail = ?');
                 $mailexist->execute(array($forgetmail));
                 $mailexist_count = $mailexist->rowCount();
                 if ($mailexist_count == 1) {
@@ -324,7 +320,7 @@ class User extends DataBase
                         $recup_code .= mt_rand(0, 9);
                     }
 
-                    $recup_insert = $this->pdo->prepare('INSERT INTO recuperation(mail, code, id_utilisateur) VALUES (?, ?, ?)');
+                    $recup_insert = $this->connect()->prepare('INSERT INTO recuperation(mail, code, id_utilisateur) VALUES (?, ?, ?)');
                     $recup_insert->execute(array($forgetmail, $recup_code, $user['id']));
 
                     $from = "lifeinwall@liwco.com";

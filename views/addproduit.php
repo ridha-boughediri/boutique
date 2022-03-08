@@ -1,9 +1,9 @@
 <?php
 require_once("../includes/class.autoload.inc.php");
 
-require_once("../adminhtmlcss/slideadmin.php");
-require_once("../adminhtmlcss/barreadmin.php");
-require_once("../adminhtmlcss/footeradmin.php");
+// require_once("../adminhtmlcss/slideadmin.php");
+// require_once("../adminhtmlcss/barreadmin.php");
+// require_once("../adminhtmlcss/footeradmin.php");
 
 
 
@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) {
     $tmp_dir=$_FILES['file_images']['tmp_name'];
     $imageSize=$_FILES['file_images']['size'];
 
-    $upload_dir='../imgadmin/';
+    $upload_dir='./img/admin';
     $imgExt=strtolower(pathinfo($file_images,PATHINFO_EXTENSION));
     $valid_extensions=array('jpeg', 'jpg', 'png', 'gif', 'pdf');
     $picProfile=rand(1000, 1000000).".".$imgExt;
