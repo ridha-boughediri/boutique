@@ -2,11 +2,8 @@
 session_start();
 extract($_POST);
 
-require("../classes/database.class.php");
-require("../classes/user.class.php");
-
-$pdo = $bdd->bdd();
-$user = new User($pdo);
+require("../models/database.class.php");
+require("../models/user.class.php");
 
 
 $forgetmail = htmlspecialchars(trim($_POST['forgetmail']));

@@ -5,8 +5,6 @@ extract($_POST);
 require("../models/database.class.php");
 require("../models/user.class.php");
 
-$user = new User();
-
 
 $mail = htmlspecialchars(trim($_POST['mail']));
 $password = sha1(trim($_POST['password']));

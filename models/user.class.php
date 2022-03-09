@@ -18,10 +18,10 @@ class User extends DataBase
     public string $birthday;
 
 
-    public function register($firstname, $lastname, $mail, $confirm_mail, $password, $confirm_password, $phone, $country, $birthday)
+    public function register($firstname, $lastname, $mail, $confirm_mail, $password, $confirm_password, $phone, $city, $postal_code, $birthday)
     {
 
-        if (isset($firstname) and isset($lastname) and isset($mail) and isset($confirm_mail) and isset($password) and isset($confirm_password) and isset($phone) and isset($country) and isset($birthday)) {
+        if (isset($firstname) and isset($lastname) and isset($mail) and isset($confirm_mail) and isset($password) and isset($confirm_password) and isset($phone) and isset($city) and isset($postal_code) and isset($birthday)) {
 
             $firstnamelenght = strlen($firstname);
 
@@ -38,8 +38,8 @@ class User extends DataBase
                             $getmail->execute(array($mail));
                             $getmailcount = $getmail->rowCount();
                             if ($getmailcount == 0) {
-                                $register = $this->connect()->prepare("INSERT INTO utilisateurs (firstname, lastname, mail, password, phone, country_code, birthday, avatar) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-                                $register->execute(array($firstname, $lastname, $mail, $password, $phone, $country, $birthday, 'avatar.png'));
+                                $register = $this->connect()->prepare("INSERT INTO utilisateurs (firstname, lastname, mail, password, phone, city, postal_code, birthday, avatar) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                                $register->execute(array($firstname, $lastname, $mail, $password, $phone, $city, $postal_code, $birthday, 'avatar.png'));
                                 $success = "Votre Compte à été créer";
                                 return $success;
                             } else {
@@ -254,15 +254,6 @@ class User extends DataBase
         $getphone->execute(array($phone));
         $getphoneinfo = $getphone->fetch();
     }
-
-    public function getAllCountry()
-    {
-        $getallcountry = $this->connect()->prepare("SELECT * FROM country");
-        $getallcountry->execute();
-        $getallcountryinfo = $getallcountry->fetchall();
-        return $getallcountryinfo;
-    }
-
 
     public function forgetPassword($forgetmail)
     {

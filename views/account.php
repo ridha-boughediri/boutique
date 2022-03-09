@@ -1,10 +1,7 @@
 <?php
 session_start();
-require_once("./classes/database.class.php");
-require_once("./classes/user.class.php");
-
-$pdo = $bdd->bdd();
-$user = new User($pdo);
+require("../models/database.class.php");
+require("../models/user.class.php");
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +23,7 @@ $user = new User($pdo);
 
 <body>
     <div id="app_body_content">
-        <?php require("./template/header.php"); ?>
+        <?php require("./header.php"); ?>
         <main>
             <div class="edit-container">
                 <div class="list-container">
@@ -53,7 +50,7 @@ $user = new User($pdo);
                 </div>
             </div>
         </main>
-        <?php require("./template/footer.php"); ?>
+        <?php require("./footer.php"); ?>
     </div>
     <script src="./js/jquery-3.6.0.js"></script>
     <script src="./js/header.js"></script>

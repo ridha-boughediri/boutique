@@ -3,11 +3,10 @@ session_start();
 extract($_POST);
 extract($_FILES);
 
-require_once("../classes/database.class.php");
-require_once("../classes/user.class.php");
 
-$pdo = $bdd->bdd();
-$user = new User($pdo);
+require("../models/database.class.php");
+require("../models/user.class.php");
+
 
 $firstname = htmlspecialchars($_POST['firstname']);
 $lastname = htmlspecialchars($_POST['lastname']);
