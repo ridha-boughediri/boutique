@@ -27,18 +27,16 @@ require("../models/user.class.php");
     <div id="app_body_content">
         <?php require("./header.php"); ?>
         <main>
-
-
             <div class="home-carousel">
                 <div class="slick-slider">
                     <div class="slick-slide">
-                        <img src="https://www.havaianas-store.com/dw/image/v2/BCNH_PRD/on/demandware.static/-/Library-Sites-Havaianas/default/dw867840e8/PageDesigner/Outlet/Desktop/Havaianas_outlet_desktop_FR.jpg?sw=1440" alt="" class="slick-img">
+                        <img src="./img/---.jpg" alt="" class="slick-img">
                     </div>
                     <div class="slick-slide">
-                        <img src="https://www.havaianas-store.com/dw/image/v2/BCNH_PRD/on/demandware.static/-/Library-Sites-Havaianas/default/dwe993d96e/PageDesigner/pre-SS2022/desktop/Havaianas_new-collection_desktop_FR.jpg?sw=1440" alt="" class="slick-img">
+                        <img src="./img/---.jpg" alt="" class="slick-img">
                     </div>
                     <div class="slick-slide">
-                        <img src="https://www.summer-shop.eu/modules/wtslideshow/img/slideImages/Banner01.jpg" alt="" class="slick-img">
+                        <img src="./img/---.jpg" alt="" class="slick-img">
                     </div>
                 </div>
             </div>
@@ -46,18 +44,28 @@ require("../models/user.class.php");
                 <h1 class="title-main">Best Seller</h1>
                 <div class="slick-cards">
                     <div class="slick-card">
-                        <img src="./view/img/red.png" alt="" class="slick-img">
-                        <h3>...</h3>
+                        <img src="./img/___.jpg" alt="" class="slick-img">
+                        <div class="slick-card-infos">
+                            <h3>...</h3>
+                            <p>..$..</p>
+                        </div>
+
                     </div>
 
                     <div class="slick-card">
-                        <img src="./view/img/orange.png" alt="" class="slick-img">
-                        <h3>...</h3>
+                        <img src="./img/___.jpg" alt="" class="slick-img">
+                        <div class="slick-card-infos">
+                            <h3>...</h3>
+                            <p>..$..</p>
+                        </div>
                     </div>
 
                     <div class="slick-card">
-                        <img src="./view/img/blue.png" alt="" class="slick-img">
-                        <h3>...</h3>
+                        <img src="./img/___.jpg" alt="" class="slick-img">
+                        <div class="slick-card-infos">
+                            <h3>...</h3>
+                            <p>..$..</p>
+                        </div>
                     </div>
                 </div>
             </div>

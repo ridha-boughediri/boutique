@@ -5,7 +5,6 @@ extract($_POST);
 require("../models/database.class.php");
 require("../models/user.class.php");
 
-// $pdo = $bdd->bdd();
 $user = new User();
 
 

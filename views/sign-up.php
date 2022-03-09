@@ -1,12 +1,7 @@
 <?php
-
-require_once("./classes/database.class.php");
-require_once("./classes/user.class.php");
-
-$pdo = $bdd->bdd();
-$user = new User($pdo);
-
-
+session_start();
+require("../models/database.class.php");
+require("../models/user.class.php");
 ?>
 
 <!DOCTYPE html>
@@ -28,11 +23,11 @@ $user = new User($pdo);
 
 <body>
     <div id="app_body_content">
-        <?php require("./template/header.php"); ?>
+        <?php require("./header.php"); ?>
         <main>
             <h1 class="title-main">S'inscrire</h1>
             <div class="sign-container">
-                <div class="inputs-container">
+                <form action="../controllers/process_register.php" method="post" class="inputs-container">
                     <input type="text" id="firstname" class="login-input" placeholder="Prenom*" value="">
                     <input type="text" id="lastname" class="login-input" placeholder="Nom*" value="">
                     <input type="mail" id="mail" class="login-input" placeholder="E-mail*" value="">
@@ -51,13 +46,12 @@ $user = new User($pdo);
                     <p class="infos-star">Tous les champs marqués d'un astérisque (*) sont obligatoires.</p>
                     <p class="field"></p>
                     <button class="button-secondary submit-register">S'enregister</button>
-                </div>
+                </form>
             </div>
         </main>
-        <?php require("./template/footer.php"); ?>
+        <?php require("./footer.php"); ?>
     </div>
     <script src="./js/jquery-3.6.0.js"></script>
-    <script src="./js/register.js"></script>
     <script src="./js/header.js"></script>
 </body>
 

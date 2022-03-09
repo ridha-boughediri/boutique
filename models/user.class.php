@@ -164,7 +164,6 @@ class User extends DataBase
 
     public function update($firstname, $lastname, $mail, $password, $phone, $avatarname, $avatartype, $avatartmp_name, $avatarerror, $avatarsize)
     {
-        // if (!empty($firstname)) {
         if ($firstname != '') {
             $firstnamelenght = strlen($_POST['firstname']);
             if ($firstnamelenght >= 2 && $firstnamelenght <= 18) {
@@ -173,7 +172,7 @@ class User extends DataBase
             }
         }
 
-        if (!empty($lastname)) {
+        if ($lastname != '') {
             $lastnamelenght = strlen($_POST['lastname']);
             if ($lastnamelenght >= 2 && $lastnamelenght <= 18) {
                 $updatelastname = $this->connect()->prepare("UPDATE utilisateurs SET lastname = ? WHERE id = ?");
@@ -181,7 +180,7 @@ class User extends DataBase
             }
         }
 
-        if (!empty($mail)) {
+        if ($mail != '') {
             $getmail = $this->connect()->prepare("SELECT * FROM utilisateurs WHERE mail = ?");
             $getmail->execute(array($mail));
             $mailcount = $getmail->rowCount();
@@ -191,12 +190,12 @@ class User extends DataBase
             }
         }
 
-        if (!empty($password) && $password != '') {
+        if ($password != '') {
             $updatepassword = $this->connect()->prepare("UPDATE utilisateurs SET password = ? WHERE id = ?");
             $updatepassword->execute(array($password, $_SESSION['id']));
         }
 
-        if (!empty($phone)) {
+        if ($phone != '') {
             $updatephone = $this->connect()->prepare("UPDATE utilisateurs SET phone = ? WHERE id = ?");
             $updatephone->execute(array($phone, $_SESSION['id']));
         }
@@ -377,3 +376,5 @@ class User extends DataBase
         }
     }
 }
+
+$user = new User();

@@ -30,14 +30,11 @@ $(".myaccount").click(function () {
   window.location = "./account.php";
 });
 
-
-
-
 $(".account-container-deco").on("click", function () {
   deco = "ok";
 
   $.post(
-    "./processing/process_deco.php",
+    "../controllers/process_deco.php",
     {
       deco: deco,
     },
