@@ -1,7 +1,42 @@
 <?php
 session_start();
-require("../models/database.class.php");
-require("../models/user.class.php");
+
+require_once("../includes/class.autoload.inc.php");
+
+// $testuser1 = new User();
+// $utilisateur=$testuser1->getAllUtilisateurs();
+
+// echo "<pre>";
+// print_r($utilisateur);
+// echo"<pre/>";
+
+
+
+
+// require_once("../includes/class.autoload.inc.php");
+// require("/models/database.class.php");
+// require("/models/testuser.class.php");
+$testuser = new User();
+
+
+// var_dump($_POST);
+if (isset($_POST['submit'])) {
+    var_dump('on rentre dans isset $post');
+    $firstname = htmlspecialchars(trim($_POST['firstname']));
+    $lastname = htmlspecialchars(trim($_POST['lastname']));
+    $mail = htmlspecialchars(trim($_POST['mail']));
+    $confirm_mail = htmlspecialchars(trim($_POST['confirm_mail']));
+    $password = sha1(trim($_POST['password']));
+    $confirm_password = sha1(trim($_POST['confirm_password']));
+    $phone = htmlspecialchars(trim($_POST['phone']));
+    $city = htmlspecialchars(trim($_POST['city']));
+    $postal_code = htmlspecialchars(trim($_POST['postal_code']));
+    $birthday = htmlspecialchars(trim($_POST['birthday']));
+    $newUtilisateur = $testuser->register($firstname, $lastname, $mail, $confirm_mail, $password, $confirm_password, $phone, $city, $postal_code, $birthday);
+
+    header("Refresh:0; url=../views/index.php");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +62,7 @@ require("../models/user.class.php");
         <main>
             <h1 class="title-main">S'inscrire</h1>
             <div class="sign-container">
-                <form action="../controllers/process_register.php" method="post" class="inputs-container">
+                <form action="" method="post" class="inputs-container">
                     <input type="text" id="firstname" name="firstname" class="login-input" placeholder="Prenom*" value="">
                     <input type="text" id="lastname" name="lastname" class="login-input" placeholder="Nom*" value="">
                     <input type="mail" id="mail" name="mail" class="login-input" placeholder="E-mail*" value="">
@@ -40,7 +75,9 @@ require("../models/user.class.php");
                     <input type="date" id="birthday" name="birthday" class="login-input" placeholder="Date de naissance (jj/mm/aaaa)*">
                     <p class="infos-star">Tous les champs marqués d'un astérisque (*) sont obligatoires.</p>
                     <p class="field"></p>
-                    <button class="button-secondary submit-register">S'enregister</button>
+                    <!-- <button class="button-secondary submit-register">S'enregister</button> -->
+                
+                    <input type="submit">
                 </form>
             </div>
         </main>
