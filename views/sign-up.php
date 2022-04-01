@@ -3,12 +3,11 @@ session_start();
 
 require_once("../includes/class.autoload.inc.php");
 
-// $testuser1 = new User();
-// $utilisateur=$testuser1->getAllUtilisateurs();
 
-// echo "<pre>";
-// print_r($utilisateur);
-// echo"<pre/>";
+
+echo "<pre>";
+print_r($utilisateur);
+echo"<pre/>";
 
 
 

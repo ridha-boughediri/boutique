@@ -210,7 +210,19 @@ class User extends DataBase
 
 
 
+    public function getClient(){
 
+
+        $sql = "SELECT * FROM utilisateurs";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute();
+      
+        while($result = $stmt->fetchAll()) {
+          return $result;
+        }
+
+
+    }
 
 
 
