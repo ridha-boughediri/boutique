@@ -4,9 +4,9 @@ session_start();
 require("./models/database.class.php");
 require("./models/user.class.php");
 
-if (isset($_SESSION['lifeinwall_id_user'])) {
+if (isset($_SESSION['id'])) {
     $user = new User();
-    $userinfos = $user->getAllInfos($_SESSION['lifeinwall_id_user']);
+    $userinfos = $user->getAllInfos($_SESSION['id']);
 }
 
 $params = explode('/', $_GET['p']);
@@ -35,6 +35,7 @@ $params = explode('/', $_GET['p']);
     <script src="views/js/home-slide.js"></script>
     <script src="views/js/register.js"></script>
     <script src="views/js/connect.js"></script>
+    <script src="views/js/account.js"></script>
     <title>La Havane | Bienvenue sur l'accueil.</title>
 </head>
 

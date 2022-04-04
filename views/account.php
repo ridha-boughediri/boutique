@@ -11,7 +11,7 @@ if (isset($_SESSION['id'])) {
                 <button class="button-third order">Vos commandes</button>
                 <button class="button-third adress">Adresse</button>
                 <button class="button-third pay">Vos paiement</button>
-                <button class="button-third">...</button>
+                <button class="button-first">Espace Admin</button>
             </div>
             <div class="view-container">
                 <h1 class="title-main" style="color: burlywood; text-decoration: underline burlywood; margin-bottom: 1vh;">Profil</h1>
@@ -32,5 +32,5 @@ if (isset($_SESSION['id'])) {
     </main>
 
 <?php } else {
-    header("Refresh:0; url= ..");
+    header("Refresh:0; url= .");
 } ?>

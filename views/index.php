@@ -2,7 +2,7 @@
     <div class="home-carousel">
         <div class="slick-slider">
             <div class="slick-slide">
-                <img src="views/img/---.jpg" alt="" class="slick-img">
+                <img src="views/img/backnike.png" alt="" class="slick-img">
             </div>
             <div class="slick-slide">
                 <img src="views/img/---.jpg" alt="" class="slick-img">
