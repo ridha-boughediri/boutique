@@ -5,7 +5,6 @@ require("./models/database.class.php");
 require("./models/user.class.php");
 
 if (isset($_SESSION['id'])) {
-    $user = new User();
     $userinfos = $user->getAllInfos($_SESSION['id']);
 }
 

@@ -28,7 +28,7 @@
             <li>
                 <a href="./addproduit.php">
                     <i class='bx bx-list-ul'></i>
-                    <span class="links_name">Produit</span>
+                    <span class="links_name"> Add produit</span>
                 </a>
             </li>
 

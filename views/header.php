@@ -1,7 +1,4 @@
-<?php if (isset($_SESSION['id'])) {
-    $user = new User();
-    $userinfos = $user->getAllInfos($_SESSION['id']);
-} ?>
+
 <header>
     <div class="bar-top">
         <p class="bar-top-text">BIENVENUE SUR LA BOUTIQUE</p>
