@@ -39,8 +39,6 @@ $(document).ready(function () {
             $(".error").append(response);
           }
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
 
         $(".passz").empty();
         $(".passz").append(a[3]);
@@ -68,10 +66,6 @@ $(document).ready(function () {
         } else {
           $(".filez").addClass("error");
         }
-=======
->>>>>>> parent of 0e3b714 (edit message error profile)
-=======
->>>>>>> parent of 0e3b714 (edit message error profile)
       },
     });
   });
