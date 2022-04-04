@@ -27,8 +27,4 @@ $(document).ready(function () {
       }
     );
   });
-
-  $(".lost-pass").click(function () {
-    window.location.href = "forget";
-  });
 });

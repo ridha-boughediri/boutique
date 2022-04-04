@@ -7,8 +7,7 @@ $(document).ready(function () {
     password = $("#password").val();
     confirm_password = $("#confirm_password").val();
     phone = $("#phone").val();
-    city = $("#city").val();
-    postal_code = $("#postal_code").val();
+    country = $("#country").val();
     birthday = $("#birthday").val();
     submitregister = "submit-register";
 
@@ -22,8 +21,7 @@ $(document).ready(function () {
         password: password,
         confirm_password: confirm_password,
         phone: phone,
-        city: city,
-        postal_code: postal_code,
+        country: country,
         birthday: birthday,
         submitregister: submitregister,
       },

@@ -125,74 +125,40 @@ class User extends DataBase
 
     public function update($firstname, $lastname, $mail, $password, $phone, $avatarname, $avatartype, $avatartmp_name, $avatarerror, $avatarsize)
     {
-        if (!empty($firstname)) {
+        if ($firstname != '') {
             $firstnamelenght = strlen($_POST['firstname']);
             if ($firstnamelenght >= 2 && $firstnamelenght <= 18) {
                 $updatefirstname = $this->connect()->prepare("UPDATE utilisateurs SET firstname = ? WHERE id_utilisateur = ?");
                 $updatefirstname->execute(array($firstname, $_SESSION['id']));
-                $successfirst = "Votre prenom a bien été modifié !";
-                // return $successfirst;
-            }else {
-                $erreurfirst = "Votre prenom est soit trop court ou soit trop long !";
-                // return $erreurfirst;
             }
-        }else {
-            $erreurfirst = "Votre prenom n'a pas été modifié !";
-            // return $erreurfirst;
         }
 
-        if (!empty($lastname)) {
+        if ($lastname != '') {
             $lastnamelenght = strlen($_POST['lastname']);
             if ($lastnamelenght >= 2 && $lastnamelenght <= 18) {
                 $updatelastname = $this->connect()->prepare("UPDATE utilisateurs SET lastname = ? WHERE id_utilisateur = ?");
                 $updatelastname->execute(array($lastname, $_SESSION['id']));
-                $successname = "Votre nom a bien été modifié !";
-                // return $successname;
-            }else {
-                $erreurname = "Votre nom est soit trop court ou soit trop long !";
-                // return $erreurname;
             }
-        }else {
-            $erreurname = "Votre nom n'a pas été modifié !";
-            // return $erreurname;
         }
 
-        if (!empty($mail)) {
+        if ($mail != '') {
             $getmail = $this->connect()->prepare("SELECT * FROM utilisateurs WHERE mail = ?");
             $getmail->execute(array($mail));
             $mailcount = $getmail->rowCount();
             if ($mailcount == 0) {
                 $updatemail = $this->connect()->prepare("UPDATE utilisateurs SET mail = ? WHERE id_utilisateur = ?");
                 $updatemail->execute(array($mail, $_SESSION['id']));
-                $successmail = "Votre E-Mail a bien été modifié !";
-                // return $successmail;
-            }else {
-                $erreurmail = "Votre E-Mail déja éxistant !";
-                // return $erreurmail;
             }
-        }else {
-            $erreurmail = "Votre E-Mail n'a pas été modifié !";
-            // return $erreurmail;
         }
 
-        if (!empty($password) && $password != 'da39a3ee5e6b4b0d3255bfef95601890afd80709') {
+        if ($password != '') {
             $updatepassword = $this->connect()->prepare("UPDATE utilisateurs SET password = ? WHERE id_utilisateur = ?");
             $updatepassword->execute(array($password, $_SESSION['id']));
-            $successpass = "Votre mot de passe a bien été modifié !";
-            // return $successpass;
-        }else {
-            $erreurpass = "Votre mot de passe n'a pas été modifié !";
-            // return $erreurpass;
         }
 
-        if (!empty($phone)) {
+        if ($phone != '') {
             $updatephone = $this->connect()->prepare("UPDATE utilisateurs SET phone = ? WHERE id_utilisateur = ?");
             $updatephone->execute(array($phone, $_SESSION['id']));
-            $successphone = "Votre numero de téléphone a bien été modifié";
-            // return $successphone;
-        }else {
-            $erreurphone = "Votre numero de téléphone n'a pas été modifié !";
-            // return $erreurphone;
         }
 
         if (isset($_FILES['file'])) {
@@ -209,57 +175,21 @@ class User extends DataBase
                         $nameofavatar = $_SESSION['id'] . "." . $extensionUpload;
                         $modavatar = $this->connect()->prepare("UPDATE utilisateurs SET avatar = ? WHERE id_utilisateur = ?");
                         $modavatar->execute(array($nameofavatar, $_SESSION['id']));
-                        $successfile = "Votre photo de profil a bien été modifié";
-                        // return $successfile;
+                        $success = "Votre photo de profil a bien été modifié";
+                        return $success;
                     } else {
-                        $erreurfile = "Il y a eu une erreur pendant l'importation du fichier";
-                        // return $erreurfile;
+                        $erreur = "Il y a eu une erreur pendant l'importation du fichier";
+                        return $erreur;
                     }
                 } else {
-                    $erreurfile = "Votre photo de profil doit être au format jpg jpeg gif ou png";
-                    // return $erreurfile;
+                    $erreur = "Votre photo de profil doit être au format jpg jpeg gif ou png";
+                    return $erreur;
                 }
             } else {
-                $erreurfile = "Votre photo de profil ne doit pas dépasser 2 mo !";
-                // return $erreurfile;
+                $erreur = "Votre photo de profil ne doit pas dépasser 2 mo !";
+                return $erreur;
             }
-        }else {
-            $erreurfile = "Votre photo de profil n'a pas été modifié !";
-            // return $erreurfile;
         }
-
-        if (isset($successfirst)) {
-            $messfirst = $successfirst;
-        }elseif (isset($erreurfirst)) {
-            $messfirst = $erreurfirst;
-        }
-        if (isset($successname)) {
-            $messname = $successname;
-        }elseif (isset($erreurname)) {
-            $messname = $erreurname;
-        }
-        if (isset($successmail)) {
-            $messmail = $successmail;
-        }elseif (isset($erreurmail)) {
-            $messmail = $erreurmail;
-        }
-        if (isset($successpass)) {
-            $messpass = $successpass;
-        }elseif (isset($erreurpass)) {
-            $messpass = $erreurpass;
-        }
-        if (isset($successphone)) {
-            $messphone = $successphone;
-        }elseif (isset($erreurphone)) {
-            $messphone = $erreurphone;
-        }
-        if (isset($successfile)) {
-            $messfile = $successfile;
-        }elseif (isset($erreurfile)) {
-            $messfile = $erreurfile;
-        }
-
-        return  $messfirst . ',' . $messname . ',' . $messmail . ',' . $messpass . ',' . $messphone . ',' . $messfile;
     }
 
 
@@ -282,17 +212,18 @@ class User extends DataBase
 
 
 
-    public function getClient()
-    {
+    public function getClient(){
 
 
         $sql = "SELECT * FROM utilisateurs";
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute();
-
-        while ($result = $stmt->fetchAll()) {
-            return $result;
+      
+        while($result = $stmt->fetchAll()) {
+          return $result;
         }
+
+
     }
 
 
@@ -338,7 +269,7 @@ class User extends DataBase
         $getphoneinfo = $getphone->fetch();
     }
 
-    public function forgetPassword($forgetmail, $getid)
+    public function forgetPassword($forgetmail)
     {
         if (!empty($forgetmail)) {
 
@@ -355,15 +286,15 @@ class User extends DataBase
                     }
 
                     $recup_insert = $this->connect()->prepare('INSERT INTO recuperation(mail, code, id_utilisateur) VALUES (?, ?, ?)');
-                    $recup_insert->execute(array($forgetmail, $recup_code, $getid));
+                    $recup_insert->execute(array($forgetmail, $recup_code, $user['id']));
 
-                    $from = "thehavana@gmail.com";
+                    $from = "lifeinwall@liwco.com";
                     $to = $forgetmail;
-                    $subject = "Récupération de mot de passe - Havana";
+                    $subject = "Récupération de mot de passe - LiFEiNWaLL";
                     $message = '
                                             <html>
                                             <head>
-                                             <title>Récupération de mot de passe - Havana</title>
+                                             <title>Récupération de mot de passe - LiFe In WaLL</title>
                                              <meta charset="utf-8" />
                                             </head>
                                             <body>
@@ -375,7 +306,7 @@ class User extends DataBase
                                                         
                                                         <div align="center">Bonjour <b>' . $user['firstname'] . ' ' . $user['lastname'] . '</b>,</div>
                                                         Voici votre code de récupération: <b>' . $recup_code . '</b>
-                                                        A bientôt sur <a href="">Havana</a> !
+                                                        A bientôt sur <a href="https://lifeinwall.alwaysdata.net">LiFe In WaLL</a> !
                                                         
                                                      </td>
                                                      </tr>
@@ -393,7 +324,7 @@ class User extends DataBase
                                             </html>
                                              ';
                     $headers = "De :" . $from;
-                    mail($to, $subject, $message, $headers);
+                    mb_send_mail($to, $subject, $message, $headers);
 
                     $success = "E-mail envoyé";
                     return $success;

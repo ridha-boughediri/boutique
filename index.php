@@ -31,7 +31,6 @@ $params = explode('/', $_GET['p']);
     <script src="views/js/jquery-3.6.0.js"></script>
     <script src="views/js/slick.js"></script>
     <script src="views/js/header.js"></script>
-    <script src="views/js/forget.js"></script>
     <script src="views/js/home-slide.js"></script>
     <script src="views/js/register.js"></script>
     <script src="views/js/connect.js"></script>

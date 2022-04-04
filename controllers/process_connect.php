@@ -10,3 +10,4 @@ $mail = htmlspecialchars(trim($_POST['mail']));
 $password = sha1(trim($_POST['password']));
 
 echo $user->connection($mail, $password);
+header("Refresh:0; url=../views/index.php");

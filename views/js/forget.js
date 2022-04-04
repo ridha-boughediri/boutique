@@ -1,33 +1,30 @@
-$(document).ready(function () {
-  $(".submit-forgetmail").on("click", function () {
-    forgetmail = $("#forget-mail").val(),
-    id = '',
+$(".submit-forgetmail").on("click", function () {
+  forgetmail = $("#forget-mail").val();
 
-    alert(forgetmail);
+  alert(forgetmail);
 
-    $.post(
-      "./controllers/process_forget.php",
-      {
-        forgetmail: forgetmail,
-      },
-      function (data) {
-        alert(data);
-        if (data != "") {
-          $(".field").removeClass("success");
-          $(".field").removeClass("error");
-          if (data == "E-mail envoyé") {
-            $(".field").addClass("success");
-            $(".success").empty();
-            $(".success").append(data);
-          } else {
-            $(".field").addClass("error");
-            $(".error").empty();
-            $(".error").append(data);
-          }
+  $.post(
+    "./processing/process_forget.php",
+    {
+      forgetmail: forgetmail,
+    },
+    function (data) {
+      alert(data);
+      if (data != "") {
+        $(".field").removeClass("success");
+        $(".field").removeClass("error");
+        if (data == "E-mail envoyé") {
+          $(".field").addClass("success");
+          $(".success").empty();
+          $(".success").append(data);
+        } else {
+          $(".field").addClass("error");
+          $(".error").empty();
+          $(".error").append(data);
         }
       }
-    );
-  });
+    }
+  );
 });
 
 // $(document).ready(function() {
@@ -44,5 +41,6 @@ $(document).ready(function () {
 //         $('.submit-forgetmail').attr('disabled', false);
 //     });
 //   });
+
 
 // samirgonzalez1315@gmail.com
