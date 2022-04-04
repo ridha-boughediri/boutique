@@ -19,5 +19,5 @@ if (!isset($_SESSION['id'])) {
     </main>
 
 <?php } else {
-    header("Refresh:0; url= index");
+    header("Refresh:0; url= .");
 } ?>

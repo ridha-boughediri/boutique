@@ -80,8 +80,6 @@ $(document).ready(function () {
         } else {
           $(".filez").addClass("error");
         }
-
-        $(".field").val("");
       },
     });
   });
