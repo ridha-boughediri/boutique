@@ -21,5 +21,3 @@ if (!isset($_SESSION['id'])) {
 <?php } else {
     header("Refresh:0; url= index");
 } ?>
-
-<!-- ../controllers/process_connect.php -->
