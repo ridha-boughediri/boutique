@@ -15,6 +15,7 @@ $(document).ready(function () {
     fd.append("password", password);
     fd.append("phone", phone);
 
+
     $.ajax({
       url: "./controllers/process_edit_profile.php",
       type: "post",
@@ -29,6 +30,9 @@ $(document).ready(function () {
             $(".field").addClass("success");
             $(".success").empty();
             $(".success").append(response);
+            
+            // $(".dropbtn").reload();
+            $("#drop-img-avatar").load(location.href + " #drop-img-avatar");
           } else {
             $(".field").addClass("error");
             $(".error").empty();

@@ -22,11 +22,11 @@
                 <ol>
                     <?php if (isset($_SESSION['id'])) { ?>
                         <div class="dropdown">
-                            <button class="dropbtn"><img src="views/img/avatar/<?php echo $userinfos['avatar']; ?>" class="avatar-img" alt=""></button>
+                            <button class="dropbtn" id="drop-img-avatar"><img src="views/img/avatar/<?= $userinfos['avatar']; ?>" class="avatar-img" alt=""></button>
                             <div class="dropdown-content">
                                 <h3 class="account-container-name"><?php echo $userinfos['firstname'] . ' ' .  $userinfos['lastname']; ?></h3>
                                 <a class="btn-link myaccount">Mon profil</a>
-                                <a class="btn-link">.......</a>
+                                <!-- <a class="btn-link">.......</a> -->
                                 <a class="btn-link account-container-deco" style="color: red;">Deconnexion</a>
                             </div>
                         </div>

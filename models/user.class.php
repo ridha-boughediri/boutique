@@ -117,7 +117,7 @@ class User extends DataBase
 
     public function delete()
     {
-        $delete = $this->connect()->prepare('DELETE FROM utilisateurs WHERE id = ?');
+        $delete = $this->connect()->prepare('DELETE FROM utilisateurs WHERE id_utilisateur = ?');
         $delete->execute(array($_SESSION['id']));
         header('Location: ./index.php');
     }
@@ -128,7 +128,7 @@ class User extends DataBase
         if ($firstname != '') {
             $firstnamelenght = strlen($_POST['firstname']);
             if ($firstnamelenght >= 2 && $firstnamelenght <= 18) {
-                $updatefirstname = $this->connect()->prepare("UPDATE utilisateurs SET firstname = ? WHERE id = ?");
+                $updatefirstname = $this->connect()->prepare("UPDATE utilisateurs SET firstname = ? WHERE id_utilisateur = ?");
                 $updatefirstname->execute(array($firstname, $_SESSION['id']));
             }
         }
@@ -136,7 +136,7 @@ class User extends DataBase
         if ($lastname != '') {
             $lastnamelenght = strlen($_POST['lastname']);
             if ($lastnamelenght >= 2 && $lastnamelenght <= 18) {
-                $updatelastname = $this->connect()->prepare("UPDATE utilisateurs SET lastname = ? WHERE id = ?");
+                $updatelastname = $this->connect()->prepare("UPDATE utilisateurs SET lastname = ? WHERE id_utilisateur = ?");
                 $updatelastname->execute(array($lastname, $_SESSION['id']));
             }
         }
@@ -146,18 +146,18 @@ class User extends DataBase
             $getmail->execute(array($mail));
             $mailcount = $getmail->rowCount();
             if ($mailcount == 0) {
-                $updatemail = $this->connect()->prepare("UPDATE utilisateurs SET mail = ? WHERE id = ?");
+                $updatemail = $this->connect()->prepare("UPDATE utilisateurs SET mail = ? WHERE id_utilisateur = ?");
                 $updatemail->execute(array($mail, $_SESSION['id']));
             }
         }
 
         if ($password != '') {
-            $updatepassword = $this->connect()->prepare("UPDATE utilisateurs SET password = ? WHERE id = ?");
+            $updatepassword = $this->connect()->prepare("UPDATE utilisateurs SET password = ? WHERE id_utilisateur = ?");
             $updatepassword->execute(array($password, $_SESSION['id']));
         }
 
         if ($phone != '') {
-            $updatephone = $this->connect()->prepare("UPDATE utilisateurs SET phone = ? WHERE id = ?");
+            $updatephone = $this->connect()->prepare("UPDATE utilisateurs SET phone = ? WHERE id_utilisateur = ?");
             $updatephone->execute(array($phone, $_SESSION['id']));
         }
 
@@ -168,11 +168,13 @@ class User extends DataBase
             if ($avatarsize <= $tailleMax) {
                 $extensionUpload = strtolower(substr(strrchr($avatarname, '.'), 1));
                 if (in_array($extensionUpload, $extensionsValide)) {
-                    $chemin = "../img/avatar/" . $_SESSION['id'] . "." . $extensionUpload;
+                    // $chemin = "../img/avatar/" . $_SESSION['id'] . "." . $extensionUpload;
+                    $chemin = "../views/img/avatar/" . $_SESSION['id'] . "." . $extensionUpload;
                     $resultat = move_uploaded_file($avatartmp_name, $chemin);
                     if ($resultat) {
-                        $modavatar = $this->connect()->prepare('UPDATE utilisateurs SET avatar = ? WHERE id = ?');
-                        $modavatar->execute(array($_SESSION['id'] . "." . $extensionUpload, $_SESSION['id']));
+                        $nameofavatar = $_SESSION['id'] . "." . $extensionUpload;
+                        $modavatar = $this->connect()->prepare("UPDATE utilisateurs SET avatar = ? WHERE id_utilisateur = ?");
+                        $modavatar->execute(array($nameofavatar, $_SESSION['id']));
                         $success = "Votre photo de profil a bien été modifié";
                         return $success;
                     } else {
