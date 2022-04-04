@@ -70,6 +70,14 @@ require_once("../adminhtmlcss/footeradmin.php");
 </table>
 
 
+    <?php $categories = new Categorie(); ?>
 
+    <?php if ($categories->getCate()) : ?>
+      <?php foreach ($categories->getCate() as $categorie) : ?>
+        <option value="<?= $categorie['id_categorie'] ?>"><?= $categorie['nom_categorie'] ?></option>
+
+      <?php endforeach; ?>
+    <?php else : ?>
+    <?php endif; ?>
 
 

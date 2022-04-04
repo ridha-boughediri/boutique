@@ -17,5 +17,3 @@ class DataBase
     return $pdo;
   }
 }
-
-$database = new DataBase();

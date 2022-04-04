@@ -19,7 +19,5 @@ if (!isset($_SESSION['id'])) {
     </main>
 
 <?php } else {
-    header("Refresh:0; url= .");
+    header("Refresh:0; url= index");
 } ?>
-
-<!-- ../controllers/process_connect.php -->

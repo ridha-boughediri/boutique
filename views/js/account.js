@@ -15,7 +15,6 @@ $(document).ready(function () {
     fd.append("password", password);
     fd.append("phone", phone);
 
-
     $.ajax({
       url: "./controllers/process_edit_profile.php",
       type: "post",
@@ -23,21 +22,36 @@ $(document).ready(function () {
       contentType: false,
       processData: false,
       success: function (response) {
-        if (response != "") {
-          $(".field").removeClass("success");
-          $(".field").removeClass("error");
-          if (response == "Votre photo de profil a bien été modifié") {
-            $(".field").addClass("success");
-            $(".success").empty();
-            $(".success").append(response);
-            
-            // $(".dropbtn").reload();
-            $("#drop-img-avatar").load(location.href + " #drop-img-avatar");
-          } else {
-            $(".field").addClass("error");
-            $(".error").empty();
-            $(".error").append(response);
-          }
+        let a = response.split(",");
+
+        $(".field").removeClass("success");
+        $(".field").removeClass("error");
+
+        $(".firstz").empty();
+        $(".firstz").append(a[0]);
+
+        if (a[0] == "Votre prenom a bien été modifié !") {
+          $(".firstz").addClass("success");
+        } else {
+          $(".firstz").addClass("error");
+        }
+
+        $(".lastz").empty();
+        $(".lastz").append(a[1]);
+
+        if (a[1] == "Votre nom a bien été modifié !") {
+          $(".lastz").addClass("success");
+        } else {
+          $(".lastz").addClass("error");
+        }
+
+        $(".mailz").empty();
+        $(".mailz").append(a[2]);
+
+        if (a[2] == "Votre E-Mail a bien été modifié !") {
+          $(".mailz").addClass("success");
+        } else {
+          $(".mailz").addClass("error");
         }
 
         $(".passz").empty();
@@ -66,6 +80,8 @@ $(document).ready(function () {
         } else {
           $(".filez").addClass("error");
         }
+
+        $(".field").val("");
       },
     });
   });
