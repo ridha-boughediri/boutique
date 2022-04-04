@@ -8,10 +8,15 @@ require_once("../adminhtmlcss/footeradmin.php");
 
 
 
+
+
+
 $monproduit = new Produit();
 echo '<pre>';
 var_dump($_POST);
 echo '<pre>';
+
+
 
 
 if (isset($_POST['submit'])) {
@@ -32,9 +37,13 @@ if (isset($_POST['submit'])) {
 
     $upload_dir='./img/admin';
     $imgExt=strtolower(pathinfo($file_images,PATHINFO_EXTENSION));
+    //rajouter la fonction poids = size 
+
     $valid_extensions=array('jpeg', 'jpg', 'png', 'gif', 'pdf');
     $picProfile=rand(1000, 1000000).".".$imgExt;
     move_uploaded_file($tmp_dir, $upload_dir.$picProfile);
+
+    //changer par un id uniq
     $test = $monproduit->insert($nom_produit, $description_produit, $prix_produit, $id_categorie, $id_sous_catégorie, $id_couleur, $id_produit_type, $file_images, $qte_stock);
 
  

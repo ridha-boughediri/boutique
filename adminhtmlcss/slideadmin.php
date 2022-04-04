@@ -52,7 +52,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="./displaysclient.php">
                     <i class='bx bx-user'></i>
                     <span class="links_name">Clients</span>
                 </a>
