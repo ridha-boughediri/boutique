@@ -38,8 +38,8 @@ class User extends DataBase
                             $getmail->execute(array($mail));
                             $getmailcount = $getmail->rowCount();
                             if ($getmailcount == 0) {
-                                $register = $this->connect()->prepare("INSERT INTO utilisateurs (firstname, lastname, mail, password, phone, city, postal_code, birthday, avatar) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                                $register->execute(array($firstname, $lastname, $mail, $password, $phone, $city, $postal_code, $birthday, 'avatar.png'));
+                                $register = $this->connect()->prepare("INSERT INTO utilisateurs (firstname, lastname, mail, password, phone, city, postal_code, birthday, avatar, admin) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                                $register->execute(array($firstname, $lastname, $mail, $password, $phone, $city, $postal_code, $birthday, 'avatar.png', 0));
                                 $success = "Votre Compte à été créer";
                                 return $success;
                             } else {
