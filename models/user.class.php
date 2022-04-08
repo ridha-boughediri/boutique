@@ -19,6 +19,7 @@ class User extends DataBase
 
 
     public function register($firstname, $lastname, $mail, $confirm_mail, $password, $confirm_password, $phone, $city, $postal_code, $birthday)
+    
     {
 
         if (isset($firstname) and isset($lastname) and isset($mail) and isset($confirm_mail) and isset($password) and isset($confirm_password) and isset($phone) and isset($city) and isset($postal_code) and isset($birthday) and $birthday !='0000-00-00' ) {

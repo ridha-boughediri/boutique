@@ -28,13 +28,9 @@ require_once("../adminhtmlcss/footeradmin.php");
     <th>firstname</th>
     <th>lastname</th>
     <th>mail</th>
-    <th>password</th>
     <th>phone</th>
-    <th>country_code</th>
-    <th>address</th>
-    <th>birthday</th>
-    <th>avatar</th>
-    <th>admin</th>
+    <th>postal_code</th>
+    
     <th>supprimer</th>
     <th>modifier</th>
 
@@ -48,13 +44,9 @@ require_once("../adminhtmlcss/footeradmin.php");
         <th><?= $newclient["firstname"] ?></th>
         <th><?= $newclient["lastname"] ?></th>
         <th><?= $newclient["mail"] ?></th>
-        <th><?= $newclient["password"] ?></th>
         <th><?= $newclient["phone"] ?></th>
-        <th><?= $newclient["country_code"] ?></th>
-        <th><?= $newclient["address"] ?></th>
-        <th><?= $newclient["birthday"] ?></th>
-        <th><?= $newclient["avatar"] ?></th>
-        <th><?= $newclient["admin"] ?></th>
+        <th><?= $newclient["postal_code"] ?></th>
+        
         
        
 
@@ -68,16 +60,3 @@ require_once("../adminhtmlcss/footeradmin.php");
 
 
 </table>
-
-
-    <?php $categories = new Categorie(); ?>
-
-    <?php if ($categories->getCate()) : ?>
-      <?php foreach ($categories->getCate() as $categorie) : ?>
-        <option value="<?= $categorie['id_categorie'] ?>"><?= $categorie['nom_categorie'] ?></option>
-
-      <?php endforeach; ?>
-    <?php else : ?>
-    <?php endif; ?>
-
-

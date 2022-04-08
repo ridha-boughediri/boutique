@@ -45,15 +45,15 @@ else if(isset($_POST['update'])){
 </style>
 
 <body>
-  <h2>CATEGORIE Forms</h2>
+  <h2>genre produit Forms</h2>
 
 
   <form method="POST">
-    <label for="lname">nom de la categorie:</label><br>
+    <label for="lname">nom du genre produit:</label><br>
     <input type="text" name="nom_categorie" value=""><br><br>
     <input type="submit" name="submit" value="submit">
   </form>
-  <h2>categorie table</h2>
+  <h2>genre produit table</h2>
 
   <table style="width:100%">
     <tr>

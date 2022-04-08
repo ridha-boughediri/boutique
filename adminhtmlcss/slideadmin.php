@@ -16,7 +16,7 @@
     <div class="sidebar" >
         <div class="logo-details">
             <i class='bx bxl-c-plus-plus'></i>
-            <span class="logo_name">boisson au choix</span>
+            <span class="logo_name">Dashboard la havana </span>
         </div>
         <ul class="nav-links">
             <li>
@@ -28,7 +28,7 @@
             <li>
                 <a href="./addproduit.php">
                     <i class='bx bx-list-ul'></i>
-                    <span class="links_name">Produit</span>
+                    <span class="links_name">Ajouter un produitt</span>
                 </a>
             </li>
 
@@ -89,7 +89,7 @@
                 </a>
             </li>
             <li class="log_out">
-                <a href="#">
+                <a href="/controllers/process_deco.php">
                     <i class='bx bx-log-out'></i>
                     <span class="links_name">Deconnexion</span>
                 </a>

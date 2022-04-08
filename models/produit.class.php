@@ -31,7 +31,16 @@ class Produit extends DataBase{
       $stmt->execute([$id_produit]);
     }
 
-  public function displayproduit(){}
+  public function displayproduitbyID(){
+    $sql= "SELECT FROM produit LIMIT 3";
+    $stmt=$this->connect()->prepare($sql);
+    $stmt->execute();
+    
+    while($result = $stmt->fetchAll()) {
+      return $result;
+    }
+  }
+
 
 
     }

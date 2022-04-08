@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
     $tmp_dir=$_FILES['file_images']['tmp_name'];
     $imageSize=$_FILES['file_images']['size'];
 
-    $upload_dir='./img/admin';
+    $upload_dir='./img/admin/';
     $imgExt=strtolower(pathinfo($file_images,PATHINFO_EXTENSION));
     //rajouter la fonction poids = size 
 
@@ -44,7 +44,7 @@ if (isset($_POST['submit'])) {
     move_uploaded_file($tmp_dir, $upload_dir.$picProfile);
 
     //changer par un id uniq
-    $test = $monproduit->insert($nom_produit, $description_produit, $prix_produit, $id_categorie, $id_sous_catégorie, $id_couleur, $id_produit_type, $file_images, $qte_stock);
+    $test = $monproduit->insert($nom_produit, $description_produit, $prix_produit, $id_categorie, $id_sous_catégorie, $id_couleur, $id_produit_type, $picProfile, $qte_stock);
 
  
 
