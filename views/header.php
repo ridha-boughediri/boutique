@@ -1,10 +1,11 @@
 <?php if (isset($_SESSION['id'])) {
-    $user = new User();
-    $userinfos = $user->getAllInfos($_SESSION['id']);
+    $headermessage = 'Bon retour parmi nous ' . $userinfos['firstname'] . ' ' . $userinfos['lastname'];
+} else {
+    $headermessage = 'BIENVENUE SUR LA HAVANE';
 } ?>
 <header>
     <div class="bar-top">
-        <p class="bar-top-text">BIENVENUE SUR LA BOUTIQUE</p>
+        <p class="bar-top-text"><?= $headermessage ?></p>
     </div>
     <div class="searchandcart">
         <div class="search-container">
@@ -32,9 +33,15 @@
                         </div>
                         <div class="dropdown">
                             <button class="dropbtn bag-container">
-                                <img src="views/img/animated_cart.gif" class="search-logo" alt="">
+                                <img src="views/img/panier.png" class="search-logo" alt="">
                                 <p class="nbcart">0</p>
                             </button>
+                            <div class="dropdown-content cart-panier">
+                                <a class="btn-link">Panier Vide</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropbtn bag-container"><img src="views/img/panier.png" class="search-logo" alt=""></button>
                             <div class="dropdown-content cart-panier">
                                 <a class="btn-link">Panier Vide</a>
                             </div>
@@ -49,9 +56,16 @@
                             </div>
                         </div>
                         <div class="dropdown">
-                            <button class="dropbtn"><img src="views/img/animated_cart.gif" class="search-logo" alt=""></button>
+                            <button class="dropbtn"><img src="views/img/panier.png" class="search-logo" alt=""></button>
                             <div class="dropdown-content cart-panier">
                                 <h3 class="account-container-name">Mon Panier</h3>
+                                <a class="btn-link">Veuillez vous connectez pour acceder a ce contenu</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropbtn"><img src="views/img/would.png" class="search-logo" alt=""></button>
+                            <div class="dropdown-content cart-panier">
+                                <h3 class="account-container-name">Ma liste d'envie</h3>
                                 <a class="btn-link">Veuillez vous connectez pour acceder a ce contenu</a>
                             </div>
                         </div>
@@ -59,6 +73,28 @@
                 </ol>
             </nav>
         </div>
+    </div>
+
+    <div class="bar-bottom">
+
+        <?php $comptcate = 0; ?>
+        <?php while ($getallcateinfos = $getallcate->fetch()) { ?>
+
+            <div class="content-drop">
+                <button type="button" class="btn-five dropy" data-btncate="<?= $comptcate; ?>"><?= $getallcateinfos['nom_categorie']; ?></button>
+                <div class="downcate dropy" data-divcate="<?= $comptcate; ?>">
+
+                    <?php $getsouscateid = $souscategorie->getCateSouId($getallcateinfos['id_categorie']); ?>
+                    <?php while ($getsouscateidinfos = $getsouscateid->fetch()) { ?>
+                        <button type="button" class="btn-five"><?= $getsouscateidinfos['nom_sous_catégorie']; ?></button>
+                    <?php } ?>
+
+                </div>
+            </div>
+
+            <?php $comptcate++; ?>
+        <?php } ?>
+
     </div>
 
 </header>

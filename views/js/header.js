@@ -31,6 +31,11 @@ $(document).ready(function () {
     window.location = "account";
   });
 
+  $(".search-btn").click(function () {
+    let resultsearch =  $(".account-container").val();
+    window.location = "account";
+  });
+
   $(".account-container-deco").on("click", function () {
     deco = "ok";
 
@@ -44,4 +49,17 @@ $(document).ready(function () {
       }
     );
   });
+
+  $(".content-drop").hover(
+    function () {
+      let getbtncate = $(this).children("button");
+      let btncate = $(getbtncate).attr("data-btncate");
+      $('[data-divcate="' + btncate + '"]').addClass("hovercate");
+    },
+    function () {
+      let getbtncate = $(this).children("button");
+      let btncate = $(getbtncate).attr("data-btncate");
+      $('[data-divcate="' + btncate + '"]').removeClass("hovercate");
+    }
+  );
 });
