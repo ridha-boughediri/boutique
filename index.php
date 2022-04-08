@@ -7,19 +7,14 @@ require("./models/categorie.class.php");
 require("./models/souscategorie.class.php");
 
 if (isset($_SESSION['id'])) {
-    $user = new User();
     $userinfos = $user->getAllInfos($_SESSION['id']);
 }
 
-$categorie = new Categorie();
 $getallcate = $categorie->getCate();
 $getallcateinfos = $getallcate->fetch();
 
-$souscategorie = new Souscategorie();
 
 $params = explode('/', $_GET['p']);
-
-// var_dump($params);
 
 ?>
 

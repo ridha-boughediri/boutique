@@ -44,3 +44,5 @@ class Categorie extends DataBase
     $stmt->execute([$id_categorie]);
   }
 }
+
+$categorie = new Categorie();

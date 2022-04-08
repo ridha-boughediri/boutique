@@ -33,7 +33,7 @@ $(document).ready(function () {
 
   $(".search-btn").click(function () {
     let resultsearch =  $(".account-container").val();
-    window.location = "account";
+    window.location = "search/" + resultsearch;
   });
 
   $(".account-container-deco").on("click", function () {
@@ -41,9 +41,7 @@ $(document).ready(function () {
 
     $.post(
       "./controllers/process_deco.php",
-      {
-        deco: deco,
-      },
+      {},
       function () {
         window.location = ".";
       }

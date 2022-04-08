@@ -7,5 +7,3 @@ require("../models/user.class.php");
 
 
 $user->disconnect();
-
-echo 'oui';

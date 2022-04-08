@@ -19,10 +19,10 @@ class User extends DataBase
 
 
     public function register($firstname, $lastname, $mail, $confirm_mail, $password, $confirm_password, $phone, $city, $postal_code, $birthday)
-    
+
     {
 
-        if (isset($firstname) and isset($lastname) and isset($mail) and isset($confirm_mail) and isset($password) and isset($confirm_password) and isset($phone) and isset($city) and isset($postal_code) and isset($birthday) and $birthday !='0000-00-00' ) {
+        if (isset($firstname) and isset($lastname) and isset($mail) and isset($confirm_mail) and isset($password) and isset($confirm_password) and isset($phone) and isset($city) and isset($postal_code) and isset($birthday) and $birthday != '0000-00-00') {
 
             $firstnamelenght = strlen($firstname);
 
@@ -133,11 +133,11 @@ class User extends DataBase
                 $updatefirstname->execute(array($firstname, $_SESSION['id']));
                 $successfirst = "Votre prenom a bien été modifié !";
                 // return $successfirst;
-            }else {
+            } else {
                 $erreurfirst = "Votre prenom est soit trop court ou soit trop long !";
                 // return $erreurfirst;
             }
-        }else {
+        } else {
             $erreurfirst = "Votre prenom n'a pas été modifié !";
             // return $erreurfirst;
         }
@@ -149,11 +149,11 @@ class User extends DataBase
                 $updatelastname->execute(array($lastname, $_SESSION['id']));
                 $successname = "Votre nom a bien été modifié !";
                 // return $successname;
-            }else {
+            } else {
                 $erreurname = "Votre nom est soit trop court ou soit trop long !";
                 // return $erreurname;
             }
-        }else {
+        } else {
             $erreurname = "Votre nom n'a pas été modifié !";
             // return $erreurname;
         }
@@ -167,11 +167,11 @@ class User extends DataBase
                 $updatemail->execute(array($mail, $_SESSION['id']));
                 $successmail = "Votre E-Mail a bien été modifié !";
                 // return $successmail;
-            }else {
+            } else {
                 $erreurmail = "Votre E-Mail déja éxistant !";
                 // return $erreurmail;
             }
-        }else {
+        } else {
             $erreurmail = "Votre E-Mail n'a pas été modifié !";
             // return $erreurmail;
         }
@@ -181,7 +181,7 @@ class User extends DataBase
             $updatepassword->execute(array($password, $_SESSION['id']));
             $successpass = "Votre mot de passe a bien été modifié !";
             // return $successpass;
-        }else {
+        } else {
             $erreurpass = "Votre mot de passe n'a pas été modifié !";
             // return $erreurpass;
         }
@@ -191,7 +191,7 @@ class User extends DataBase
             $updatephone->execute(array($phone, $_SESSION['id']));
             $successphone = "Votre numero de téléphone a bien été modifié";
             // return $successphone;
-        }else {
+        } else {
             $erreurphone = "Votre numero de téléphone n'a pas été modifié !";
             // return $erreurphone;
         }
@@ -224,39 +224,39 @@ class User extends DataBase
                 $erreurfile = "Votre photo de profil ne doit pas dépasser 2 mo !";
                 // return $erreurfile;
             }
-        }else {
+        } else {
             $erreurfile = "Votre photo de profil n'a pas été modifié !";
             // return $erreurfile;
         }
 
         if (isset($successfirst)) {
             $messfirst = $successfirst;
-        }elseif (isset($erreurfirst)) {
+        } elseif (isset($erreurfirst)) {
             $messfirst = $erreurfirst;
         }
         if (isset($successname)) {
             $messname = $successname;
-        }elseif (isset($erreurname)) {
+        } elseif (isset($erreurname)) {
             $messname = $erreurname;
         }
         if (isset($successmail)) {
             $messmail = $successmail;
-        }elseif (isset($erreurmail)) {
+        } elseif (isset($erreurmail)) {
             $messmail = $erreurmail;
         }
         if (isset($successpass)) {
             $messpass = $successpass;
-        }elseif (isset($erreurpass)) {
+        } elseif (isset($erreurpass)) {
             $messpass = $erreurpass;
         }
         if (isset($successphone)) {
             $messphone = $successphone;
-        }elseif (isset($erreurphone)) {
+        } elseif (isset($erreurphone)) {
             $messphone = $erreurphone;
         }
         if (isset($successfile)) {
             $messfile = $successfile;
-        }elseif (isset($erreurfile)) {
+        } elseif (isset($erreurfile)) {
             $messfile = $erreurfile;
         }
 
@@ -413,3 +413,4 @@ class User extends DataBase
     }
 }
 
+$user = new User();

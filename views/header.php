@@ -41,7 +41,7 @@
                             </div>
                         </div>
                         <div class="dropdown">
-                            <button class="dropbtn bag-container"><img src="views/img/panier.png" class="search-logo" alt=""></button>
+                            <button class="dropbtn bag-container"><img src="views/img/would.png" class="search-logo" alt=""></button>
                             <div class="dropdown-content cart-panier">
                                 <a class="btn-link">Panier Vide</a>
                             </div>
