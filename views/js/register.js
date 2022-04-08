@@ -28,6 +28,7 @@ $(document).ready(function () {
         submitregister: submitregister,
       },
       function (data) {
+        console.log(data);
         if (data != "") {
           $(".field").removeClass("success");
           $(".field").removeClass("error");
