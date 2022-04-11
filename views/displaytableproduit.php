@@ -33,6 +33,7 @@ if($_GET['send'] === 'del') {
     <th>modifier</th>
 
   </tr>
+  
   <?php $newproduit = new Produit(); ?>
 
   <?php if ($newproduit ->getProduit()) : ?>

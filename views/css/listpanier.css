@@ -1,0 +1,19 @@
+input{
+    border: black 2px solid;
+    width: 35px;
+    height: 25px;
+    text-align: center;
+  }
+  
+  img {
+    height: 100%;
+    width: 100%;
+}
+  
+  .description{
+    position:relative;
+    left: 70px;
+    bottom: 50px;
+  }
+
+

@@ -79,6 +79,7 @@
 
         <?php $comptcate = 0; ?>
         <?php while ($getallcateinfos = $getallcate->fetch()) { ?>
+       
 
             <div class="content-drop">
                 <button type="button" class="btn-five dropy" data-btncate="<?= $comptcate; ?>"><?= $getallcateinfos['nom_categorie']; ?></button>

@@ -5,6 +5,7 @@ require("./models/database.class.php");
 require("./models/user.class.php");
 require("./models/categorie.class.php");
 require("./models/souscategorie.class.php");
+require("./models/produit.class.php");
 
 if (isset($_SESSION['id'])) {
     $userinfos = $user->getAllInfos($_SESSION['id']);
@@ -12,6 +13,14 @@ if (isset($_SESSION['id'])) {
 
 $getallcate = $categorie->getCate();
 $getallcateinfos = $getallcate->fetch();
+
+
+$testproduit=$newproduit ->getProduit();
+$allproduit=$testproduit->fetch();
+
+
+
+
 
 
 $params = explode('/', $_GET['p']);
@@ -31,9 +40,21 @@ $params = explode('/', $_GET['p']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="shortcut icon" href="views/img/fav.png">
     <link rel="stylesheet" href="views/css/style.css">
-    <link rel="stylesheet" href="views/css/styles.css">
+    <link rel="stylesheet" href="views/css/styles2.css">
+    <!--lien css produit -->
+    <link rel="stylesheet" href="views/css/cssdesproduits.css">
+    <!-- csslist -->
+    <link rel="stylesheet" href="views/css/listproduct.css">
+    <!-- cssviews/css/checkoutcss.css -->
+    <link rel="stylesheet" href="views/css/checkoutcss.css">
+    <!-- csslistpanier listpanier.css-->
+    <link rel="stylesheet" href="views/css/listpanier.css">
     <script src="views/js/jquery-3.6.0.js"></script>
     <script src="views/js/slick.js"></script>
+    <!-- script produit -->
+    <script src="views/js/productshow.js"></script>
+    <!-- scriptlistpanier -->
+    <script src="views/js/listproduct.js"></script>
     <script src="views/js/header.js"></script>
     <script src="views/js/forget.js"></script>
     <script src="views/js/home-slide.js"></script>

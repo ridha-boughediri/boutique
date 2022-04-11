@@ -9,10 +9,13 @@ class Produit extends DataBase{
       $sql = "SELECT * FROM produit";
       $stmt = $this->connect()->prepare($sql);
       $stmt->execute();
+
+      return $stmt;
     
-      while($result = $stmt->fetchAll()) {
-        return $result;
-      }}
+      // while($result = $stmt->fetchAll()) {
+      //   return $result;
+      // }
+    }
 
 
       public function insert($nom_produit,$description_produit,$prix_produit,$id_categorie,$id_sous_catégorie,$id_couleur,$id_produit_type,$file_images,$qte_stock){
@@ -44,6 +47,9 @@ class Produit extends DataBase{
 
 
     }
+
+
+    $newproduit = new Produit();
 
 
 ?>

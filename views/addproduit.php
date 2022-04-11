@@ -46,6 +46,11 @@ if (isset($_POST['submit'])) {
     //changer par un id uniq
     $test = $monproduit->insert($nom_produit, $description_produit, $prix_produit, $id_categorie, $id_sous_catégorie, $id_couleur, $id_produit_type, $picProfile, $qte_stock);
 
+
+
+
+    
+
  
 
 
