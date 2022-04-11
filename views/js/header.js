@@ -32,7 +32,7 @@ $(document).ready(function () {
   });
 
   $(".search-btn").click(function () {
-    let resultsearch =  $(".account-container").val();
+    let resultsearch =  $("#search-place").val();
     window.location = "search/" + resultsearch;
   });
 

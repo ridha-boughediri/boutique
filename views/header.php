@@ -19,7 +19,7 @@
             <button class="search-btn">
                 <img src="views/img/search.png" class="search-logo" alt="">
             </button>
-            <input type="text" name="" class="search-input" placeholder="Rechercher des tongs, des sandales...">
+            <input type="text" id="search-place" class="search-input" placeholder="Rechercher des tongs, des sandales...">
         </div>
         <div class="logo-container">
             <img src="views/img/logo.png" class="logo" alt="">

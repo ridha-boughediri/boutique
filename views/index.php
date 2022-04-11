@@ -13,32 +13,33 @@
         </div>
     </div>
     <div class="best-carousel">
-        <h1 class="title-main">Best Seller</h1>
+        <h1 class="title-main">Nouvelle Article</h1>
         <div class="slick-cards">
-            <div class="slick-card">
-                <img src="views/img/___.jpg" alt="" class="slick-img">
-                <div class="slick-card-infos">
-                    <h3>...</h3>
-                    <p>..$..</p>
+            <?php foreach ($monproduit->getNewProduit() as $allproduit) { ?>
+                <div class="slick-card">
+                    <img src="views/img/admin/<?= $allproduit["file_images"] ?>" alt="" class="slick-img">
+                    <div class="slick-card-infos">
+                        <h3><?= $allproduit["nom_produit"] ?></h3>
+                        <p><?= $allproduit["prix_produit"] ?>€</p>
+                    </div>
+
                 </div>
-
-            </div>
-
-            <div class="slick-card">
-                <img src="views/img/___.jpg" alt="" class="slick-img">
-                <div class="slick-card-infos">
-                    <h3>...</h3>
-                    <p>..$..</p>
-                </div>
-            </div>
-
-            <div class="slick-card">
+            <?php } ?>
+            <!-- <div class="slick-card">
                 <img src="views/img/___.jpg" alt="" class="slick-img">
                 <div class="slick-card-infos">
                     <h3>...</h3>
                     <p>..$..</p>
                 </div>
             </div>
+
+            <div class="slick-card">
+                <img src="views/img/___.jpg" alt="" class="slick-img">
+                <div class="slick-card-infos">
+                    <h3>...</h3>
+                    <p>..$..</p>
+                </div>
+            </div> -->
         </div>
     </div>
 </main>

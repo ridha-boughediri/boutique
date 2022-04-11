@@ -1,13 +1,6 @@
 <?php
 
-require_once("../includes/class.autoload.inc.php");
 
-require_once("../adminhtmlcss/slideadmin.php");
-require_once("../adminhtmlcss/barreadmin.php");
-require_once("../adminhtmlcss/footeradmin.php");
-
-$NvelleCATE = new Type();
-echo " <br>";
 
 
 if (isset($_POST['submit'])) {
