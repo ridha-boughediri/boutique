@@ -1,7 +1,14 @@
 <?php if (isset($_SESSION['id'])) {
     $headermessage = 'Bon retour parmi nous ' . $userinfos['firstname'] . ' ' . $userinfos['lastname'];
+    if ($params[0] == 'admin' & $userinfos['admin'] != 1) {
+        header("Refresh:0; url= .");
+    }
 } else {
     $headermessage = 'BIENVENUE SUR LA HAVANE';
+
+    if ($params[0] == 'admin' && !isset($_SESSION['id'])) {
+        header("Refresh:0; url= .");
+    }
 } ?>
 <header>
     <div class="bar-top">
@@ -82,12 +89,12 @@
        
 
             <div class="content-drop">
-                <button type="button" class="btn-five dropy" data-btncate="<?= $comptcate; ?>"><?= $getallcateinfos['nom_categorie']; ?></button>
+                <button type="button" class="button-five dropy" data-btncate="<?= $comptcate; ?>"><?= $getallcateinfos['nom_categorie']; ?></button>
                 <div class="downcate dropy" data-divcate="<?= $comptcate; ?>">
 
                     <?php $getsouscateid = $souscategorie->getCateSouId($getallcateinfos['id_categorie']); ?>
                     <?php while ($getsouscateidinfos = $getsouscateid->fetch()) { ?>
-                        <button type="button" class="btn-five"><?= $getsouscateidinfos['nom_sous_catégorie']; ?></button>
+                        <button type="button" class="button-five"><?= $getsouscateidinfos['nom_sous_catégorie']; ?></button>
                     <?php } ?>
 
                 </div>

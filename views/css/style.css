@@ -307,13 +307,15 @@ main {
   position: relative;
 }
 
-
 @media screen and (min-width: 767px) {
   main {
     justify-content: left;
   }
 }
 
+.main-first {
+  padding: 0vw;
+}
 
 #app_body_content:-ms-fullscreen {
   height: 100%;
@@ -328,7 +330,6 @@ main {
   max-width: 100%;
   width: 100%;
 }
-
 
 #app_body_content:-webkit-full-screen {
   height: 100%;

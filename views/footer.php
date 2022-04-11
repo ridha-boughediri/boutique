@@ -14,6 +14,6 @@
             <li class="list-footer">..........</li>
             <li class="list-footer">..........</li>
         </ul>
-        <p>© 2021-2022, Energix Inc</p>
+        <p class="copyright">© 2021-2022, Energix Inc</p>
     </div>
 </footer>

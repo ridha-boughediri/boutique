@@ -53,7 +53,7 @@ class Souscategorie extends DataBase
 
   public function DeleSubCate($id_sous_catégorie)
   {
-    var_dump($id_sous_catégorie);
+    // var_dump($id_sous_catégorie);
     $sql = "DELETE FROM sous_catégorie WHERE id_sous_catégorie=?";
     $stmt = $this->connect()->prepare($sql);
     $stmt->execute([$id_sous_catégorie]);
@@ -68,7 +68,7 @@ class Souscategorie extends DataBase
 
     $stmt = $this->connect()->prepare("SELECT * FROM sous_catégorie WHERE id_categorie=?");
     $stmt->execute([$id_categorie]);
-    var_dump($stmt->execute([$id_categorie]));
+    // var_dump($stmt->execute([$id_categorie]));
 
     $result = $stmt->fetchall();
     return $result;
@@ -80,7 +80,7 @@ class Souscategorie extends DataBase
     $sql = " SELECT `id_categorie` FROM `sous_catégorie` WHERE id_sous_catégorie=?";
     $stmt = $this->connect()->prepare("SELECT * FROM sous_catégorie WHERE id_categorie=?");
     $stmt->execute([$id_sous_catégorie]);
-    var_dump($stmt->execute([$id_sous_catégorie]));
+    // var_dump($stmt->execute([$id_sous_catégorie]));
 
     $result = $stmt->fetchall();
     return $result;
