@@ -5,6 +5,9 @@ require("./models/database.class.php");
 require("./models/user.class.php");
 require("./models/categorie.class.php");
 require("./models/souscategorie.class.php");
+require("./models/produit.class.php");
+require("./models/couleur.class.php");
+require("./models/type.class.php");
 
 if (isset($_SESSION['id'])) {
     $userinfos = $user->getAllInfos($_SESSION['id']);
@@ -16,12 +19,14 @@ $getallcateinfos = $getallcate->fetch();
 
 $params = explode('/', $_GET['p']);
 
+
 ?>
 
 <!DOCTYPE html>
 <html lang="fr-FR">
 
 <head>
+    <base href="/boutique/" target="_blank">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta http-equiv="Cache-Control" content="no-cache">
@@ -40,6 +45,11 @@ $params = explode('/', $_GET['p']);
     <script src="views/js/register.js"></script>
     <script src="views/js/connect.js"></script>
     <script src="views/js/account.js"></script>
+    <script src="views/js/admin.js"></script>
+    <script src="views/js/addproduit.js"></script>
+    <script src="views/js/produit.js"></script>
+    <script src="views/js/addcolor.js"></script>
+    <script src="views/js/color.js"></script>
     <title>La Havane | Bienvenue sur l'accueil.</title>
 </head>
 

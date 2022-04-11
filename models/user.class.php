@@ -165,14 +165,14 @@ class User extends DataBase
             if ($mailcount == 0) {
                 $updatemail = $this->connect()->prepare("UPDATE utilisateurs SET mail = ? WHERE id_utilisateur = ?");
                 $updatemail->execute(array($mail, $_SESSION['id']));
-                $successmail = "Votre E-Mail a bien été modifié !";
+                $successmail = "Votre E-mail a bien été modifié !";
                 // return $successmail;
             } else {
-                $erreurmail = "Votre E-Mail déja éxistant !";
+                $erreurmail = "Votre E-mail déja éxistant !";
                 // return $erreurmail;
             }
         } else {
-            $erreurmail = "Votre E-Mail n'a pas été modifié !";
+            $erreurmail = "Votre E-mail n'a pas été modifié !";
             // return $erreurmail;
         }
 
@@ -189,7 +189,7 @@ class User extends DataBase
         if (!empty($phone)) {
             $updatephone = $this->connect()->prepare("UPDATE utilisateurs SET phone = ? WHERE id_utilisateur = ?");
             $updatephone->execute(array($phone, $_SESSION['id']));
-            $successphone = "Votre numero de téléphone a bien été modifié";
+            $successphone = "Votre numero de téléphone a bien été modifié !";
             // return $successphone;
         } else {
             $erreurphone = "Votre numero de téléphone n'a pas été modifié !";
@@ -210,14 +210,14 @@ class User extends DataBase
                         $nameofavatar = $_SESSION['id'] . "." . $extensionUpload;
                         $modavatar = $this->connect()->prepare("UPDATE utilisateurs SET avatar = ? WHERE id_utilisateur = ?");
                         $modavatar->execute(array($nameofavatar, $_SESSION['id']));
-                        $successfile = "Votre photo de profil a bien été modifié";
+                        $successfile = "Votre photo de profil a bien été modifié !";
                         // return $successfile;
                     } else {
-                        $erreurfile = "Il y a eu une erreur pendant l'importation du fichier";
+                        $erreurfile = "Il y a eu une erreur pendant l'importation du fichier !";
                         // return $erreurfile;
                     }
                 } else {
-                    $erreurfile = "Votre photo de profil doit être au format jpg jpeg gif ou png";
+                    $erreurfile = "Votre photo de profil doit être au format jpg jpeg gif ou png !";
                     // return $erreurfile;
                 }
             } else {

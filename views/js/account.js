@@ -48,7 +48,7 @@ $(document).ready(function () {
         $(".mailz").empty();
         $(".mailz").append(a[2]);
 
-        if (a[2] == "Votre E-Mail a bien été modifié !") {
+        if (a[2] == "Votre E-mail a bien été modifié !") {
           $(".mailz").addClass("success");
         } else {
           $(".mailz").addClass("error");
@@ -66,7 +66,7 @@ $(document).ready(function () {
         $(".phonez").empty();
         $(".phonez").append(a[4]);
 
-        if (a[4] == "Votre photo de profil a bien été modifié") {
+        if (a[4] == "Votre numero de téléphone a bien été modifié !") {
           $(".phonez").addClass("success");
         } else {
           $(".phonez").addClass("error");
@@ -75,7 +75,7 @@ $(document).ready(function () {
         $(".filez").empty();
         $(".filez").append(a[5]);
 
-        if (a[5] == "Votre photo de profil a bien été modifié") {
+        if (a[5] == "Votre photo de profil a bien été modifié !") {
           $(".filez").addClass("success");
         } else {
           $(".filez").addClass("error");
@@ -114,5 +114,9 @@ $(document).ready(function () {
       '<h1 class="title-main" style="color: burlywood; text-decoration: underline burlywood; margin-bottom: 1vh;">Vos Paiement</h1>';
     $(".view-container").empty();
     $(".view-container").append(pay);
+  });
+
+  $(".toadmin").click(function () {
+    window.location = "admin";
   });
 });
