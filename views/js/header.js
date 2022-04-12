@@ -31,6 +31,11 @@ $(document).ready(function () {
     window.location = "account";
   });
 
+  $(".slick-card").click(function () {
+    let idcard =  $(this).attr("data-id");
+    window.location = "produit/" + idcard;
+  });
+
   $(".search-btn").click(function () {
     let resultsearch =  $("#search-place").val();
     window.location = "search/" + resultsearch;

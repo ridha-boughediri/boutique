@@ -26,12 +26,22 @@ class Produit extends DataBase
     return $stmt;
   }
 
+  public function getProduitById($id_produit)
+  {
+    $sql = "SELECT * FROM produit WHERE id_produit = ?";
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute(array($id_produit));
+    $result = $stmt->fetch();
+
+    return $result;
+  }
+
   public function getProduitByLike($search)
   {
-    $sql = "SELECT * FROM produit WHERE nom_produit LIKE ?";
+    $sql = "SELECT * FROM produit WHERE nom_produit LIKE ? LIMIT 30";
     $stmt = $this->connect()->prepare($sql);
-    $stmt->execute(array($search));
-    $result = $stmt->fetch();
+    $stmt->execute(array("%$search%"));
+    $result = $stmt->fetchAll();
 
     return $result;
   }

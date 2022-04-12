@@ -1,64 +1,41 @@
-
-<?php 
-
-
+<?php
+$produitinfos = $monproduit->getProduitById($params[1]);
+// var_dump($produitinfos);
+if (isset($_SESSION['id'])) {
+  // $getcartlist = $database->connect()->prepare('SELECT * FROM articles_commande WHERE id_utilisateur = ? and id_produit = ?');
+  // $getcartlist->execute(array($_SESSION['id'], $params[1]));
+  // $cartlistnb = $getcartlist->rowCount();
+  // $cartcount = $panier->countAllCartByIdProduit($params[1]);
+}
 ?>
 
 
+
+
 <main>
+  <div class="container-produit">
+    <div class="container-produit-img">
+      <img class="produit-img" src="views/img/admin/<?= $produitinfos["file_images"] ?>">
+    </div>
 
+    <div class="container-produit-infos">
+      <h1><?= $produitinfos['nom_produit'] ?></h1>
+      <p class="price"><?= $produitinfos['prix_produit'] ?>€</p>
+      <p class="description"><?= $produitinfos['description_produit'] ?></p>
 
-
-<div class="columns">
-
-  <div class="column">
-      <div class="thumbnail-container">
-        <img class="drift-demo-trigger" data-zoom="https://awik.io/demo/webshop-zoom/shoe-large.jpg" src="https://awik.io/demo/webshop-zoom/shoe-small.jpg">
-      </div>
-  </div>
-
-  <div class="column">
-    <div class="details">
-      <h1>Air Jordan 1 Retro</h1>
-      <p class="price">$95.99</p>
-      <p class="description">A remarkable shoe that's naturally soft, cozy all over, and fits your every move.</p>
-
-
-
-      <div class="columns">
-
-        <div class="column" id="wishlist-container">
-
-          <button class="button">
-            <span class="icon is-small">
-                <i class="fas fa-heart"></i>
-              </span>
-              <span>ADD TO WISHLIST</span>
-          </button>
-
-        </div>
-        
-        <div class="column" id="buy-container">
-
-          <button class="button buy-button">
-            <span class="icon is-small">
-                <i class="fas fa-shopping-bag"></i>
-              </span>
-              <span>ADD TO BAG</span>
-          </button>
-
-        </div>
-
+      <div class="container-produit-btn">
+        <?php if (isset($_SESSION['id'])) { ?>
+          <button class="button-round-first" id="wishlist-container" title="Ajouter a ma liste" data-id="<?= $produitinfos['id_produit'] ?>"><img src="views/img/would.png" alt=""></button>
+          <button class="button-round-first" id="buy-container" title="Ajouter au panier" data-id="<?= $produitinfos['id_produit'] ?>"><img src="views/img/panier.png" alt=""></button>
+        <?php } else { ?>
+          <button class="button-round-first cursor-none" title="Veuillez vous connecter" data-id="<?= $produitinfos['id_produit'] ?>"><img src="views/img/would.png" alt=""></button>
+          <button class="button-round-first cursor-none" title="Veuillez vous connecter" data-id="<?= $produitinfos['id_produit'] ?>"><img src="views/img/panier.png" alt=""></button>
+        <?php  } ?>
       </div>
 
-      <p class="small-text"><span>Standard delivery</span> 2-5 working days</p>
-      <p class="small-text"><span>Next day delivery</span> order before 2pm ($5.79)</p>
+      <p class="small-text"><span>Livraison Standard</span> entre 2 à 5 jours ouvrés</p>
+      <p class="small-text"><span>Demain,</span> Livré avant 14:00 (5.79€)</p>
 
     </div>
   </div>
-
-</div>
-
 </main>
-
-
