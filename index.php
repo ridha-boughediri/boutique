@@ -10,6 +10,7 @@ require("./models/couleur.class.php");
 require("./models/type.class.php");
 require("./models/panier.class.php");
 
+
 if (isset($_SESSION['id'])) {
     $userinfos = $user->getAllInfos($_SESSION['id']);
 }
@@ -52,6 +53,8 @@ $params = explode('/', $_GET['p']);
     <script src="views/js/addcolor.js"></script>
     <script src="views/js/color.js"></script>
     <script src="views/js/cart.js"></script>
+    <script src="views/js/souscategorie.js"></script>
+
     <title>La Havane | Bienvenue sur l'accueil.</title>
 </head>
 

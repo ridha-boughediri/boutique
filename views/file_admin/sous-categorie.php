@@ -1,9 +1,5 @@
 <?php
-require_once("../includes/class.autoload.inc.php");
 
-require_once("../adminhtmlcss/slideadmin.php");
-require_once("../adminhtmlcss/barreadmin.php");
-require_once("../adminhtmlcss/footeradmin.php");
 
 // $list= new Souscategorie();
 // $NvelleCoul = new Souscategorie();
@@ -42,7 +38,7 @@ if($_GET['envoi'] === 'del') {
 ?>
 
 
-<h2>categorie table</h2>
+<h2>Sous-categorie table</h2>
 
 <table style="width:100%">
   <tr>
@@ -61,10 +57,9 @@ if($_GET['envoi'] === 'del') {
         <td><?= $categorie["id_categorie"] ?></td>
         <td><?= $categorie["id_sous_catégorie"]  ?></td>
         <td><?= $categorie["nom_sous_catégorie"]  ?></td>
-        <td> <a href="../editer/editersubcategorie.php? id=<?= $categorie['id_sous_catégorie'] ?>"><button>modifier</button></a></td>
-        <td><a href="displaysubcategorie.php?id=<?= $categorie['id_sous_catégorie'] ?>&envoi=del"><button>supprimer</button></a></td>
-
-
+        <td> <button class="button-secondary submit-edit-sscategorie" data-id="<?= $categorie['id_sous_catégorie'] ?>">Modifier</button></a> </td>
+        <td><button class="button-first submit-delete-sscategorie" data-id="<?= $categorie['id_sous_catégorie'] ?>">Supprimer</button></a></td>
+      
       <?php endforeach; ?>
     <?php else : ?>
     <?php endif; ?>

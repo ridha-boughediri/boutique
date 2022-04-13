@@ -124,6 +124,7 @@ if (isset($_SESSION['id'])) {
                     <?php $getsouscateid = $souscategorie->getCateSouId($getallcateinfos['id_categorie']); ?>
                     <?php while ($getsouscateidinfos = $getsouscateid->fetch()) { ?>
                         <button type="button" class="button-five"><?= $getsouscateidinfos['nom_sous_catégorie']; ?></button>
+                        <!-- <a href="filtresouscate?id=<?= $allproduit['id__sous_catégorie'] ?>"> -->
                     <?php } ?>
 
                 </div>

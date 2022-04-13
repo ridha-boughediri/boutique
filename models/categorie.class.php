@@ -20,6 +20,8 @@ class Categorie extends DataBase
     $stmt->execute([$nom_categorie]);
   }
 
+  
+
   public function Editecategorie($id_categorie)
   {
     $sql = "SELECT * FROM categories where id_categorie =?";

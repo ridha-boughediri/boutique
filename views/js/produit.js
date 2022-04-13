@@ -58,7 +58,7 @@ $(document).ready(function () {
 
   $(".submit-delete-produit").on("click", function () {
     id = $(this).attr("data-id");
-
+alert("okttestbin");
     $.post(
       "./controllers/process_delete_produit.php",
       {

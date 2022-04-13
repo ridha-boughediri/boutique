@@ -1,10 +1,11 @@
 <?php
 
-require_once("../includes/class.autoload.inc.php");
+// require_once("../includes/class.autoload.inc.php");
 
-require_once("../adminhtmlcss/slideadmin.php");
-require_once("../adminhtmlcss/barreadmin.php");
-require_once("../adminhtmlcss/footeradmin.php");
+// require_once("../adminhtmlcss/slideadmin.php");
+
+// require_once("../adminhtmlcss/barreadmin.php");
+// require_once("../adminhtmlcss/footeradmin.php");
 
 $NvelleCATE = new Categorie();
 echo " <br>";
@@ -70,8 +71,10 @@ else if(isset($_POST['update'])){
         <tr>
           <td><?= $categorie["id_categorie"] ?></td>
           <td><?= $categorie["nom_categorie"]  ?></td>
-          <td> <a href="../editer/editercategorie.php? id=<?= $categorie['id_categorie']?>"><button>modifier</button></a> </td>
-          <td><a href="displaytablecategorie.php? id=<?= $categorie['id_categorie']?>&send=del" ><button>supprimer</button></a></td>
+          <td> <button class="button-secondary submit-edit-produit" data-id="<?= $categorie['id_categorie'] ?>">Modifier</button></a> </td>
+          <td><button class="button-first submit-delete-produit" data-id="<?= $categorie['id_categorie'] ?>">Supprimer</button></a></td>
+          
+          
 
 
         <?php endforeach; ?>
