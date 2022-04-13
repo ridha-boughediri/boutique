@@ -13,7 +13,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: burlywood;
+  background-color: #fb373c;
 }
 
 .bar-top-text {
@@ -152,24 +152,39 @@ button {
   width: 30vh;
   height: max-content;
   background-color: white;
-  color: burlywood;
+  color: #fb373c;
 }
 
-.button-file-secondary {
-  border: 1px solid rgb(133, 133, 133);
-  width: 9vw;
-  height: 5vh;
-  background-color: burlywood;
-  color: white;
+
+.button-secondary {
+  border: 1px solid #fb373c;
+  border-radius: 15px;
+  width: 10vw;
+  /* height: 5vh; */
+  height: 2.5vw;
+  background-color: #fb373c;
+  color: #eaeaea;
   cursor: pointer;
+  font-size: 1vw;
+}
+
+.button-third {
+  border: none;
+  border-bottom: 1px solid #fb373c;
+  width: 15vw;
+  height: 5vh;
+  background-color: white;
+  color: #e5724e;
+  cursor: pointer;
+  font-size: 1vw;
 }
 
 input[type="file"]::-webkit-file-upload-button {
-  border: 1px solid burlywood;
+  border: 1px solid #fb373c;
   width: 20vh;
   height: 5vh;
   background-color: white;
-  color: burlywood;
+  color: #fb373c;
   margin: 1vh 1vh 1vh 0;
   cursor: pointer;
 }
@@ -206,34 +221,25 @@ input[type="file"]::-webkit-file-upload-button {
   border-radius: 15px;
   width: 10vw;
   height: 5vh;
-  background-color: burlywood;
+  background-color: #fb373c;
   color: white;
   cursor: pointer;
   font-size: 1vw;
 }
 
 .button-secondary {
-  border: 1px solid burlywood;
+  border: 1px solid #fb373c;
   border-radius: 15px;
   width: 10vw;
   /* height: 5vh; */
   height: 2.5vw;
   background-color: white;
-  color: burlywood;
+  color: #fb373c;
   cursor: pointer;
   font-size: 1vw;
 }
 
-.button-third {
-  border: none;
-  border-bottom: 1px solid burlywood;
-  width: 15vw;
-  height: 5vh;
-  background-color: white;
-  color: burlywood;
-  cursor: pointer;
-  font-size: 1vw;
-}
+
 
 .button-third:hover {
   color: rgba(222, 184, 135, 0.5);
@@ -258,12 +264,12 @@ input[type="file"]::-webkit-file-upload-button {
 
 .button-seven {
   border: none;
-  /* border-bottom: 1px solid burlywood; */
+  /* border-bottom: 1px solid #fb373c; */
   text-decoration: underline;
   width: 100%;
   height: 5vh;
   background-color: white;
-  color: burlywood;
+  color: #fb373c;
   cursor: pointer;
   font-size: 1vw;
 }
@@ -622,7 +628,7 @@ input[type="file"]::-webkit-file-upload-button {
   justify-content: space-around;
   flex-direction: column;
   padding: 2vh;
-  background-color: burlywood;
+  background-color: #fb373c;
   overflow-y: auto;
 }
 
@@ -889,7 +895,7 @@ footer {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  background: burlywood;
+  background: #fb373c;
   border-radius: 50%;
   box-shadow: 0 3px 10px -2px #9b9b9b;
   width: 26px;
@@ -1041,7 +1047,7 @@ ul {
   background: #eaeaea;
   border-radius: 50%;
   cursor: pointer;
-  border: 2px solid burlywood;
+  border: 2px solid #fb373c;
 }
 
 .best-carousel {
@@ -1087,7 +1093,7 @@ ul {
 
 .slick-card .slick-img:hover {
   transform: scale(1.05, 1.05);
-  /* border: 2px solid burlywood; */
+  /* border: 2px solid #fb373c; */
   transition: border 250ms cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s;
 }
 
@@ -1165,7 +1171,7 @@ ul {
   justify-content: space-around;
   flex-direction: row;
   padding: 1vw;
-  background-color: burlywood;
+  background-color: #fb373c;
   border-radius: 10px;
   box-shadow: 0px -5px 10px 0px rgb(0 0 0 / 50%);
   font-size: 1.1vw;
@@ -1180,7 +1186,7 @@ ul {
   flex-direction: row;
   padding: 2vw;
   margin: 1vw 0;
-  background-color: burlywood;
+  background-color: #fb373c;
   border-radius: 10px;
   box-shadow: 0px -5px 10px 0px rgb(0 0 0 / 50%);
 }
@@ -1296,7 +1302,7 @@ ul {
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
-  background-color: burlywood;
+  background-color: #fb373c;
   border-radius: 10px;
   box-shadow: 0px -5px 10px 0px rgb(0 0 0 / 50%);
 }

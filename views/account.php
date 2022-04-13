@@ -16,7 +16,7 @@ if (isset($_SESSION['id'])) {
                 <?php } ?>
             </div>
             <div class="view-container">
-                <h1 class="title-main" style="color: burlywood; text-decoration: underline burlywood; margin-bottom: 1vh;">Profil</h1>
+                <h1 class="title-main" style="color: #fb373c; text-decoration: underline #fb373c; margin-bottom: 1vh;">Profil</h1>
                 <form id="data" method="post" enctype="multipart/form-data" class="inputs-container">
                     <input type="text" id="firstname" class="login-input" placeholder="Prenom*" value="">
                     <p class="field firstz"></p>
