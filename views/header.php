@@ -5,8 +5,6 @@ if (isset($_SESSION['id'])) {
         header("Refresh:0; url= .");
     }
 
-    var_dump($userinfos);
-
     $panierinfos = $panier->getAllCartById();
     $produitinfos = $panier->getAllProduitCartById();
     $paniercount = $panier->countAllCartById();
@@ -79,7 +77,7 @@ if (isset($_SESSION['id'])) {
                         </div>
                         <div class="dropdown">
                             <button class="dropbtn bag-container"><img src="views/img/would.png" class="search-logo" alt=""></button>
-                            <div class="dropdown-content cart-panier">
+                            <div class="dropdown-content cart-wish">
                                 <a class="btn-link">Wishlist Vide</a>
                                 <button type="button" class="button-seven">Voir la Wishlist</button>
                             </div>
@@ -102,7 +100,7 @@ if (isset($_SESSION['id'])) {
                         </div>
                         <div class="dropdown">
                             <button class="dropbtn"><img src="views/img/would.png" class="search-logo" alt=""></button>
-                            <div class="dropdown-content cart-panier">
+                            <div class="dropdown-content cart-wish">
                                 <h3 class="account-container-name">Ma liste d'envie</h3>
                                 <a class="btn-link">Veuillez vous connectez pour acceder a ce contenu</a>
                             </div>

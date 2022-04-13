@@ -321,33 +321,42 @@ input[type="file"]::-webkit-file-upload-button {
 }
 
 .dropdown {
-  display: flex;
+  /* display: flex;
   height: 100%;
   width: 20%;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: column; */
+
+  height: 100%;
+  position: relative;
+  /* width: 12vw; */
+  width: 20%;
+  text-align: center;
 }
 
 .dropdown-content {
   display: none;
-  position: absolute;
-  top: 10vw;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  z-index: 99;
+  width: 20vw;
+  height: max-content;
+  box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 20%);
   background-color: white;
   border: 1px solid #d3d3d3;
   border-radius: 15px;
-  width: 20vw;
-  height: max-content;
-  padding: 1%;
-  z-index: 100;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: column;
+  padding: 1vw;
+  left: -8vw;
 }
 
 .cart-panier {
-  right: 0;
+  left: -8.2vw;
+}
+
+.cart-wish {
+  left: -14.7vw;
 }
 
 .dropdown:hover .dropdown-content {
