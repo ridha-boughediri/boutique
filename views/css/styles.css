@@ -1075,6 +1075,7 @@ ul {
   align-items: center;
   flex-direction: column;
   cursor: pointer;
+  margin: 1vw;
 }
 
 .slick-card .slick-img {
