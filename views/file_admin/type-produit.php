@@ -9,19 +9,19 @@ if (isset($_POST['submit'])) {
   $NvelleCATE->CreateCate($nom_categorie);
 }
 
-else if($_GET['send'] === 'del') {
-  $id_categorie = $_GET['id'];
-  $NvelleCATE->DeleCate($id_categorie);
+// else if($_GET['send'] === 'del') {
+//   $id_categorie = $_GET['id'];
+//   $NvelleCATE->DeleCate($id_categorie);
 
-  header("location:./displaytablecategorie.php");
-}
+//   header("location:./displaytablecategorie.php");
+// }
 
-else if(isset($_POST['update'])){
-  $nom_categorie = $_POST['nom_categorie'];
-  $NvelleCATE->DeleCate($id_categorie);
+// else if(isset($_POST['update'])){
+//   $nom_categorie = $_POST['nom_categorie'];
+//   $NvelleCATE->DeleCate($id_categorie);
 
-  header("location:./displaytablecategorie.php");
-}
+//   header("location:./displaytablecategorie.php");
+// }
 
 
 ?>
@@ -52,8 +52,6 @@ else if(isset($_POST['update'])){
     <tr>
       <th>id_produit_type</th>
       <th>nom_categorie</th>
-      <th>supprimer</th>
-      <th>modifier</th>
 
     </tr>
     <?php $categories = new Type(); ?>
@@ -63,8 +61,7 @@ else if(isset($_POST['update'])){
         <tr>
           <td><?= $categorie["id_produit_type"] ?></td>
           <td><?= $categorie["nom_produit_type"]  ?></td>
-          <td> <a href="../editer/editercategorie.php? id=<?= $categorie['id_produit_type']?>"><button>modifier</button></a> </td>
-          <td><a href="displaytablecategorie.php? id=<?= $categorie['id_produit_type']?>&send=del" ><button>supprimer</button></a></td>
+          
 
 
         <?php endforeach; ?>

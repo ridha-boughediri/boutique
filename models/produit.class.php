@@ -4,6 +4,105 @@
 
 class Produit extends DataBase
 {
+  // private int $id;
+  // private string $title;
+  // private float $price;
+  // private int $availableQuantity;
+
+
+  // public function __construct($id, $title, $price, $availableQuantity)
+  // {
+  //     $this->id = $id;
+  //     $this->title = $title;
+  //     $this->price = $price;
+  //     $this->availableQuantity = $availableQuantity;
+  // }
+
+
+  //  /**
+  //    * @return int
+  //    */
+  //   public function getId()
+  //   {
+  //       return $this->id;
+  //   }
+
+  //   /**
+  //    * @param int $id
+  //    */
+  //   public function setId($id)
+  //   {
+  //       $this->id = $id;
+  //   }
+
+  //   /**
+  //    * @return string
+  //    */
+  //   public function getTitle()
+  //   {
+  //       return $this->title;
+  //   }
+
+  //   /**
+  //    * @param string $title
+  //    */
+  //   public function setTitle($title)
+  //   {
+  //       $this->title = $title;
+  //   }
+
+  //   /**
+  //    * @return float
+  //    */
+  //   public function getPrice()
+  //   {
+  //       return $this->price;
+  //   }
+
+  //   /**
+  //    * @param float $price
+  //    */
+  //   public function setPrice($price)
+  //   {
+  //       $this->price = $price;
+  //   }
+
+  //   /**
+  //    * @return int
+  //    */
+  //   public function getAvailableQuantity()
+  //   {
+  //       return $this->availableQuantity;
+  //   }
+
+
+    /**
+     * Add Product $product into cart. If product already exists inside cart
+     * it must update quantity.
+     * This must create CartItem and return CartItem from method
+     * Bonus: $quantity must not become more than whatever
+     * is $availableQuantity of the Product
+     *
+     * @param Cart $cart
+     * @param int  $quantity
+     * @return \CartItem
+     * @throws \Exception
+     */
+
+  // public function addToCart(Cart $cart, int $quantity)
+  // {
+  //     return $cart->addProduct($this, $quantity);
+  // }
+
+  // /**
+  //  * Remove product from cart
+  //  *
+  //  * @param Cart $cart
+  //  */
+  // public function removeFromCart(Cart $cart)
+  // {
+  //     return $cart->removeProduct($this);
+  // }
 
 
   public function getProduit()
@@ -171,6 +270,10 @@ class Produit extends DataBase
     return 'Le produit n°' . $id_produit . 'a été supprimé !';
   }
 
+
+
+
+
   public function displayproduitbyID()
   {
     $sql = "SELECT FROM produit LIMIT 3";
@@ -181,7 +284,21 @@ class Produit extends DataBase
       return $result;
     }
   }
+ 
+  public function getproduitparsouscategorie($id_sous_catégorie){
+    $sql = "SELECT * FROM produit WHERE id_sous_catégorie = ?";
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute(array($id_sous_catégorie));
+    $result = $stmt->fetch();
+
+    return $result;
+
+  }
+  
+
+
 }
+
 
 $monproduit = new Produit();
 

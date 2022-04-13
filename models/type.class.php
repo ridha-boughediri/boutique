@@ -17,11 +17,11 @@ class Type extends DataBase
     // var_dump($result);
   }
 
-  //  public function CreateTypeProduct($nom_categorie) {
-  //   $sql = "INSERT INTO produit_type(nom_produit_type) VALUES (?)";
-  //   $stmt = $this->connect()->prepare($sql);
-  //   $stmt->execute([$nom_categorie]);
-  // }
+   public function CreateTypeProduct($nom_categorie) {
+    $sql = "INSERT INTO produit_type(nom_produit_type) VALUES (?)";
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute([$nom_categorie]);
+  }
 
   // public function EditetypeProduct($id_produit_type) {
   //   $sql = "SELECT * FROM produit_type where id_produit_type =?";
