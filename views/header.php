@@ -5,6 +5,8 @@ if (isset($_SESSION['id'])) {
         header("Refresh:0; url= .");
     }
 
+    var_dump($userinfos);
+
     $panierinfos = $panier->getAllCartById();
     $produitinfos = $panier->getAllProduitCartById();
     $paniercount = $panier->countAllCartById();
@@ -72,7 +74,7 @@ if (isset($_SESSION['id'])) {
                                         </div>
                                     <?php } ?>
                                 <?php } ?>
-                                <button type="button" class="button-seven">Voir le Panier</button>
+                                <button type="button" class="button-seven cartto">Voir le Panier</button>
                             </div>
                         </div>
                         <div class="dropdown">

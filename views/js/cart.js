@@ -7,7 +7,7 @@ $(document).ready(function () {
       {
         id: id,
       },
-      function () {
+      function (data) {
         $("#buy-container").animate(
           { deg: 360 },
           {
@@ -17,6 +17,10 @@ $(document).ready(function () {
             },
           }
         );
+        console.log(data);
+        $(".nbcart").empty();
+        $(".nbcart").append(data);
+        $(".cart-panier").load();
       }
     );
   });
@@ -29,9 +33,20 @@ $(document).ready(function () {
       {
         id: id,
       },
-      function () {}
+      function (data) {
+        console.log(data);
+        $(".nbcart").empty();
+        $(".nbcart").append(data);
+        $(".cart-panier").load();
+      }
     );
-    $(".nbcart").reload();
-    $(".cart-panier").reload();
+  });
+
+  $(".cartto").click(function () {
+    window.location = "cart";
+  });
+
+  $(".check-out").click(function () {
+    window.location = "checkout";
   });
 });
