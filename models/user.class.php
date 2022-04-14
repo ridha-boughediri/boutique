@@ -413,4 +413,4 @@ class User extends DataBase
     }
 }
 
-$user = new User();
+// 

@@ -3,9 +3,8 @@ session_start();
 extract($_POST);
 extract($_FILES);
 
+require("../vendor/autoload.php");
 
-require("../models/database.class.php");
-require("../models/user.class.php");
 
 
 $forgetmail = htmlspecialchars($_POST['forgetmail']);

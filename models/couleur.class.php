@@ -77,5 +77,5 @@ class Couleur extends DataBase
     return $this;
   }
 }
+// $couleur = new Couleur();
 
-$couleur = new Couleur();

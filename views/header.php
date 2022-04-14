@@ -1,4 +1,14 @@
 <?php
+require("./vendor/autoload.php");
+
+
+$monproduit = new Produit();
+$categorie = new Categorie();
+$couleur = new Couleur();
+$souscategorie = new Souscategorie();
+$panier = new Panier();
+
+
 if (isset($_SESSION['id'])) {
     $headermessage = 'Bon retour parmi nous ' . $userinfos['firstname'] . ' ' . $userinfos['lastname'];
     if ($params[0] == 'admin' & $userinfos['admin'] != 1) {

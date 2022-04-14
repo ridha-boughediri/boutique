@@ -1,0 +1,15 @@
+{
+    "name": "rid/app",
+    "authors": [
+        {
+            "name": "ridha-boughediri",
+            "email": "ridha.boughediri@laplateforme.io"
+        }
+
+      
+    ],
+    "autoload": {
+        "classmap": ["models","views/css/"]
+    },
+    "require": {}
+}

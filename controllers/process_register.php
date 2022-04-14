@@ -4,8 +4,8 @@ session_start();
 
 
 extract($_POST);
-require("../models/database.class.php");
-require("../models/user.class.php");
+require("../vendor/autoload.php");
+
 
 $firstname = htmlspecialchars(trim($_POST['firstname']));
 $lastname = htmlspecialchars(trim($_POST['lastname']));

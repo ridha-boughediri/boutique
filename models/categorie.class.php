@@ -47,4 +47,4 @@ class Categorie extends DataBase
   }
 }
 
-$categorie = new Categorie();
+// $categorie = new Categorie();

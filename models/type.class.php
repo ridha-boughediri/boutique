@@ -51,4 +51,4 @@ class Type extends DataBase
 
 }
 
-$type = new Type();
+// $type = new Type();

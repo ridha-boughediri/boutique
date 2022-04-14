@@ -103,4 +103,4 @@ class Panier extends DataBase
 
 }
 
-$panier = new Panier();
+

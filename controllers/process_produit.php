@@ -3,15 +3,9 @@ session_start();
 extract($_POST);
 extract($_FILES);
 
+require("../vendor/autoload.php");
 
 
-require("../models/database.class.php");
-require("../models/user.class.php");
-require("../models/categorie.class.php");
-require("../models/souscategorie.class.php");
-require("../models/produit.class.php");
-require("../models/couleur.class.php");
-require("../models/type.class.php");
 
 $idproduit = intval($_POST['id']);
 $nameproduit = htmlspecialchars($_POST['nameproduit']);

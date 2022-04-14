@@ -1,6 +1,6 @@
 <?php 
 
-class Cart { 
+class Carte { 
     protected $cart_contents = array(); 
      
     public function __construct(){ 

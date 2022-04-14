@@ -87,4 +87,4 @@ class Souscategorie extends DataBase
   }
 }
 
-$souscategorie = new Souscategorie();
+// $souscategorie = new Souscategorie();

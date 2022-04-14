@@ -2,10 +2,7 @@
 session_start();
 extract($_POST);
 
-require("../models/database.class.php");
-require("../models/user.class.php");
-require("../models/categorie.class.php");
-require("../models/souscategorie.class.php");
+require("../vendor/autoload.php");
 
 
 $categorie = $_POST['categorie'];

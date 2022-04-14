@@ -300,7 +300,7 @@ class Produit extends DataBase
 }
 
 
-$monproduit = new Produit();
+// $monproduit = new Produit();
 
 ?>
 

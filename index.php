@@ -1,19 +1,23 @@
 <?php
 session_start();
 
-require("./models/database.class.php");
-require("./models/user.class.php");
-require("./models/categorie.class.php");
-require("./models/souscategorie.class.php");
-require("./models/produit.class.php");
-require("./models/couleur.class.php");
-require("./models/type.class.php");
-require("./models/panier.class.php");
+
+require("./vendor/autoload.php");
+
+$user = new User();
+$masession = new Session();
+$monproduit = new Produit();
+$categorie = new Categorie();
+$couleur = new Couleur();
+$souscategorie = new Souscategorie();
+$type = new Type();
+
 
 
 if (isset($_SESSION['id'])) {
     $userinfos = $user->getAllInfos($_SESSION['id']);
 }
+
 
 $getallcate = $categorie->getCate();
 $getallcateinfos = $getallcate->fetch();
@@ -28,7 +32,7 @@ $params = explode('/', $_GET['p']);
 <html lang="fr-FR">
 
 <head>
-    <base href="/boutique/" target="_blank">
+    <base href="/app/" target="_blank">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta http-equiv="Cache-Control" content="no-cache">
