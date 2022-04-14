@@ -43,6 +43,7 @@ $params = explode('/', $_GET['p']);
     <link rel="shortcut icon" href="views/img/fav.png">
     <link rel="stylesheet" href="views/css/style.css">
     <link rel="stylesheet" href="views/css/styles.css">
+    <link rel="stylesheet" href="views/css/checkoutcss.css">
     <script src="views/js/jquery-3.6.0.js"></script>
     <script src="views/js/slick.js"></script>
     <script src="views/js/header.js"></script>
@@ -58,7 +59,7 @@ $params = explode('/', $_GET['p']);
     <script src="views/js/color.js"></script>
     <script src="views/js/cart.js"></script>
     <script src="views/js/souscategorie.js"></script>
-
+    <script src="views/js/checkout.js"></script>
     <title>La Havane | Bienvenue sur l'accueil.</title>
 </head>
 

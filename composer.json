@@ -11,5 +11,7 @@
     "autoload": {
         "classmap": ["models","views/css/"]
     },
-    "require": {}
+    "require": {
+        "stripe/stripe-php": "^7.123"
+    }
 }

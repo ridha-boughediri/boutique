@@ -6,6 +6,20 @@ namespace Composer\Autoload;
 
 class ComposerStaticInitb4b7bc92557b61e27f634823ae5daace
 {
+    public static $prefixLengthsPsr4 = array (
+        'S' => 
+        array (
+            'Stripe\\' => 7,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Stripe\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/stripe/stripe-php/lib',
+        ),
+    );
+
     public static $classMap = array (
         'Cart' => __DIR__ . '/../..' . '/models/testcart.class.php',
         'CartItem' => __DIR__ . '/../..' . '/models/testelelementdupanier.class.php',
@@ -25,6 +39,8 @@ class ComposerStaticInitb4b7bc92557b61e27f634823ae5daace
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInitb4b7bc92557b61e27f634823ae5daace::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitb4b7bc92557b61e27f634823ae5daace::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInitb4b7bc92557b61e27f634823ae5daace::$classMap;
 
         }, null, ClassLoader::class);
