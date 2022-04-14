@@ -2,17 +2,20 @@ $(document).ready(function () {
   $(".dashboard").click(function () {
     window.location = "admin/dashboard";
   });
+  $(".users").click(function () {
+    window.location = "admin/users";
+  });
   $(".add-produit").click(function () {
     window.location = "admin/add-produit";
   });
   $(".produit").click(function () {
     window.location = "admin/produit";
   });
-  $(".panier").click(function () {
-    window.location = "admin/panier";
+  $(".add-type-produit").click(function () {
+    window.location = "admin/add-type-produit";
   });
-  $(".users").click(function () {
-    window.location = "admin/users";
+  $(".type-produit").click(function () {
+    window.location = "admin/type-produit";
   });
   $(".add-color").click(function () {
     window.location = "admin/add-color";
@@ -20,11 +23,14 @@ $(document).ready(function () {
   $(".colors").click(function () {
     window.location = "admin/colors";
   });
-  $(".type").click(function () {
-    window.location = "admin/type-produit";
+  $(".add-categorie").click(function () {
+    window.location = "admin/add-categorie";
   });
   $(".categories").click(function () {
     window.location = "admin/categorie";
+  });
+  $(".add-sous-categories").click(function () {
+    window.location = "admin/add-sous-categorie";
   });
   $(".sous-categories").click(function () {
     window.location = "admin/sous-categorie";

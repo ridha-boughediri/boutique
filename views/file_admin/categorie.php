@@ -1,92 +1,25 @@
-<?php
+<div class="space-admin-container-big">
+  <h2 class="space-admin-title-top">Les Categories</h2>
+  <div class="space-admin-view">
 
-// require_once("../includes/class.autoload.inc.php");
-
-// require_once("../adminhtmlcss/slideadmin.php");
-
-// require_once("../adminhtmlcss/barreadmin.php");
-// require_once("../adminhtmlcss/footeradmin.php");
-
-$NvelleCATE = new Categorie();
-echo " <br>";
-
-
-if (isset($_POST['submit'])) {
-
-  $nom_categorie = $_POST['nom_categorie'];
-  $NvelleCATE->CreateCate($nom_categorie);
-}
-
-else if($_GET['send'] === 'del') {
-  $id_categorie = $_GET['id'];
-  $NvelleCATE->DeleCate($id_categorie);
-
-  header("location:./displaytablecategorie.php");
-}
-
-else if(isset($_POST['update'])){
-  $nom_categorie = $_POST['nom_categorie'];
-  $NvelleCATE->DeleCate($id_categorie);
-
-  header("location:./displaytablecategorie.php");
-}
-
-
-?>
-
-
-<!DOCTYPE html>
-<html>
-<style>
-  table,
-  th,
-  td {
-    border: 1px solid black;
-  }
-</style>
-
-<body>
-  <h2>CATEGORIE Forms</h2>
-
-
-  <form method="POST">
-    <label for="lname">nom de la categorie:</label><br>
-    <input type="text" name="nom_categorie" value=""><br><br>
-    <input type="submit" name="submit" value="submit">
-  </form>
-  <h2>categorie table</h2>
-
-  <table style="width:100%">
-    <tr>
-      <th>id_categorie</th>
-      <th>nom_categorie</th>
-      <th>supprimer</th>
-      <th>modifier</th>
-
-    </tr>
-    <?php $categories = new Categorie(); ?>
-
-    <?php if ($categories->getCate()) : ?>
-      <?php foreach ($categories->getCate() as $categorie) : ?>
-        <tr>
-          <td><?= $categorie["id_categorie"] ?></td>
-          <td><?= $categorie["nom_categorie"]  ?></td>
-          <td> <button class="button-secondary submit-edit-produit" data-id="<?= $categorie['id_categorie'] ?>">Modifier</button></a> </td>
-          <td><button class="button-first submit-delete-produit" data-id="<?= $categorie['id_categorie'] ?>">Supprimer</button></a></td>
-          
-          
-
-
+    <div class="panel-admin-container">
+      <p class="field"></p>
+      <div class="top-admin-bar">
+        <h3 class="title-top-admin-bar">Id Categorie</h3>
+        <h3 class="title-top-admin-bar">Nom Categorie</h3>
+        <h3 class="title-top-admin-bar">Supprimer</h3>
+        <h3 class="title-top-admin-bar">Modifier</h3>
+      </div>
+      <div class="body-admin-bar">
+        <?php foreach ($categorie->getCate() as $category) : ?>
+          <div class="body-admin-lign" data-id="<?= $category["id_categorie"] ?>">
+            <p class="admin-text-p"><?= $category["id_categorie"] ?></p>
+            <input type="text" id="namecategorie" class="admin-input" placeholder="Nom du produit" value="<?= $category["nom_categorie"]  ?>">
+            <button class="button-first submit-delete-categorie" data-id="<?= $category["id_categorie"] ?>">Supprimer</button>
+            <button class="button-secondary submit-edit-categorie" data-id="<?= $category["id_categorie"] ?>">Modifier</button>
+          </div>
         <?php endforeach; ?>
-      <?php else : ?>
-      <?php endif; ?>
-
-
-        </tr>
-
-
-  </table>
-
-</body>
-
-</html>
+      </div>
+    </div>
+  </div>
+</div>

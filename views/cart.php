@@ -58,15 +58,18 @@
         $getproduit->execute(array($produitinfo['id_produit']));
         $produitinfox = $getproduit->fetch();
         $produitcounts = $getproduit->rowCount();
-        $total += $produitinfox['prix_produit'];
-        $htprice = $total / (1 + 5);
+        // var_dump($produitinfo);
+        $prixquantite = $produitinfox['prix_produit'] * $produitinfo['quantite'];
+        $total += $prixquantite;
+        $htpriceo = $total / (1 + 5);
+        $htprice = number_format($htpriceo, 2);
         $htpriceglob = $total - $htprice;
-        $totalprod = $produitcounts;
+        $htpriceglobi = number_format($htpriceglob, 2);
       }
       ?>
       <div class="totals-item">
         <label>Sous-Total</label>
-        <div class="totals-value" id="cart-subtotal"><?= $htpriceglob ?>€</div>
+        <div class="totals-value" id="cart-subtotal"><?= $htpriceglobi ?>€</div>
       </div>
       <div class="totals-item">
         <label>Tva (5%)</label>

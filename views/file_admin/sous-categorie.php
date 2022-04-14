@@ -4,28 +4,28 @@
 // $list= new Souscategorie();
 // $NvelleCoul = new Souscategorie();
 // echo " <br>";
-$souscategorie = new Souscategorie();
+// $souscategorie = new Souscategorie();
 // print_r($souscategorie->getCateSou());
 
 
 
 // var_dump($_POST);
 
-if (isset($_POST['submit'])) {
-  $id_categorie = $_POST['id_categorie'];
-  $nom_sous_catégorie = $_POST['nom_sous_catégorie'];
-  $souscategorie->CreateCateSOU($id_categorie, $nom_sous_catégorie);
-}
+// if (isset($_POST['submit'])) {
+//   $id_categorie = $_POST['id_categorie'];
+//   $nom_sous_catégorie = $_POST['nom_sous_catégorie'];
+//   $souscategorie->CreateCateSOU($id_categorie, $nom_sous_catégorie);
+// }
 
-var_dump($_POST);
+// var_dump($_POST);
 
-if($_GET['envoi'] === 'del') {
-  var_dump("lucas");
-  $id_sous_catégorie = $_GET['id'];
-  $souscategorie->DeleSubCate($id_sous_catégorie);
+// if ($_GET['envoi'] === 'del') {
+//   var_dump("lucas");
+//   $id_sous_catégorie = $_GET['id'];
+//   $souscategorie->DeleSubCate($id_sous_catégorie);
 
-  // header("location:./displaysubcategorie.php");
-}
+//   // header("location:./displaysubcategorie.php");
+// }
 
 
 
@@ -38,53 +38,32 @@ if($_GET['envoi'] === 'del') {
 ?>
 
 
-<h2>Sous-categorie table</h2>
-
-<table style="width:100%">
-  <tr>
-    <th>id_categorie</th>
-    <th>id_sous_categorie</th>
-    <th>nom_sous_categorie</th>
-    <th>supprimer</th>
-    <th>modifier</th>
-
-  </tr>
-  <?php $categories = new Souscategorie(); ?>
-
-  <?php if ($categories->getCateSou()) : ?>
-    <?php foreach ($categories->getCateSou() as $categorie) : ?>
-      <tr>
-        <td><?= $categorie["id_categorie"] ?></td>
-        <td><?= $categorie["id_sous_catégorie"]  ?></td>
-        <td><?= $categorie["nom_sous_catégorie"]  ?></td>
-        <td> <button class="button-secondary submit-edit-sscategorie" data-id="<?= $categorie['id_sous_catégorie'] ?>">Modifier</button></a> </td>
-        <td><button class="button-first submit-delete-sscategorie" data-id="<?= $categorie['id_sous_catégorie'] ?>">Supprimer</button></a></td>
-      
-      <?php endforeach; ?>
-    <?php else : ?>
-    <?php endif; ?>
 
 
-      </tr>
 
 
-</table>
+<div class="space-admin-container-big">
+  <h2 class="space-admin-title-top">Les Sous-Categorie</h2>
+  <div class="space-admin-view">
 
-<form method="POST">
-  <label for="pet-select">Choisir une categotrie</label>
-  <select name="id_categorie" id="per1">
-    <option selected="selected">un seul choix</option>
-    <?php $categories = new Categorie(); ?>
-
-    <?php if ($categories->getCate()) : ?>
-      <?php foreach ($categories->getCate() as $categorie) : ?>
-        <option value="<?= $categorie['id_categorie'] ?>"><?= $categorie['nom_categorie'] ?></option>
-
-      <?php endforeach; ?>
-    <?php else : ?>
-    <?php endif; ?>
-  </select>
-  <label for="lname">nom de la sous_categorie:</label><br>
-  <input type="text" name="nom_sous_catégorie" value=""><br><br>
-  <input type="submit" name="submit" value="submit">
-</form>
+    <div class="panel-admin-container">
+      <p class="field"></p>
+      <div class="top-admin-bar">
+        <h3 class="title-top-admin-bar">Id Sous-Categorie</h3>
+        <h3 class="title-top-admin-bar">Nom Sous-Categorie</h3>
+        <h3 class="title-top-admin-bar">Supprimer</h3>
+        <h3 class="title-top-admin-bar">Modifier</h3>
+      </div>
+      <div class="body-admin-bar">
+        <?php foreach ($souscategorie->getCateSou() as $souscategory) : ?>
+          <div class="body-admin-lign" data-id="<?= $souscategory["id_sous_catégorie"] ?>">
+            <p class="admin-text-p"><?= $souscategory["id_sous_catégorie"] ?></p>
+            <input type="text" id="namesous-categorie" class="admin-input" placeholder="Nom du produit" value="<?= $souscategory["nom_sous_catégorie"]  ?>">
+            <button class="button-first submit-delete-sous-categorie" data-id="<?= $souscategory["id_sous_catégorie"] ?>">Supprimer</button>
+            <button class="button-secondary submit-edit-sous-categorie" data-id="<?= $souscategory["id_sous_catégorie"] ?>">Modifier</button>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,11 +8,14 @@
         <button class="button-six users">Clients</button>
         <button class="button-six add-produit">Ajouter un produit</button>
         <button class="button-six produit">Produits</button>
+        <button class="button-six add-type-produit">Ajouter un Type de Produit</button>
+        <button class="button-six type-produit">Type de Produit</button>
         <button class="button-six add-color">Ajouter une Couleur</button>
         <button class="button-six colors">Couleurs</button>
+        <button class="button-six add-categorie">Ajouter une Catégories</button>
         <button class="button-six categories">Catégories</button>
+        <button class="button-six add-sous-categories">Ajouter une Sous-Catégories</button>
         <button class="button-six sous-categories">Sous-Catégories</button>
-        <button class="button-six add-type-produit">Type de Produit</button>
       </div>
       <div class="view-container-admin">
         <?php
