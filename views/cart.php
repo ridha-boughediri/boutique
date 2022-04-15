@@ -15,7 +15,10 @@
 
 
     <?php if ($paniercount == 0) { ?>
-      <a class="btn-link">Panier Vide</a>
+      <div class="shopping-cart-product">
+        <a class="btn-link">Panier Vide</a>
+      </div>
+
     <?php } else { ?>
       <?php foreach ($produitinfos as $produitinfo) { ?>
 
@@ -65,6 +68,12 @@
         $htprice = number_format($htpriceo, 2);
         $htpriceglob = $total - $htprice;
         $htpriceglobi = number_format($htpriceglob, 2);
+      }
+      if (!isset($htpriceglobi)) {
+        $htpriceglobi = 0;
+      }
+      if (!isset($htprice)) {
+        $htprice = 0;
       }
       ?>
       <div class="totals-item">

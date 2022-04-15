@@ -15,7 +15,7 @@ return array(
     'DataBase' => $baseDir . '/models/database.class.php',
     'Panier' => $baseDir . '/models/panier.class.php',
     'Produit' => $baseDir . '/models/produit.class.php',
-    'Session' => $baseDir . '/models/session.class.php',
+    // 'Session' => $baseDir . '/models/session.class.php',
     'Souscategorie' => $baseDir . '/models/souscategorie.class.php',
     'Type' => $baseDir . '/models/type.class.php',
     'User' => $baseDir . '/models/user.class.php',

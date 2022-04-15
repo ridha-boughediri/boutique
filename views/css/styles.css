@@ -167,6 +167,11 @@ button {
   font-size: 1vw;
 }
 
+.addocart {
+  position: relative;
+  z-index: 1000;
+}
+
 .button-third {
   border: none;
   border-bottom: 1px solid #fb373c;

@@ -31,7 +31,7 @@ $(document).ready(function () {
     window.location = "account";
   });
 
-  $(".slick-card").click(function () {
+  $(".slick-img").click(function () {
     let idcard =  $(this).attr("data-id");
     window.location = "produit/" + idcard;
   });

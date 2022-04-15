@@ -17,7 +17,28 @@ $(document).ready(function () {
             },
           }
         );
-        console.log(data);
+        $(".nbcart").empty();
+        $(".nbcart").append(data);
+        $(".cart-panier").load();
+      }
+    );
+  });
+
+  $(".addocart").on("click", function () {
+    id = $(this).attr("data-id");
+
+    $.post(
+      "./controllers/process_add_cart.php",
+      {
+        id: id,
+      },
+      function (data) {
+        var that = $(".addocart");
+        setTimeout(function () {
+          that
+            .animate({ fontSize: "2vw" }, 10)
+            .animate({ fontSize: "1vw" }, 10);
+        }, that.index() * 100);
         $(".nbcart").empty();
         $(".nbcart").append(data);
         $(".cart-panier").load();
