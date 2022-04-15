@@ -41,6 +41,12 @@ $(document).ready(function () {
     window.location = "search/" + resultsearch;
   });
 
+  $(".btnprodsous").click(function () {
+    let idcate =  $(this).attr("data-id");
+    let idsouscate =  $(this).attr("data-sousid");
+    window.location = "produits/" + idcate + '/' + idsouscate;
+  });
+
   $(".account-container-deco").on("click", function () {
     deco = "ok";
 

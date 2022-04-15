@@ -155,7 +155,6 @@ button {
   color: #fb373c;
 }
 
-
 .button-secondary {
   border: 1px solid #fb373c;
   border-radius: 15px;
@@ -239,8 +238,6 @@ input[type="file"]::-webkit-file-upload-button {
   font-size: 1vw;
 }
 
-
-
 .button-third:hover {
   color: rgba(222, 184, 135, 0.5);
 }
@@ -276,6 +273,16 @@ input[type="file"]::-webkit-file-upload-button {
 
 .button-seven:hover {
   color: rgba(222, 184, 135, 0.5);
+}
+
+.button-eight {
+  border: none;
+  width: 50%;
+  height: 2.5vw;
+  cursor: pointer;
+  margin: 1vw;
+  font-size: 1vw;
+  font-size: 0.8vw;
 }
 
 .button-none {
@@ -620,6 +627,26 @@ input[type="file"]::-webkit-file-upload-button {
   padding: 2vh;
 }
 
+.container-list-produit {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: row;
+  color: black;
+}
+
+.list-container-produit {
+  width: 20%;
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 2vh;
+  border-right: 1px solid grey;
+  overflow-y: auto;
+}
+
 .list-container-admin {
   width: 30%;
   height: 85vh;
@@ -636,6 +663,12 @@ input[type="file"]::-webkit-file-upload-button {
   color: white;
   text-decoration: underline;
   margin: 5%;
+  font-size: 1.6vw;
+}
+
+.title-produit-bar {
+  text-decoration: underline;
+  margin: 1vw 0;
   font-size: 1.6vw;
 }
 
