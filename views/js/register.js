@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+
   $(".submit-register").on("click", function () {
     firstname = $("#firstname").val();
     lastname = $("#lastname").val();
@@ -13,6 +15,7 @@ $(document).ready(function () {
     submitregister = "submit-register";
 
     $.post(
+
       "./controllers/process_register.php",
       {
         firstname: firstname,
@@ -27,6 +30,8 @@ $(document).ready(function () {
         birthday: birthday,
         submitregister: submitregister,
       },
+
+      
       function (data) {
         console.log(data);
         if (data != "") {

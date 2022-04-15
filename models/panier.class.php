@@ -4,10 +4,7 @@
 
 class Panier extends DataBase
 {
-
-
-
-   public function addCart($idproduitd)
+  public function addCart($idproduitd)
    {
 
       $getproduit = $this->connect()->prepare("SELECT * FROM articles_commande WHERE id_produit = ? AND id_utilisateur = ?");

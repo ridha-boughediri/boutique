@@ -5,7 +5,7 @@ session_start();
 
 extract($_POST);
 require("../vendor/autoload.php");
-
+$user=new User();
 
 $firstname = htmlspecialchars(trim($_POST['firstname']));
 $lastname = htmlspecialchars(trim($_POST['lastname']));

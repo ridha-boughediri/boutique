@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="best-carousel">
-        <h1 class="title-main">Nouvelle Article</h1>
+        <h1 class="title-main">Nouveaux articles</h1>
         <div class="slick-cards">
             <?php foreach ($monproduit->getNewProduit() as $allproduit) { ?>
                 <div class="slick-card" data-id="<?= $allproduit["id_produit"] ?>">
