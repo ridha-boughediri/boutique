@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : lun. 11 avr. 2022 à 11:46
+-- Généré le : ven. 15 avr. 2022 à 08:45
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 7.4.27
 
@@ -54,7 +54,9 @@ INSERT INTO `categories` (`id_categorie`, `nom_categorie`) VALUES
 (26, 'miami tongs'),
 (28, 'Tongs pour Hommes et femme'),
 (29, 'claquette havana'),
-(40, 'Havaianas Espadrille');
+(40, 'Havaianas Espadrille'),
+(42, 'salvador claquette'),
+(43, 'Home ');
 
 -- --------------------------------------------------------
 
@@ -137,7 +139,6 @@ CREATE TABLE `produit` (
 
 INSERT INTO `produit` (`id_produit`, `nom_produit`, `description_produit`, `prix_produit`, `id_categorie`, `id_sous_catégorie`, `id_couleur`, `id_produit_type`, `file_images`, `qte_stock`) VALUES
 (29, 'Havaianas Top Logomania Mid Tech', 'Couleurs vibrantes et confort durable ? Cela doit être Havaianas… Avec le logo Havaianas sous la semelle et les lanières décorées avec les mêmes motifs de l\'année de lancement, vous n\'aurez pas des doutes. Presque 60 ans de clients satisfaits. Ils ne peuvent pas avoir tort !', 25.00, 26, 12, 4, 1, '714609.jpg', '50'),
-(30, 'Havaianas Top Logomania', 'Alerte de tendance Logo ! Les Havaianas Top Logomania 2 rapportent le contraste des lanières et des semelles dans des couleurs fascinant créant un modèle moderne éblouissant.', 25.00, 29, 10, 1, 1, '583821.jpg', '12'),
 (31, 'Logomania 2', ' Les Havaianas Top Logomania 2 rapportent le contraste des lanières et des semelles dans des couleurs fascinant créant un modèle moderne éblouissant.', 23.00, 26, 14, 3, 2, '205006.jpg', '45'),
 (32, 'Havaianas Slim Nautical', 'Oh, capitaine ! Embarquement pour le lancement de Havaianas Slim Nautical. Doté d\'imprimés classiques inspirés de l\'océan, ce modèle apporte un raz-de-marée de style à votre tenue.', 23.00, 29, 10, 1, 2, '244830.jpg', '12'),
 (33, 'Havaianas Slim Nautical', 'Oh, capitaine ! Embarquement pour le lancement de Havaianas Slim Nautical. Doté d\'imprimés classiques inspirés de l\'océan, ce modèle apporte un raz-de-marée de style à votre tenue.', 23.00, 29, 10, 1, 2, '441401.jpg', '12'),
@@ -145,8 +146,8 @@ INSERT INTO `produit` (`id_produit`, `nom_produit`, `description_produit`, `prix
 (35, 'Havaianas Top Hello Kitty', 'Les tongs Kids Slim Hello Kitty sont absolument adorables. Les deux versions de ce modèle présentent des imprimés amusants de célèbres personnages japonais dans une gamme de couleurs qui joue sur la tendance du color block.', 23.00, 23, 24, 1, 2, '491190.jpg', '12'),
 (38, 'Havaianas Espadrille Eco green', 'Unisexes et parfaites pour toutes les occasions, les espadrilles Havaianas sont fabriquées à partir de matériaux recyclés – car l\'éco responsabilité est plus qu\'une simple tendance : elle est tout simplement vitale !  Avec une grande palette de coloris disponibles,  une forme plus moderne et une structure interne qui lui permet de s\'adapter parfaitement au pied, ce modèle apportera une belle touche finale à votre look.', 25.00, 40, 25, 12, 1, '205681.jpg', '5'),
 (39, 'Havaianas Espadrille Eco bleu', 'Unisexes et parfaites pour toutes les occasions, les espadrilles Havaianas sont fabriquées à partir de matériaux recyclés – car l\'éco responsabilité est plus qu\'une simple tendance : elle est tout simplement vitale !  Avec une grande palette de coloris disponibles,  une forme plus moderne et une structure interne qui lui permet de s\'adapter parfaitement au pied, ce modèle apportera une belle touche finale à votre look.', 13.00, 40, 25, 1, 1, '810500.jpg', '34'),
-(40, 'Havaianas Espadrille Mule Eco', 'Pratique, élégante et confortable, la conception ouverte de la mule permet le glissement facile à mettre et à enlever. Havaianas a combiné les semelles en caoutchouc de signature avec le haut fait en cotton recyclé, certifié par la BCI (Better Cotton Initiative). Respectueuse de l\'environnement et pleine de charme, cette paire transformera votre look visuellement et éthiquement', 37.00, 40, 26, 3, 2, '230054.jpg', '45'),
-(41, 'Havaianas Top Vibram', 'L’association de l’emblématique Havaianas TOP, essence même du Brésil et disponible en 4 couleurs éclatantes (jaune, vert, bleu et rose), et de la semelle légère, durable et confortable Betulla de Vibram crée un nouveau modèle unique à utiliser dans des contextes urbains et bien d’autres.', 23.00, 26, 12, 12, 2, '375563.jpg', '15');
+(41, 'Havaianas Top Vibram', 'L’association de l’emblématique Havaianas TOP, essence même du Brésil et disponible en 4 couleurs éclatantes (jaune, vert, bleu et rose), et de la semelle légère, durable et confortable Betulla de Vibram crée un nouveau modèle unique à utiliser dans des contextes urbains et bien d’autres.', 23.00, 26, 12, 12, 2, '375563.jpg', '15'),
+(42, 'Havaianas Top Home Fluffy', 'Avec l\'arrivée du froid, quel meilleur moyen de garder tes orteils au chaud que de porter tes Havaianas préférées avec une touche de fourrure ! L\'emblématique semelle en caoutchouc se pare de 5 couleurs dont deux versions imprimées. Et les brides s\'habillent de fausse fourrure, parfaite pour te garder bien au chaud.  C\'est un cadeau de Noël idéal pour tes proches amateurs de tongs Havaianas.\r\n\r\n', 123.00, 43, 31, 10, 2, 'Havaianas Top Home Fluffy.jpg', '123');
 
 -- --------------------------------------------------------
 
@@ -213,10 +214,7 @@ INSERT INTO `sous_catégorie` (`id_sous_catégorie`, `id_categorie`, `nom_sous_c
 (14, 26, 'miami claquette'),
 (24, 23, ' Slim Summer'),
 (25, 40, 'Espadrille Eco I'),
-(26, 40, 'Mule Eco'),
-(27, 28, 'femme'),
-(28, 28, 'enfant tongs'),
-(29, 28, 'test');
+(31, 43, 'Fluffy');
 
 -- --------------------------------------------------------
 
@@ -236,26 +234,25 @@ CREATE TABLE `utilisateurs` (
   `address` varchar(255) DEFAULT NULL,
   `birthday` date NOT NULL,
   `avatar` varchar(250) DEFAULT NULL,
-  `admin` int(11) NOT NULL DEFAULT 0,
-  `creation` datetime NOT NULL,
-  `modification` datetime NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '1=actif|0=inactif'
+  `admin` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `utilisateurs`
 --
 
-INSERT INTO `utilisateurs` (`id_utilisateur`, `firstname`, `lastname`, `mail`, `password`, `phone`, `city`, `postal_code`, `address`, `birthday`, `avatar`, `admin`, `creation`, `modification`, `status`) VALUES
-(1, 'Sam', 'Belhadj', 's@s.s', 'c045c9838ba93fe23b0842c44195bfbd7298d35d', 102030405, '', 0, NULL, '1999-07-01', 'avatar.png', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1),
-(4, 'test', 'test', 'test@mail.fr', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 0, 'Mars', 13004, NULL, '1111-11-11', 'avatar.png', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1),
-(5, 'aa', 'aa', 'aa@aa', 'e0c9035898dd52fc65c41454cec9c4d2611bfb37', 909090909, 'AA', 13002, NULL, '2111-02-11', 'avatar.png', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1),
-(6, 'marie', 'marie', 'marie@marie', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 790560945, 'nice', 456000, NULL, '1999-02-02', 'avatar.png', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1),
-(7, 'sonia', 'sonia', 'so@nia', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 60304505, 'paris', 75000, NULL, '2004-03-12', 'avatar.png', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1),
-(8, 'SI', 'SI', 'SI@SI', '2cd845399ebc86aad1fd9e1e6bfa6aa61179694a', 0, 'LILLE', 234033, NULL, '2000-02-12', 'avatar.png', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1),
-(9, 'sa', 'salvador', 'rid@rida', '86f7e437faa5a7fce15d1ddcb9eaeaea377667b8', 1234, 'marseille', 13001, NULL, '1988-09-12', 'avatar.png', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1),
-(10, 'ridha', 'lefou', 'rid', '4ec2b19306c9200ae3ee0d343b41e3395b3abcd6', 33333, 'marseille', 13011, NULL, '1997-12-12', 'avatar.png', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1),
-(11, 'marc', 'marc', 'marc@marc', '356a192b7913b04c54574d18c28d46e6395428ab', 6207925, 'marseille', 13001, NULL, '2000-12-17', 'avatar.png', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1);
+INSERT INTO `utilisateurs` (`id_utilisateur`, `firstname`, `lastname`, `mail`, `password`, `phone`, `city`, `postal_code`, `address`, `birthday`, `avatar`, `admin`) VALUES
+(1, 'Sam', 'Belhadj', 's@s.s', 'c045c9838ba93fe23b0842c44195bfbd7298d35d', 102030405, '', 0, NULL, '1999-07-01', 'avatar.png', 0),
+(4, 'test', 'test', 'test@mail.fr', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 0, 'Mars', 13004, NULL, '1111-11-11', 'avatar.png', 0),
+(5, 'aa', 'aa', 'aa@aa', 'e0c9035898dd52fc65c41454cec9c4d2611bfb37', 909090909, 'AA', 13002, NULL, '2111-02-11', 'avatar.png', 0),
+(6, 'marie', 'marie', 'marie@marie', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 790560945, 'nice', 456000, NULL, '1999-02-02', 'avatar.png', 0),
+(7, 'sonia', 'sonia', 'so@nia', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 60304505, 'paris', 75000, NULL, '2004-03-12', 'avatar.png', 0),
+(8, 'SI', 'SI', 'SI@SI', '2cd845399ebc86aad1fd9e1e6bfa6aa61179694a', 0, 'LILLE', 234033, NULL, '2000-02-12', 'avatar.png', 0),
+(9, 'sa', 'salvador', 'rid@rida', '86f7e437faa5a7fce15d1ddcb9eaeaea377667b8', 1234, 'marseille', 13001, NULL, '1988-09-12', 'avatar.png', 0),
+(10, 'ridha', 'lefou', 'rid', '4ec2b19306c9200ae3ee0d343b41e3395b3abcd6', 33333, 'marseille', 13011, NULL, '1997-12-12', 'avatar.png', 0),
+(11, 'marc', 'marc', 'marc@marc', '356a192b7913b04c54574d18c28d46e6395428ab', 6207925, 'marseille', 13001, NULL, '2000-12-17', 'avatar.png', 0),
+(12, 'vo', 'vo', 'vo@la', '356a192b7913b04c54574d18c28d46e6395428ab', 620077925, 'marseille', 13015, NULL, '1972-12-12', 'avatar.png', 0),
+(13, 'mola', 'mola', 'mola@mola', '356a192b7913b04c54574d18c28d46e6395428ab', 0, 'nice', 34000, NULL, '2022-03-28', 'avatar.png', 1);
 
 --
 -- Index pour les tables déchargées
@@ -338,7 +335,7 @@ ALTER TABLE `utilisateurs`
 -- AUTO_INCREMENT pour la table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id_categorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id_categorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT pour la table `commandes`
@@ -362,7 +359,7 @@ ALTER TABLE `couleur`
 -- AUTO_INCREMENT pour la table `produit`
 --
 ALTER TABLE `produit`
-  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT pour la table `produit_type`
@@ -380,13 +377,13 @@ ALTER TABLE `recuperation`
 -- AUTO_INCREMENT pour la table `sous_catégorie`
 --
 ALTER TABLE `sous_catégorie`
-  MODIFY `id_sous_catégorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_sous_catégorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
-  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Contraintes pour les tables déchargées
