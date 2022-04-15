@@ -16,13 +16,13 @@
         <h1 class="title-main">Nouveaux articles</h1>
         <div class="slick-cards">
             <?php foreach ($monproduit->getNewProduit() as $allproduit) { ?>
-                <div class="slick-card" data-id="<?= $allproduit["id_produit"] ?>">
-                    <img src="views/img/admin/<?= $allproduit["file_images"] ?>" alt="" class="slick-img">
+                <div class="slick-card">
+                    <img src="views/img/admin/<?= $allproduit["file_images"] ?>" data-id="<?= $allproduit["id_produit"] ?>" alt="" class="slick-img">
                     <div class="slick-card-infos">
                         <h3><?= $allproduit["nom_produit"] ?></h3>
                         <p><?= $allproduit["prix_produit"] ?>€</p>
                     </div>
-
+                    <button class="button-secondary addocart" data-id="<?= $allproduit["id_produit"] ?>">Ajouter au panier 🛒</button>
                 </div>
             <?php } ?>
         </div>

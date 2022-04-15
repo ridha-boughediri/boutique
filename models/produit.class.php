@@ -76,18 +76,18 @@ class Produit extends DataBase
   //   }
 
 
-    /**
-     * Add Product $product into cart. If product already exists inside cart
-     * it must update quantity.
-     * This must create CartItem and return CartItem from method
-     * Bonus: $quantity must not become more than whatever
-     * is $availableQuantity of the Product
-     *
-     * @param Cart $cart
-     * @param int  $quantity
-     * @return \CartItem
-     * @throws \Exception
-     */
+  /**
+   * Add Product $product into cart. If product already exists inside cart
+   * it must update quantity.
+   * This must create CartItem and return CartItem from method
+   * Bonus: $quantity must not become more than whatever
+   * is $availableQuantity of the Product
+   *
+   * @param Cart $cart
+   * @param int  $quantity
+   * @return \CartItem
+   * @throws \Exception
+   */
 
   // public function addToCart(Cart $cart, int $quantity)
   // {
@@ -284,19 +284,36 @@ class Produit extends DataBase
       return $result;
     }
   }
- 
-  public function getproduitparsouscategorie($id_sous_catégorie){
+
+  public function getProduitByCategorieAndSousCategorie($categorie, $souscategorie)
+  {
+    $sql = "SELECT * FROM produit WHERE id_categorie = ? AND id_sous_catégorie = ?";
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute(array($categorie, $souscategorie));
+    $result = $stmt->fetchall();
+
+    return $result;
+  }
+
+  public function getProduitByCategorieAndSousCategorieAndColors($color, $categorie, $souscategorie)
+  {
+    $sql = "SELECT * FROM produit WHERE id_couleur = ? AND id_categorie = ? AND id_sous_catégorie = ?";
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute(array($color, $categorie, $souscategorie));
+    $result = $stmt->fetchall();
+
+    return $result;
+  }
+
+  public function getproduitparsouscategorie($id_sous_catégorie)
+  {
     $sql = "SELECT * FROM produit WHERE id_sous_catégorie = ?";
     $stmt = $this->connect()->prepare($sql);
     $stmt->execute(array($id_sous_catégorie));
     $result = $stmt->fetch();
 
     return $result;
-
   }
-  
-
-
 }
 
 

@@ -31,7 +31,7 @@ $(document).ready(function () {
     window.location = "account";
   });
 
-  $(".slick-card").click(function () {
+  $(".slick-img").click(function () {
     let idcard =  $(this).attr("data-id");
     window.location = "produit/" + idcard;
   });
@@ -39,6 +39,12 @@ $(document).ready(function () {
   $(".search-btn").click(function () {
     let resultsearch =  $("#search-place").val();
     window.location = "search/" + resultsearch;
+  });
+
+  $(".btnprodsous").click(function () {
+    let idcate =  $(this).attr("data-id");
+    let idsouscate =  $(this).attr("data-sousid");
+    window.location = "produits/" + idcate + '/' + idsouscate;
   });
 
   $(".account-container-deco").on("click", function () {

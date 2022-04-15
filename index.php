@@ -4,13 +4,14 @@ session_start();
 
 require("./vendor/autoload.php");
 
-$user = new User();
-$masession = new Session();
-$monproduit = new Produit();
 $categorie = new Categorie();
 $couleur = new Couleur();
+$database = new DataBase();
+$panier = new Panier();
+$monproduit = new Produit();
 $souscategorie = new Souscategorie();
 $type = new Type();
+$user = new User();
 
 
 
@@ -60,6 +61,7 @@ $params = explode('/', $_GET['p']);
     <script src="views/js/cart.js"></script>
     <script src="views/js/souscategorie.js"></script>
     <script src="views/js/checkout.js"></script>
+    <script src="views/js/filtercolor.js"></script>
     <title>La Havane | Bienvenue sur l'accueil.</title>
 </head>
 
