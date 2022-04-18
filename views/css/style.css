@@ -369,3 +369,10 @@ main {
   font-family: "Havana";
   src: url("../font/Havana.ttf");
 }
+
+
+img.test{
+
+  height: 100%;
+  width: 100%;
+}

@@ -7,6 +7,8 @@
         <button class="button-six dashboard">Tableau de Bord</button>
         <button class="button-six users">Clients</button>
         <button class="button-six add-produit">Ajouter un produit</button>
+        <button class="button-six add-produit">Modifier un produit</button>
+
         <button class="button-six produit">Produits</button>
         <button class="button-six add-type-produit">Ajouter un Type de Produit</button>
         <button class="button-six type-produit">Type de Produit</button>

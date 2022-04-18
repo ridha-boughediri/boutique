@@ -12,6 +12,8 @@ if (isset($_SESSION['id'])) {
 
 
 
+
+
 <main>
   <div class="container-produit">
     <div class="container-produit-img">
