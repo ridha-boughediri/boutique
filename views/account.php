@@ -16,24 +16,32 @@ if (isset($_SESSION['id'])) {
                 <?php } ?>
             </div>
             <div class="view-container">
-                <h1 class="title-main" style="color: #fb373c; text-decoration: underline #fb373c; margin-bottom: 1vh;">Profil</h1>
-                <form id="data" method="post" enctype="multipart/form-data" class="inputs-container">
-                    <input type="text" id="firstname" class="login-input" placeholder="Prenom*" value="">
-                    <p class="field firstz"></p>
-                    <input type="text" id="lastname" class="login-input" placeholder="Nom*" value="">
-                    <p class="field lastz"></p>
-                    <input type="mail" id="mail" class="login-input" placeholder="E-mail*" value="">
-                    <p class="field mailz"></p>
-                    <input type="password" id="password" class="login-input" placeholder="Mot de passe*">
-                    <p class="field passz"></p>
-                    <input type="number" id="phone" class="login-input" placeholder="N° de téléphone portable*">
-                    <p class="field phonez"></p>
-                    <label class="ph">Photo de Profil: </label>
-                    <input type="file" id="file" name="file" class="button-file">
-                    <p class="field filez"></p>
-                    <p>Tous les champs marqués d'un astérisque (*) sont obligatoires.</p>
-                    <button class="button-secondary submit-edit-profile">Modifier</button>
-                </form>
+                <?php
+                if (isset($params[1])) {
+                    if ($params[1] == "") {
+                        $filename = "views/file_account/profile.php";
+                        if (file_exists($filename)) {
+                            require_once($filename);
+                        } else {
+                            echo '<h1 class="title-main">Une erreur est survenu</h1> <div class="container-vv-admin">Fichier Introuvable</div>';
+                        }
+                    } else {
+                        $filename = "views/file_account/" . $params[1] . ".php";
+                        if (file_exists($filename)) {
+                            require_once($filename);
+                        } else {
+                            echo '<h1 class="title-main">Une erreur est survenu</h1> <div class="container-vv-admin">Fichier Introuvable</div>';
+                        }
+                    }
+                } else {
+                    $filename = "views/file_account/profile.php";
+                    if (file_exists($filename)) {
+                        require_once($filename);
+                    } else {
+                        echo '<h1 class="title-main">Une erreur est survenu</h1> <div class="container-vv-admin">Fichier Introuvable</div>';
+                    }
+                }
+                ?>
             </div>
         </div>
     </main>
@@ -41,5 +49,3 @@ if (isset($_SESSION['id'])) {
 <?php } else {
     header("Refresh:0; url= .");
 } ?>
-
-

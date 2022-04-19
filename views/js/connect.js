@@ -13,7 +13,7 @@ $(document).ready(function () {
         if (data != "") {
           $(".field").removeClass("success");
           $(".field").removeClass("error");
-          if (data == "Vous êtes connecté !") {
+          if (data.includes("connecté")) {
             $(".field").addClass("success");
             $(".success").empty();
             $(".success").append(data);

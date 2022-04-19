@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+$servername = explode('/', $_SERVER['SCRIPT_NAME']);
 
 require("./vendor/autoload.php");
 
@@ -33,7 +34,7 @@ $params = explode('/', $_GET['p']);
 <html lang="fr-FR">
 
 <head>
-    <base href="/app/" target="_blank">
+    <base href="/<?=$servername[1]?>/" target="_blank">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta http-equiv="Cache-Control" content="no-cache">

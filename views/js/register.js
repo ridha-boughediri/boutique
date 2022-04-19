@@ -37,7 +37,7 @@ $(document).ready(function () {
         if (data != "") {
           $(".field").removeClass("success");
           $(".field").removeClass("error");
-          if (data == "Votre Compte à été créer") {
+          if (data.includes("Compte à été")) {
             $(".field").addClass("success");
             $(".success").empty();
             $(".success").append(data);

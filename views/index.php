@@ -22,7 +22,12 @@
                         <h3><?= $allproduit["nom_produit"] ?></h3>
                         <p><?= $allproduit["prix_produit"] ?>€</p>
                     </div>
-                    <button class="button-secondary addocart" data-id="<?= $allproduit["id_produit"] ?>">Ajouter au panier 🛒</button>
+
+                    <?php if (isset($_SESSION['id'])) { ?>
+                        <button class="button-secondary buy-container" data-id="<?= $allproduit["id_produit"] ?>">Ajouter au panier <img src="views/img/carttrolley.png" alt=""></button>
+                    <?php } else { ?>
+                        <button class="button-secondary cursor-none" title="Veuillez vous connecter" data-id="<?= $allproduit["id_produit"] ?>">Ajouter au panier <img src="views/img/carttrolley.png" alt=""></button>
+                    <?php } ?>
                 </div>
             <?php } ?>
         </div>

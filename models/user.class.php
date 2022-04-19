@@ -126,7 +126,11 @@ class User extends DataBase
 
     public function update($firstname, $lastname, $mail, $password, $phone, $avatarname, $avatartype, $avatartmp_name, $avatarerror, $avatarsize)
     {
-        if (!empty($firstname)) {
+        $getallinfos = $this->connect()->prepare("SELECT * FROM utilisateurs WHERE id_utilisateur = ?");
+        $getallinfos->execute(array($_SESSION['id']));
+        $getallinfosinfo = $getallinfos->fetch();
+
+        if (!empty($firstname) && $getallinfosinfo['firstname']!= $firstname) {
             $firstnamelenght = strlen($_POST['firstname']);
             if ($firstnamelenght >= 2 && $firstnamelenght <= 18) {
                 $updatefirstname = $this->connect()->prepare("UPDATE utilisateurs SET firstname = ? WHERE id_utilisateur = ?");
@@ -142,7 +146,7 @@ class User extends DataBase
             // return $erreurfirst;
         }
 
-        if (!empty($lastname)) {
+        if (!empty($lastname) && $getallinfosinfo['lastname']!= $lastname) {
             $lastnamelenght = strlen($_POST['lastname']);
             if ($lastnamelenght >= 2 && $lastnamelenght <= 18) {
                 $updatelastname = $this->connect()->prepare("UPDATE utilisateurs SET lastname = ? WHERE id_utilisateur = ?");
@@ -158,7 +162,7 @@ class User extends DataBase
             // return $erreurname;
         }
 
-        if (!empty($mail)) {
+        if (!empty($mail) && $getallinfosinfo['mail']!= $mail) {
             $getmail = $this->connect()->prepare("SELECT * FROM utilisateurs WHERE mail = ?");
             $getmail->execute(array($mail));
             $mailcount = $getmail->rowCount();
@@ -176,7 +180,7 @@ class User extends DataBase
             // return $erreurmail;
         }
 
-        if (!empty($password) && $password != 'da39a3ee5e6b4b0d3255bfef95601890afd80709') {
+        if (!empty($password) && $getallinfosinfo['password']!= $password && $password != 'da39a3ee5e6b4b0d3255bfef95601890afd80709') {
             $updatepassword = $this->connect()->prepare("UPDATE utilisateurs SET password = ? WHERE id_utilisateur = ?");
             $updatepassword->execute(array($password, $_SESSION['id']));
             $successpass = "Votre mot de passe a bien été modifié !";
@@ -186,7 +190,7 @@ class User extends DataBase
             // return $erreurpass;
         }
 
-        if (!empty($phone)) {
+        if (!empty($phone) && $getallinfosinfo['phone']!= $phone) {
             $updatephone = $this->connect()->prepare("UPDATE utilisateurs SET phone = ? WHERE id_utilisateur = ?");
             $updatephone->execute(array($phone, $_SESSION['id']));
             $successphone = "Votre numero de téléphone a bien été modifié !";

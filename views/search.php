@@ -1,4 +1,4 @@
-<?php $searchprod = $monproduit->getProduitByLike($params[1]);?>
+<?php $searchprod = $monproduit->getProduitByLike($params[1]); ?>
 <main>
     <div class="best-carousel">
         <h1 class="title-main">Vos resultats pour :</h1>
@@ -10,6 +10,12 @@
                         <h3><?= $allproduit["nom_produit"] ?></h3>
                         <p><?= $allproduit["prix_produit"] ?>€</p>
                     </div>
+
+                    <?php if (isset($_SESSION['id'])) { ?>
+                        <button class="button-secondary buy-container" data-id="<?= $allproduit["id_produit"] ?>">Ajouter au panier <img src="views/img/carttrolley.png" alt=""></button>
+                    <?php } else { ?>
+                        <button class="button-secondary cursor-none" title="Veuillez vous connecter" data-id="<?= $allproduit["id_produit"] ?>">Ajouter au panier <img src="views/img/carttrolley.png" alt=""></button>
+                    <?php } ?>
                 </div>
             <?php } ?>
         </div>
