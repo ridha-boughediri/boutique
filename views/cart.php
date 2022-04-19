@@ -26,7 +26,7 @@
         $getproduit = $database->connect()->prepare("SELECT * FROM produit WHERE id_produit = ?");
         $getproduit->execute(array($produitinfo['id_produit']));
         $produitinfox = $getproduit->fetch();
-        $htprices = $produitinfox['prix_produit'] / (1 + 5);
+        $htprices = $produitinfox['prix_produit'] / (1 + 20);
         $htpricex = number_format($htprices, 2);
         ?>
 
@@ -64,7 +64,7 @@
         // var_dump($produitinfo);
         $prixquantite = $produitinfox['prix_produit'] * $produitinfo['quantite'];
         $total += $prixquantite;
-        $htpriceo = $total / (1 + 5);
+        $htpriceo = $total / (1 + 20);
         $htprice = number_format($htpriceo, 2);
         $htpriceglob = $total - $htprice;
         $htpriceglobi = number_format($htpriceglob, 2);
