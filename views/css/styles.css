@@ -1204,6 +1204,24 @@ ul {
   height: max-content;
 }
 
+.container-produit-infos h1 {
+  font-size: 2vw;
+}
+
+.price {
+  font-size: 1.3vw;
+  padding: 1vw 0;
+  color: grey;
+  font-weight: 800;
+  text-decoration: underline;
+}
+
+.description {
+  font-size: 1vw;
+  padding: 1vw 0;
+  width: 50%;
+}
+
 .container-produit-btn {
   width: 10vw;
   height: 5vw;
@@ -1211,6 +1229,7 @@ ul {
   justify-content: space-around;
   align-items: center;
   flex-direction: row;
+  margin: 1vw 0;
 }
 
 .cursor-none {
