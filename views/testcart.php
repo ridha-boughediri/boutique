@@ -14,7 +14,7 @@
     </div>
 
 
-    <?php if ($paniercount == 0) { ?>
+    <!-- <?php if ($paniercount == 0) { ?>
       <div class="shopping-cart-product">
         <a class="btn-link">Panier Vide</a>
       </div>
@@ -28,7 +28,7 @@
         $produitinfox = $getproduit->fetch();
         $htprices = $produitinfox['prix_produit'] / (1 + 20);
         $htpricex = number_format($htprices, 2);
-        ?>
+        ?> -->
 
         <div class="shopping-cart-product" data-id="<?= $produitinfox['id_produit'] ?>">
           <div class="product-image">
