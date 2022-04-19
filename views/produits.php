@@ -6,9 +6,11 @@
   <div class="container-list-produit">
     <div class="list-container-produit scroll-bar-small">
       <h2 class="title-produit-bar">Couleurs</h2>
-      <?php foreach ($couleur->getCoul() as $couleurinfos) { ?>
-        <button class="button-eight btn-filter-color" data-id="<?= $couleurinfos['id_couleur'] ?>" data-cate="<?= $params[1] . '-' . $params[2] ?>"><?= $couleurinfos['nom_couleur'] ?></button>
-      <?php } ?>
+      <div class="list-btn-product">
+        <?php foreach ($couleur->getCoul() as $couleurinfos) { ?>
+          <button class="button-eight btn-filter-color" data-id="<?= $couleurinfos['id_couleur'] ?>" data-cate="<?= $params[1] . '-' . $params[2] ?>"><?= $couleurinfos['nom_couleur'] ?></button>
+        <?php } ?>
+      </div>
     </div>
 
     <?php if ($sizeprod == 0) { ?>
