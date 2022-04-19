@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : ven. 15 avr. 2022 à 08:45
+-- Généré le : mar. 19 avr. 2022 à 12:37
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 7.4.27
 
@@ -28,11 +28,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `articles_commande` (
-  `id` int(11) NOT NULL,
   `id_commande` int(11) NOT NULL,
   `id_produit` int(11) NOT NULL,
-  `quantite` int(11) NOT NULL
+  `quantite` int(11) NOT NULL,
+  `id_utilisateur` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `articles_commande`
+--
+
+INSERT INTO `articles_commande` (`id_commande`, `id_produit`, `quantite`, `id_utilisateur`) VALUES
+(2, 29, 1, 13),
+(3, 46, 1, 13);
 
 -- --------------------------------------------------------
 
@@ -52,11 +60,10 @@ CREATE TABLE `categories` (
 INSERT INTO `categories` (`id_categorie`, `nom_categorie`) VALUES
 (23, 'captain cuba'),
 (26, 'miami tongs'),
-(28, 'Tongs pour Hommes et femme'),
+(28, 'Tongs Mixte Adulte '),
 (29, 'claquette havana'),
 (40, 'Havaianas Espadrille'),
-(42, 'salvador claquette'),
-(43, 'Home ');
+(43, 'Dar');
 
 -- --------------------------------------------------------
 
@@ -147,7 +154,12 @@ INSERT INTO `produit` (`id_produit`, `nom_produit`, `description_produit`, `prix
 (38, 'Havaianas Espadrille Eco green', 'Unisexes et parfaites pour toutes les occasions, les espadrilles Havaianas sont fabriquées à partir de matériaux recyclés – car l\'éco responsabilité est plus qu\'une simple tendance : elle est tout simplement vitale !  Avec une grande palette de coloris disponibles,  une forme plus moderne et une structure interne qui lui permet de s\'adapter parfaitement au pied, ce modèle apportera une belle touche finale à votre look.', 25.00, 40, 25, 12, 1, '205681.jpg', '5'),
 (39, 'Havaianas Espadrille Eco bleu', 'Unisexes et parfaites pour toutes les occasions, les espadrilles Havaianas sont fabriquées à partir de matériaux recyclés – car l\'éco responsabilité est plus qu\'une simple tendance : elle est tout simplement vitale !  Avec une grande palette de coloris disponibles,  une forme plus moderne et une structure interne qui lui permet de s\'adapter parfaitement au pied, ce modèle apportera une belle touche finale à votre look.', 13.00, 40, 25, 1, 1, '810500.jpg', '34'),
 (41, 'Havaianas Top Vibram', 'L’association de l’emblématique Havaianas TOP, essence même du Brésil et disponible en 4 couleurs éclatantes (jaune, vert, bleu et rose), et de la semelle légère, durable et confortable Betulla de Vibram crée un nouveau modèle unique à utiliser dans des contextes urbains et bien d’autres.', 23.00, 26, 12, 12, 2, '375563.jpg', '15'),
-(42, 'Havaianas Top Home Fluffy', 'Avec l\'arrivée du froid, quel meilleur moyen de garder tes orteils au chaud que de porter tes Havaianas préférées avec une touche de fourrure ! L\'emblématique semelle en caoutchouc se pare de 5 couleurs dont deux versions imprimées. Et les brides s\'habillent de fausse fourrure, parfaite pour te garder bien au chaud.  C\'est un cadeau de Noël idéal pour tes proches amateurs de tongs Havaianas.\r\n\r\n', 123.00, 43, 31, 10, 2, 'Havaianas Top Home Fluffy.jpg', '123');
+(42, 'Havaianas Top Home Fluffy', 'Avec l\'arrivée du froid, quel meilleur moyen de garder tes orteils au chaud que de porter tes Havaianas préférées avec une touche de fourrure ! L\'emblématique semelle en caoutchouc se pare de 5 couleurs dont deux versions imprimées. Et les brides s\'habillent de fausse fourrure, parfaite pour te garder bien au chaud.  C\'est un cadeau de Noël idéal pour tes proches amateurs de tongs Havaianas.\r\n\r\n', 123.00, 43, 31, 10, 2, 'Havaianas Top Home Fluffy.jpg', '123'),
+(44, 'Havaianas You Malta Mix', 'Voici les Havaianas You Malta, la paire parfaite pour laisser votre moi s\'épanouir. Ce nouveau modèle entre directement dans le temple de la renommée pour le confort et le style. La lanière en tissu mélangé aux couleurs pastel est polyvalent et élégant. Êtes-vous en retard ? Devez-vous vous préparer rapidement ? Aucun problème : cette paire est facile à porter, et aussi résistante à l\'eau ainsi que rapide à sécher. Un mariage parfait de caractère pratique et de style.', 35.00, 26, 12, 10, 2, 'Havaianas You Malta Mix.jpg', '120'),
+(45, 'Havaianas Top Max Concept', 'Les Havaianas Kids Max Concept privilégient le confort avec de larges lanières et nos fameuses semelles souples. Elles sont également très élégantes avec leurs imprimés aux couleurs vives de palmiers tropicaux. Le choix parfait pour les jeunes amoureux de la nature.', 23.00, 26, 11, 11, 1, 'Havaianas Top Max Concept.jpg', '120'),
+(46, 'Havaianas You St Tropez', 'Êtes-vous à la recherche d\'une nouvelle paire élégante ? Les Havaianas You St Tropez sont pour vous. La semelle en caoutchouc et la lanière en tissu en forme de noeud sont irrésistibles. Disponible dans une gamme des modèles attirants, ce modèle est également résistant à l\'eau et séche rapidement. Vos pieds ne voudront pas être sans elles !', 29.00, 29, 9, 11, 1, 'Havaianas You St Tropez.jpg', '115'),
+(47, 'You St Tropez', 'Êtes-vous à la recherche d\'une nouvelle paire élégante ? Les Havaianas You St Tropez sont pour vous. La semelle en caoutchouc et la lanière en tissu en forme de noeud sont irrésistibles. Disponible dans une gamme des modèles attirants, ce modèle est également résistant à l\'eau et séche rapidement. Vos pieds ne voudront pas être sans elles !\r\n', 120.00, 29, 10, 9, 2, 'You St Tropez.jpg', '19'),
+(48, 'Slippers Femmes Furry Fluffy Slippers Extérieur Indoor Home Flat Shoes Female Casual Flip Flops Slides', 'Semelle extérieure matériel : unité centrale\r\nModèle Type : Solid\r\nSaison : été\r\nHauteur de talon : plat (≤1cm)\r\nMatériau de rebasage : aucun\r\nMatériel : fourrure supérieure\r\nNuméro de modèle: chaussures pour femme\r\nLieu : extérieur il y a lieu\r\nAjustement : ajustement fidèle à taille\r\nType de talon : plat avec\r\nPlateformes : non\r\nSemelle intérieure matériel : unité centrale\r\nChaussures Type : Basic\r\nTaille: Longueur du pied', 100.00, 43, 31, 10, 2, 'Slippers Femmes Furry Fluffy Slippers Extérieur Indoor Home Flat Shoes Female Casual Flip Flops Slides.jpeg', '34');
 
 -- --------------------------------------------------------
 
@@ -252,7 +264,8 @@ INSERT INTO `utilisateurs` (`id_utilisateur`, `firstname`, `lastname`, `mail`, `
 (10, 'ridha', 'lefou', 'rid', '4ec2b19306c9200ae3ee0d343b41e3395b3abcd6', 33333, 'marseille', 13011, NULL, '1997-12-12', 'avatar.png', 0),
 (11, 'marc', 'marc', 'marc@marc', '356a192b7913b04c54574d18c28d46e6395428ab', 6207925, 'marseille', 13001, NULL, '2000-12-17', 'avatar.png', 0),
 (12, 'vo', 'vo', 'vo@la', '356a192b7913b04c54574d18c28d46e6395428ab', 620077925, 'marseille', 13015, NULL, '1972-12-12', 'avatar.png', 0),
-(13, 'mola', 'mola', 'mola@mola', '356a192b7913b04c54574d18c28d46e6395428ab', 0, 'nice', 34000, NULL, '2022-03-28', 'avatar.png', 1);
+(13, 'mola', 'mola', 'mola@mola', '356a192b7913b04c54574d18c28d46e6395428ab', 0, 'nice', 34000, NULL, '2022-03-28', 'avatar.png', 1),
+(14, 'lucas', 'lucas', 'lu@lu', '356a192b7913b04c54574d18c28d46e6395428ab', 65050505, 'marseille', 13001, NULL, '1967-02-13', 'avatar.png', 0);
 
 --
 -- Index pour les tables déchargées
@@ -262,7 +275,7 @@ INSERT INTO `utilisateurs` (`id_utilisateur`, `firstname`, `lastname`, `mail`, `
 -- Index pour la table `articles_commande`
 --
 ALTER TABLE `articles_commande`
-  ADD KEY `id` (`id`),
+  ADD PRIMARY KEY (`id_commande`),
   ADD KEY `id_produit` (`id_produit`);
 
 --
@@ -332,6 +345,12 @@ ALTER TABLE `utilisateurs`
 --
 
 --
+-- AUTO_INCREMENT pour la table `articles_commande`
+--
+ALTER TABLE `articles_commande`
+  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT pour la table `categories`
 --
 ALTER TABLE `categories`
@@ -359,7 +378,7 @@ ALTER TABLE `couleur`
 -- AUTO_INCREMENT pour la table `produit`
 --
 ALTER TABLE `produit`
-  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT pour la table `produit_type`
@@ -383,7 +402,7 @@ ALTER TABLE `sous_catégorie`
 -- AUTO_INCREMENT pour la table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
-  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Contraintes pour les tables déchargées
@@ -393,8 +412,7 @@ ALTER TABLE `utilisateurs`
 -- Contraintes pour la table `articles_commande`
 --
 ALTER TABLE `articles_commande`
-  ADD CONSTRAINT `articles_commande_ibfk_1` FOREIGN KEY (`id`) REFERENCES `commandes` (`id_cammande`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  ADD CONSTRAINT `articles_commande_ibfk_2` FOREIGN KEY (`id_produit`) REFERENCES `produit` (`id_produit`);
+  ADD CONSTRAINT `articles_commande_ibfk_1` FOREIGN KEY (`id_produit`) REFERENCES `produit` (`id_produit`);
 
 --
 -- Contraintes pour la table `commandes`
