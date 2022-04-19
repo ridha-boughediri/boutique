@@ -19,13 +19,16 @@ $produitinfos = $monproduit->getProduitById($params[1]);
       <p class="description"><?= $produitinfos['description_produit'] ?></p>
 
       <div class="container-produit-btn">
-        <?php if (isset($_SESSION['id'])) { ?>
+        <?php if (isset($_SESSION['id']) && $produitinfos["qte_stock"] > 0) { ?>
           <button class="button-round-first" id="wishlist-container" title="Ajouter a ma liste" data-id="<?= $produitinfos['id_produit'] ?>"><img src="views/img/would.png" alt=""></button>
           <button class="button-round-first buy-container" title="Ajouter au panier" data-id="<?= $produitinfos['id_produit'] ?>"><img src="views/img/panier.png" alt=""></button>
-        <?php } else { ?>
+        <?php } else if (isset($_SESSION['id']) && $produitinfos["qte_stock"] < 0) { ?>
           <button class="button-round-first cursor-none" title="Veuillez vous connecter" data-id="<?= $produitinfos['id_produit'] ?>"><img src="views/img/would.png" alt=""></button>
           <button class="button-round-first cursor-none" title="Veuillez vous connecter" data-id="<?= $produitinfos['id_produit'] ?>"><img src="views/img/panier.png" alt=""></button>
-        <?php  } ?>
+        <?php } else { ?>
+          <button class="button-round-first cursor-none" title="Veuillez vous connecter" data-id="<?= $produitinfos['id_produit'] ?>"><img src="views/img/would.png" alt=""></button>
+          <button class="button-round-first cursor-none" title="Stock Épuisée" data-id="<?= $produitinfos['id_produit'] ?>"><img src="views/img/panier.png" alt=""></button>
+        <?php } ?>
       </div>
 
       <p class="small-text"><span>Livraison Standard</span> entre 2 à 5 jours ouvrés</p>

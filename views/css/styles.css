@@ -1222,6 +1222,11 @@ ul {
   width: 50%;
 }
 
+.small-text {
+  font-size: 0.9vw;
+  text-decoration: underline;
+}
+
 .container-produit-btn {
   width: 10vw;
   height: 5vw;
