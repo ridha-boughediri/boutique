@@ -1,8 +1,8 @@
 $(document).ready(function () {
 
     $(".check-out").click(function () {
-        let totalachat = $("#cart-total").val();
-        console.log(totalachat);
+        let totalachat = $(this).attr("data-id");
+        alert(totalachat);
     });
 
 });

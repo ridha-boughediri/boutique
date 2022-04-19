@@ -90,7 +90,7 @@
       </div>
     </div>
     <div class="container-lign-btn">
-      <button class="button-secondary check-out">Valider ➜</button>
+      <button class="button-secondary check-out" data-id="<?php echo $total ?>">Valider ➜</button>
     </div>
 
 
