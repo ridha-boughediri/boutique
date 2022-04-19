@@ -45,7 +45,7 @@ $(document).ready(function () {
     window.location = "cart";
   });
 
-  $(".check-out").click(function () {
-    window.location = "checkout";
-  });
+  // $(".check-out").click(function () {
+  //   window.location = "checkout";
+  // });
 });
