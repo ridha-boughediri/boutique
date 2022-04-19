@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mar. 19 avr. 2022 à 12:37
+-- Généré le : mar. 19 avr. 2022 à 15:59
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 7.4.27
 
@@ -28,19 +28,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `articles_commande` (
-  `id_commande` int(11) NOT NULL,
+  `id_mesachat` int(11) NOT NULL,
   `id_produit` int(11) NOT NULL,
   `quantite` int(11) NOT NULL,
-  `id_utilisateur` int(11) NOT NULL
+  `id_utilisateur` int(11) NOT NULL,
+  `id_commande` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `articles_commande`
 --
 
-INSERT INTO `articles_commande` (`id_commande`, `id_produit`, `quantite`, `id_utilisateur`) VALUES
-(2, 29, 1, 13),
-(3, 46, 1, 13);
+INSERT INTO `articles_commande` (`id_mesachat`, `id_produit`, `quantite`, `id_utilisateur`, `id_commande`) VALUES
+(4, 39, 1, 15, 0);
 
 -- --------------------------------------------------------
 
@@ -72,7 +72,7 @@ INSERT INTO `categories` (`id_categorie`, `nom_categorie`) VALUES
 --
 
 CREATE TABLE `commandes` (
-  `id_cammande` int(11) NOT NULL,
+  `id_commande` int(11) NOT NULL,
   `id_utilisateur` int(250) NOT NULL,
   `letotalachat` float(10,2) NOT NULL,
   `creation` datetime NOT NULL,
@@ -265,7 +265,9 @@ INSERT INTO `utilisateurs` (`id_utilisateur`, `firstname`, `lastname`, `mail`, `
 (11, 'marc', 'marc', 'marc@marc', '356a192b7913b04c54574d18c28d46e6395428ab', 6207925, 'marseille', 13001, NULL, '2000-12-17', 'avatar.png', 0),
 (12, 'vo', 'vo', 'vo@la', '356a192b7913b04c54574d18c28d46e6395428ab', 620077925, 'marseille', 13015, NULL, '1972-12-12', 'avatar.png', 0),
 (13, 'mola', 'mola', 'mola@mola', '356a192b7913b04c54574d18c28d46e6395428ab', 0, 'nice', 34000, NULL, '2022-03-28', 'avatar.png', 1),
-(14, 'lucas', 'lucas', 'lu@lu', '356a192b7913b04c54574d18c28d46e6395428ab', 65050505, 'marseille', 13001, NULL, '1967-02-13', 'avatar.png', 0);
+(14, 'lucas', 'lucas', 'lu@lu', '356a192b7913b04c54574d18c28d46e6395428ab', 65050505, 'marseille', 13001, NULL, '1967-02-13', 'avatar.png', 0),
+(15, 'test', 'test', 'yes@test', '25b8d01cc26ddd6f26556316af8013b4b625a74b', 0, 'nice', 340000, NULL, '1999-12-13', 'avatar.png', 0),
+(16, 'alexa', 'salex', 'a@a.a', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 60040403, 'lyon', 76000, NULL, '2000-06-13', 'avatar.png', 0);
 
 --
 -- Index pour les tables déchargées
@@ -275,7 +277,7 @@ INSERT INTO `utilisateurs` (`id_utilisateur`, `firstname`, `lastname`, `mail`, `
 -- Index pour la table `articles_commande`
 --
 ALTER TABLE `articles_commande`
-  ADD PRIMARY KEY (`id_commande`),
+  ADD PRIMARY KEY (`id_mesachat`),
   ADD KEY `id_produit` (`id_produit`);
 
 --
@@ -288,7 +290,7 @@ ALTER TABLE `categories`
 -- Index pour la table `commandes`
 --
 ALTER TABLE `commandes`
-  ADD PRIMARY KEY (`id_cammande`),
+  ADD PRIMARY KEY (`id_commande`),
   ADD KEY `id_utilisateur` (`id_utilisateur`);
 
 --
@@ -348,7 +350,7 @@ ALTER TABLE `utilisateurs`
 -- AUTO_INCREMENT pour la table `articles_commande`
 --
 ALTER TABLE `articles_commande`
-  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_mesachat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `categories`
@@ -360,7 +362,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT pour la table `commandes`
 --
 ALTER TABLE `commandes`
-  MODIFY `id_cammande` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `commentaires`
@@ -402,7 +404,7 @@ ALTER TABLE `sous_catégorie`
 -- AUTO_INCREMENT pour la table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
-  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Contraintes pour les tables déchargées
