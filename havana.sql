@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost
--- Généré le : mar. 19 avr. 2022 à 15:59
--- Version du serveur : 10.4.22-MariaDB
--- Version de PHP : 7.4.27
+-- Hôte : 127.0.0.1:3306
+-- Généré le : mar. 19 avr. 2022 à 14:13
+-- Version du serveur : 8.0.27
+-- Version de PHP : 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,34 +24,15 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `articles_commande`
---
-
-CREATE TABLE `articles_commande` (
-  `id_mesachat` int(11) NOT NULL,
-  `id_produit` int(11) NOT NULL,
-  `quantite` int(11) NOT NULL,
-  `id_utilisateur` int(11) NOT NULL,
-  `id_commande` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `articles_commande`
---
-
-INSERT INTO `articles_commande` (`id_mesachat`, `id_produit`, `quantite`, `id_utilisateur`, `id_commande`) VALUES
-(4, 39, 1, 15, 0);
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `categories`
 --
 
-CREATE TABLE `categories` (
-  `id_categorie` int(11) NOT NULL,
-  `nom_categorie` varchar(225) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `categories`;
+CREATE TABLE IF NOT EXISTS `categories` (
+  `id_categorie` int NOT NULL AUTO_INCREMENT,
+  `nom_categorie` varchar(225) NOT NULL,
+  PRIMARY KEY (`id_categorie`)
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `categories`
@@ -71,13 +52,17 @@ INSERT INTO `categories` (`id_categorie`, `nom_categorie`) VALUES
 -- Structure de la table `commandes`
 --
 
-CREATE TABLE `commandes` (
-  `id_commande` int(11) NOT NULL,
-  `id_utilisateur` int(250) NOT NULL,
+DROP TABLE IF EXISTS `commandes`;
+CREATE TABLE IF NOT EXISTS `commandes` (
+  `id_commande` int NOT NULL AUTO_INCREMENT,
+  `id_utilisateur` int NOT NULL,
   `letotalachat` float(10,2) NOT NULL,
   `creation` datetime NOT NULL,
-  `status` enum('Pending','Completed','Cancelled') NOT NULL DEFAULT 'Pending'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `status` enum('Pending','Completed','Cancelled') NOT NULL DEFAULT 'Pending',
+  `id_panier` int NOT NULL,
+  PRIMARY KEY (`id_commande`),
+  KEY `id_utilisateur` (`id_utilisateur`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -85,12 +70,16 @@ CREATE TABLE `commandes` (
 -- Structure de la table `commentaires`
 --
 
-CREATE TABLE `commentaires` (
-  `id_commentaire` int(11) NOT NULL,
-  `id_produit` int(11) NOT NULL,
+DROP TABLE IF EXISTS `commentaires`;
+CREATE TABLE IF NOT EXISTS `commentaires` (
+  `id_commentaire` int NOT NULL AUTO_INCREMENT,
+  `id_produit` int NOT NULL,
   `text_commentaire` varchar(250) NOT NULL,
-  `id_utilisateur` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id_utilisateur` int NOT NULL,
+  PRIMARY KEY (`id_commentaire`),
+  KEY `id_produit` (`id_produit`),
+  KEY `id_utilisateur` (`id_utilisateur`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -98,10 +87,12 @@ CREATE TABLE `commentaires` (
 -- Structure de la table `couleur`
 --
 
-CREATE TABLE `couleur` (
-  `id_couleur` int(11) NOT NULL,
-  `nom_couleur` varchar(256) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `couleur`;
+CREATE TABLE IF NOT EXISTS `couleur` (
+  `id_couleur` int NOT NULL AUTO_INCREMENT,
+  `nom_couleur` varchar(256) NOT NULL,
+  PRIMARY KEY (`id_couleur`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `couleur`
@@ -124,21 +115,51 @@ INSERT INTO `couleur` (`id_couleur`, `nom_couleur`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `panier`
+--
+
+DROP TABLE IF EXISTS `panier`;
+CREATE TABLE IF NOT EXISTS `panier` (
+  `id_panier` int NOT NULL AUTO_INCREMENT,
+  `id_produit` int NOT NULL,
+  `quantite` int NOT NULL,
+  `id_utilisateur` int NOT NULL,
+  PRIMARY KEY (`id_panier`),
+  KEY `id_produit` (`id_produit`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
+
+--
+-- Déchargement des données de la table `panier`
+--
+
+INSERT INTO `panier` (`id_panier`, `id_produit`, `quantite`, `id_utilisateur`) VALUES
+(4, 39, 1, 15),
+(5, 41, 1, 15);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `produit`
 --
 
-CREATE TABLE `produit` (
-  `id_produit` int(11) NOT NULL,
+DROP TABLE IF EXISTS `produit`;
+CREATE TABLE IF NOT EXISTS `produit` (
+  `id_produit` int NOT NULL AUTO_INCREMENT,
   `nom_produit` varchar(250) NOT NULL,
   `description_produit` varchar(600) NOT NULL,
   `prix_produit` float(10,2) NOT NULL,
-  `id_categorie` int(11) NOT NULL,
-  `id_sous_catégorie` int(11) NOT NULL,
-  `id_couleur` int(11) NOT NULL,
-  `id_produit_type` int(11) NOT NULL,
+  `id_categorie` int NOT NULL,
+  `id_sous_catégorie` int NOT NULL,
+  `id_couleur` int NOT NULL,
+  `id_produit_type` int NOT NULL,
   `file_images` text NOT NULL,
-  `qte_stock` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `qte_stock` varchar(200) NOT NULL,
+  PRIMARY KEY (`id_produit`),
+  KEY `id_categorie` (`id_categorie`),
+  KEY `id_couleur` (`id_couleur`),
+  KEY `id_sous_catégorie` (`id_sous_catégorie`),
+  KEY `id_produit_type` (`id_produit_type`)
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `produit`
@@ -167,10 +188,12 @@ INSERT INTO `produit` (`id_produit`, `nom_produit`, `description_produit`, `prix
 -- Structure de la table `produit_type`
 --
 
-CREATE TABLE `produit_type` (
-  `id_produit_type` int(11) NOT NULL,
-  `nom_produit_type` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `produit_type`;
+CREATE TABLE IF NOT EXISTS `produit_type` (
+  `id_produit_type` int NOT NULL AUTO_INCREMENT,
+  `nom_produit_type` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_produit_type`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `produit_type`
@@ -187,12 +210,14 @@ INSERT INTO `produit_type` (`id_produit_type`, `nom_produit_type`) VALUES
 -- Structure de la table `recuperation`
 --
 
-CREATE TABLE `recuperation` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `recuperation`;
+CREATE TABLE IF NOT EXISTS `recuperation` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `mail` varchar(255) NOT NULL,
-  `code` int(11) NOT NULL,
-  `id_utilisateur` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `code` int NOT NULL,
+  `id_utilisateur` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `recuperation`
@@ -208,11 +233,14 @@ INSERT INTO `recuperation` (`id`, `mail`, `code`, `id_utilisateur`) VALUES
 -- Structure de la table `sous_catégorie`
 --
 
-CREATE TABLE `sous_catégorie` (
-  `id_sous_catégorie` int(11) NOT NULL,
-  `id_categorie` int(11) NOT NULL,
-  `nom_sous_catégorie` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `sous_catégorie`;
+CREATE TABLE IF NOT EXISTS `sous_catégorie` (
+  `id_sous_catégorie` int NOT NULL AUTO_INCREMENT,
+  `id_categorie` int NOT NULL,
+  `nom_sous_catégorie` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_sous_catégorie`),
+  KEY `id_categorie` (`id_categorie`)
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `sous_catégorie`
@@ -234,20 +262,22 @@ INSERT INTO `sous_catégorie` (`id_sous_catégorie`, `id_categorie`, `nom_sous_c
 -- Structure de la table `utilisateurs`
 --
 
-CREATE TABLE `utilisateurs` (
-  `id_utilisateur` int(11) NOT NULL,
+DROP TABLE IF EXISTS `utilisateurs`;
+CREATE TABLE IF NOT EXISTS `utilisateurs` (
+  `id_utilisateur` int NOT NULL AUTO_INCREMENT,
   `firstname` varchar(250) NOT NULL,
   `lastname` varchar(250) NOT NULL,
   `mail` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `phone` int(11) NOT NULL,
+  `phone` int NOT NULL,
   `city` varchar(255) NOT NULL,
-  `postal_code` int(11) NOT NULL,
+  `postal_code` int NOT NULL,
   `address` varchar(255) DEFAULT NULL,
   `birthday` date NOT NULL,
   `avatar` varchar(250) DEFAULT NULL,
-  `admin` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `admin` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_utilisateur`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `utilisateurs`
@@ -270,163 +300,26 @@ INSERT INTO `utilisateurs` (`id_utilisateur`, `firstname`, `lastname`, `mail`, `
 (16, 'alexa', 'salex', 'a@a.a', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 60040403, 'lyon', 76000, NULL, '2000-06-13', 'avatar.png', 0);
 
 --
--- Index pour les tables déchargées
---
-
---
--- Index pour la table `articles_commande`
---
-ALTER TABLE `articles_commande`
-  ADD PRIMARY KEY (`id_mesachat`),
-  ADD KEY `id_produit` (`id_produit`);
-
---
--- Index pour la table `categories`
---
-ALTER TABLE `categories`
-  ADD PRIMARY KEY (`id_categorie`);
-
---
--- Index pour la table `commandes`
---
-ALTER TABLE `commandes`
-  ADD PRIMARY KEY (`id_commande`),
-  ADD KEY `id_utilisateur` (`id_utilisateur`);
-
---
--- Index pour la table `commentaires`
---
-ALTER TABLE `commentaires`
-  ADD PRIMARY KEY (`id_commentaire`),
-  ADD KEY `id_produit` (`id_produit`),
-  ADD KEY `id_utilisateur` (`id_utilisateur`);
-
---
--- Index pour la table `couleur`
---
-ALTER TABLE `couleur`
-  ADD PRIMARY KEY (`id_couleur`);
-
---
--- Index pour la table `produit`
---
-ALTER TABLE `produit`
-  ADD PRIMARY KEY (`id_produit`),
-  ADD KEY `id_categorie` (`id_categorie`),
-  ADD KEY `id_couleur` (`id_couleur`),
-  ADD KEY `id_sous_catégorie` (`id_sous_catégorie`),
-  ADD KEY `id_produit_type` (`id_produit_type`);
-
---
--- Index pour la table `produit_type`
---
-ALTER TABLE `produit_type`
-  ADD PRIMARY KEY (`id_produit_type`);
-
---
--- Index pour la table `recuperation`
---
-ALTER TABLE `recuperation`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `sous_catégorie`
---
-ALTER TABLE `sous_catégorie`
-  ADD PRIMARY KEY (`id_sous_catégorie`),
-  ADD KEY `id_categorie` (`id_categorie`);
-
---
--- Index pour la table `utilisateurs`
---
-ALTER TABLE `utilisateurs`
-  ADD PRIMARY KEY (`id_utilisateur`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `articles_commande`
---
-ALTER TABLE `articles_commande`
-  MODIFY `id_mesachat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT pour la table `categories`
---
-ALTER TABLE `categories`
-  MODIFY `id_categorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
-
---
--- AUTO_INCREMENT pour la table `commandes`
---
-ALTER TABLE `commandes`
-  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `commentaires`
---
-ALTER TABLE `commentaires`
-  MODIFY `id_commentaire` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `couleur`
---
-ALTER TABLE `couleur`
-  MODIFY `id_couleur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT pour la table `produit`
---
-ALTER TABLE `produit`
-  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
-
---
--- AUTO_INCREMENT pour la table `produit_type`
---
-ALTER TABLE `produit_type`
-  MODIFY `id_produit_type` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT pour la table `recuperation`
---
-ALTER TABLE `recuperation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT pour la table `sous_catégorie`
---
-ALTER TABLE `sous_catégorie`
-  MODIFY `id_sous_catégorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
-
---
--- AUTO_INCREMENT pour la table `utilisateurs`
---
-ALTER TABLE `utilisateurs`
-  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
---
 -- Contraintes pour les tables déchargées
 --
-
---
--- Contraintes pour la table `articles_commande`
---
-ALTER TABLE `articles_commande`
-  ADD CONSTRAINT `articles_commande_ibfk_1` FOREIGN KEY (`id_produit`) REFERENCES `produit` (`id_produit`);
 
 --
 -- Contraintes pour la table `commandes`
 --
 ALTER TABLE `commandes`
-  ADD CONSTRAINT `commandes_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateurs` (`id_utilisateur`) ON DELETE CASCADE ON UPDATE NO ACTION;
+  ADD CONSTRAINT `commandes_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateurs` (`id_utilisateur`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `commentaires`
 --
 ALTER TABLE `commentaires`
   ADD CONSTRAINT `commentaires_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateurs` (`id_utilisateur`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `panier`
+--
+ALTER TABLE `panier`
+  ADD CONSTRAINT `panier_ibfk_1` FOREIGN KEY (`id_produit`) REFERENCES `produit` (`id_produit`);
 
 --
 -- Contraintes pour la table `produit`
@@ -441,7 +334,7 @@ ALTER TABLE `produit`
 -- Contraintes pour la table `sous_catégorie`
 --
 ALTER TABLE `sous_catégorie`
-  ADD CONSTRAINT `sous_catégorie_ibfk_1` FOREIGN KEY (`id_categorie`) REFERENCES `categories` (`id_categorie`) ON DELETE CASCADE ON UPDATE NO ACTION;
+  ADD CONSTRAINT `sous_catégorie_ibfk_1` FOREIGN KEY (`id_categorie`) REFERENCES `categories` (`id_categorie`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
