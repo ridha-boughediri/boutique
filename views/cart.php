@@ -61,7 +61,6 @@
         $getproduit->execute(array($produitinfo['id_produit']));
         $produitinfox = $getproduit->fetch();
         $produitcounts = $getproduit->rowCount();
-        // var_dump($produitinfo);
         $prixquantite = $produitinfox['prix_produit'] * $produitinfo['quantite'];
         $total += $prixquantite;
         $htpriceo = $total / (1 + 20);

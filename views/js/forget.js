@@ -29,20 +29,3 @@ $(document).ready(function () {
     );
   });
 });
-
-// $(document).ready(function() {
-//     $('.login-input').on('keyup', function() {
-//       let empty = false;
-
-//       $('.login-input').each(function() {
-//         empty = $(this).val().length == 0;
-//       });
-
-//       if (empty)
-//         $('.submit-forgetmail').attr('disabled', 'disabled');
-//       else
-//         $('.submit-forgetmail').attr('disabled', false);
-//     });
-//   });
-
-// samirgonzalez1315@gmail.com
