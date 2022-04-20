@@ -17,7 +17,7 @@ class Souscategorie extends DataBase
   public function getCateSouId($id_categorie)
   {
     $stmt = $this->connect()->prepare("SELECT * FROM sous_catégorie WHERE id_categorie = " . $id_categorie);
-    //$stmt->execute([$id_categorie]);
+    $stmt->execute([$id_categorie]);
     return $stmt;
   }
 

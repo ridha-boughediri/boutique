@@ -2,8 +2,9 @@
     <h2 class="space-admin-title-top">Modifier un produit</h2>
     <div class="space-admin-view">
 
-        <form id="add-produit" method="post" enctype="multipart/form-data" class="inputs-container">
+        <form id="update-priduit" method="post" enctype="multipart/form-data" class="inputs-container">
 
+        
             <input type="text" id="nameproduit" class="login-input" placeholder="Nom du produit*">
 
             <select id="idcategorie" class="login-input addpcate">
@@ -44,7 +45,7 @@
 
             <p>Tous les champs marqués d'un astérisque (*) sont obligatoires.</p>
 
-            <button class="button-secondary submit-add-produit">Modifier</button>
+            <button class="button-secondary submit-update-produit">Modifier</button>
         </form>
     </div>
 </div>
