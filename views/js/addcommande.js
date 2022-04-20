@@ -45,10 +45,10 @@ $(document).ready(function () {
         //       }
         //     }
         //   );
-        alert(id_produit);
-        alert(nompreoduit);
-        alert(qtecommande);
-        alert(totalachat);
+        // alert(id_produit);
+        // alert(nompreoduit);
+        // alert(qtecommande);
+        // alert(totalachat);
     });
 
 });
