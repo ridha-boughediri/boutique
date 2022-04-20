@@ -49,7 +49,11 @@ $(document).ready(function () {
         // alert(nompreoduit);
         // alert(qtecommande);
         // alert(totalachat);
+<<<<<<< HEAD
+    });
+=======
 //     });
+>>>>>>> 069a081b2b3dc69066a26c5135861928960fff22
 
 });
 
