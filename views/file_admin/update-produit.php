@@ -1,5 +1,5 @@
 <div class="space-admin-container">
-    <h2 class="space-admin-title-top">Ajouter un produit</h2>
+    <h2 class="space-admin-title-top">Modifier un produit</h2>
     <div class="space-admin-view">
 
         <form id="add-produit" method="post" enctype="multipart/form-data" class="inputs-container">
@@ -44,7 +44,7 @@
 
             <p>Tous les champs marqués d'un astérisque (*) sont obligatoires.</p>
 
-            <button class="button-secondary submit-add-produit">Ajouter</button>
+            <button class="button-secondary submit-add-produit">Modifier</button>
         </form>
     </div>
 </div>
