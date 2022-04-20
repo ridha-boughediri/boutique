@@ -38,7 +38,7 @@
             <div class="product-title" data-id="<?= $produitinfox['nom_produit'] ?>"><?= $produitinfox['nom_produit'] ?> </div>
             <p class="product-description"><?= $produitinfox['description_produit'] ?></p>
           </div>
-          <div class="product-price"  data-id="<?= $produitinfox['product-price'] ?>"><?= $htpricex ?>€</div>
+          <div class="product-price"  data-id="<?= $htpricex ?>"><?= $htpricex ?>€</div>
           <div class="product-quantity">
             <input type="number" data-id="<?= $produitinfo['quantite'] ?>" value="<?= $produitinfo['quantite'] ?>" min="1" class="login-input">
           </div>
