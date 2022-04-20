@@ -1,4 +1,4 @@
-// $(document).ready(function () {
+$(document).ready(function () {
 
     // $(".check-out").click(function () {
                 
@@ -51,5 +51,5 @@
         // alert(totalachat);
 //     });
 
-// });
+});
 
