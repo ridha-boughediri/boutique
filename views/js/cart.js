@@ -45,20 +45,9 @@ $(document).ready(function () {
     window.location = "cart";
   });
 
-  // $(".check-out").click(function () {
-  //   window.location = "checkout";
-  // });
-
-  // $("#card-cart").on("keypress keyup blur", function (event) {
-  //   $(this).val(
-  //     $(this)
-  //       .val()
-  //       .replace(/[^\d].+/, "")
-  //   );
-  //   if (event.which < 48 || event.which > 57) {
-  //     event.preventDefault();
-  //   }
-  // });
+  $(".check-out").click(function () {
+    window.location = "checkout";
+  });
 
   $("#card-cart").on("keypress change", function (e) {
     e.target.value = e.target.value

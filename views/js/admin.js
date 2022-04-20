@@ -38,7 +38,6 @@ $(document).ready(function () {
 
   $(".addpcate").change(function () {
     let categorie = $(this).children("option:selected").val();
-    // alert("You have selected the country - " + selectedCountry);
     $.post(
       "./controllers/process_souscategorie.php",
       {

@@ -62,7 +62,7 @@ $params = explode('/', $_GET['p']);
     <script src="views/js/souscategorie.js"></script>
     <script src="views/js/checkout.js"></script>
     <script src="views/js/filtercolor.js"></script>
-    <script src="views/js/addcommande.js"></script>
+    <!-- <script src="views/js/addcommande.js"></script> -->
     <title>La Havane | Bienvenue sur l'accueil.</title>
 </head>
 

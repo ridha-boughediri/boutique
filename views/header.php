@@ -28,6 +28,10 @@ if (isset($_SESSION['id'])) {
     if ($params[0] == 'admin' && !isset($_SESSION['id'])) {
         header("Refresh:0; url= .");
     }
+
+    if ($params[0] != 'account' || $params[0] != 'cart' || $params[0] != 'checkout') {
+        header("Refresh:0; url= .");
+    }
 }
 
 ?>

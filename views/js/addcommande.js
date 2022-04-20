@@ -1,22 +1,22 @@
-$(document).ready(function () {
+// $(document).ready(function () {
 
-    $(".check-out").click(function () {
+    // $(".check-out").click(function () {
                 
         
         
         //testde recuperation de d'infos panier 
-        let totalachat = $(this).attr("data-id");
+        // let totalachat = $(this).attr("data-id");
 
-        let id_produit= $(".shopping-cart-product").attr("data-id");
+        // let id_produit= $(".shopping-cart-product").attr("data-id");
 
-        console.log(id_produit);
+        // console.log(id_produit);
         //testde recuperation de d'infos panier 
-        let nompreoduit = $(".product-title").attr("data-id");
+        // let nompreoduit = $(".product-title").attr("data-id");
 
-        console.log(nompreoduit);
-        let qtecommande = $(".text-field-container").attr("data-id");
+        // console.log(nompreoduit);
+        // let qtecommande = $(".text-field-container").attr("data-id");
 
-        console.log(qtecommande);
+        // console.log(qtecommande);
 
 
         //envoi des info vers php 
@@ -45,11 +45,11 @@ $(document).ready(function () {
         //       }
         //     }
         //   );
-        alert(id_produit);
-        alert(nompreoduit);
-        alert(qtecommande);
-        alert(totalachat);
-    });
+        // alert(id_produit);
+        // alert(nompreoduit);
+        // alert(qtecommande);
+        // alert(totalachat);
+//     });
 
-});
+// });
 
