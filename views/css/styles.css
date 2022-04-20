@@ -683,7 +683,7 @@ input[type="file"]::-webkit-file-upload-button {
 
 .list-container-admin {
   width: 30%;
-  height: 85vh;
+  height: max-content;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -723,13 +723,12 @@ input[type="file"]::-webkit-file-upload-button {
 }
 
 .view-container-admin {
-  width: 100%;
-  height: 85vh;
+  width: 70%;
+  height: max-content;
   display: flex;
   justify-content: center;
   flex-direction: column;
   padding: 2vh;
-  overflow-y: auto;
 }
 
 .view-container-admin .title-main {

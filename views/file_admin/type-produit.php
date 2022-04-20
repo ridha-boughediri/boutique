@@ -1,31 +1,3 @@
-<?php
-
-
-
-
-// if (isset($_POST['submit'])) {
-
-//   $nom_categorie = $_POST['nom_categorie'];
-//   $NvelleCATE->CreateCate($nom_categorie);
-// }
-
-// else if($_GET['send'] === 'del') {
-//   $id_categorie = $_GET['id'];
-//   $NvelleCATE->DeleCate($id_categorie);
-
-//   header("location:./displaytablecategorie.php");
-// }
-
-// else if(isset($_POST['update'])){
-//   $nom_categorie = $_POST['nom_categorie'];
-//   $NvelleCATE->DeleCate($id_categorie);
-
-//   header("location:./displaytablecategorie.php");
-// }
-
-
-?>
-
 <div class="space-admin-container-big">
   <h2 class="space-admin-title-top">Type de Produit</h2>
   <div class="space-admin-view">
