@@ -23,7 +23,7 @@ $(document).ready(function () {
       fd.append("qtestock", qtestock);
   
       $.ajax({
-        url: "./controllers/process_add_produit.php",
+        url: "./controllers/process_update_produit.php",
         type: "post",
         data: fd,
         contentType: false,
