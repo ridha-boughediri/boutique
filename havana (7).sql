@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le : mar. 19 avr. 2022 à 14:13
--- Version du serveur : 8.0.27
--- Version de PHP : 7.4.26
+-- Hôte : localhost
+-- Généré le : mer. 20 avr. 2022 à 17:40
+-- Version du serveur : 10.4.22-MariaDB
+-- Version de PHP : 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,12 +27,10 @@ SET time_zone = "+00:00";
 -- Structure de la table `categories`
 --
 
-DROP TABLE IF EXISTS `categories`;
-CREATE TABLE IF NOT EXISTS `categories` (
-  `id_categorie` int NOT NULL AUTO_INCREMENT,
-  `nom_categorie` varchar(225) NOT NULL,
-  PRIMARY KEY (`id_categorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb3;
+CREATE TABLE `categories` (
+  `id_categorie` int(11) NOT NULL,
+  `nom_categorie` varchar(225) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `categories`
@@ -44,7 +42,7 @@ INSERT INTO `categories` (`id_categorie`, `nom_categorie`) VALUES
 (28, 'Tongs Mixte Adulte '),
 (29, 'claquette havana'),
 (40, 'Havaianas Espadrille'),
-(43, 'Dar');
+(43, 'Slippers');
 
 -- --------------------------------------------------------
 
@@ -52,17 +50,14 @@ INSERT INTO `categories` (`id_categorie`, `nom_categorie`) VALUES
 -- Structure de la table `commandes`
 --
 
-DROP TABLE IF EXISTS `commandes`;
-CREATE TABLE IF NOT EXISTS `commandes` (
-  `id_commande` int NOT NULL AUTO_INCREMENT,
-  `id_utilisateur` int NOT NULL,
+CREATE TABLE `commandes` (
+  `id_commande` int(11) NOT NULL,
+  `id_utilisateur` int(250) NOT NULL,
   `letotalachat` float(10,2) NOT NULL,
   `creation` datetime NOT NULL,
   `status` enum('Pending','Completed','Cancelled') NOT NULL DEFAULT 'Pending',
-  `id_panier` int NOT NULL,
-  PRIMARY KEY (`id_commande`),
-  KEY `id_utilisateur` (`id_utilisateur`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `id_panier` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -70,16 +65,12 @@ CREATE TABLE IF NOT EXISTS `commandes` (
 -- Structure de la table `commentaires`
 --
 
-DROP TABLE IF EXISTS `commentaires`;
-CREATE TABLE IF NOT EXISTS `commentaires` (
-  `id_commentaire` int NOT NULL AUTO_INCREMENT,
-  `id_produit` int NOT NULL,
+CREATE TABLE `commentaires` (
+  `id_commentaire` int(11) NOT NULL,
+  `id_produit` int(11) NOT NULL,
   `text_commentaire` varchar(250) NOT NULL,
-  `id_utilisateur` int NOT NULL,
-  PRIMARY KEY (`id_commentaire`),
-  KEY `id_produit` (`id_produit`),
-  KEY `id_utilisateur` (`id_utilisateur`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `id_utilisateur` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -87,12 +78,10 @@ CREATE TABLE IF NOT EXISTS `commentaires` (
 -- Structure de la table `couleur`
 --
 
-DROP TABLE IF EXISTS `couleur`;
-CREATE TABLE IF NOT EXISTS `couleur` (
-  `id_couleur` int NOT NULL AUTO_INCREMENT,
-  `nom_couleur` varchar(256) NOT NULL,
-  PRIMARY KEY (`id_couleur`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb3;
+CREATE TABLE `couleur` (
+  `id_couleur` int(11) NOT NULL,
+  `nom_couleur` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `couleur`
@@ -118,23 +107,21 @@ INSERT INTO `couleur` (`id_couleur`, `nom_couleur`) VALUES
 -- Structure de la table `panier`
 --
 
-DROP TABLE IF EXISTS `panier`;
-CREATE TABLE IF NOT EXISTS `panier` (
-  `id_panier` int NOT NULL AUTO_INCREMENT,
-  `id_produit` int NOT NULL,
-  `quantite` int NOT NULL,
-  `id_utilisateur` int NOT NULL,
-  PRIMARY KEY (`id_panier`),
-  KEY `id_produit` (`id_produit`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
+CREATE TABLE `panier` (
+  `id_panier` int(11) NOT NULL,
+  `id_produit` int(11) NOT NULL,
+  `quantite` int(11) NOT NULL,
+  `id_utilisateur` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `panier`
 --
 
 INSERT INTO `panier` (`id_panier`, `id_produit`, `quantite`, `id_utilisateur`) VALUES
-(4, 39, 1, 15),
-(5, 41, 1, 15);
+(8, 31, 2, 16),
+(11, 29, 1, 16),
+(13, 50, 1, 13);
 
 -- --------------------------------------------------------
 
@@ -142,31 +129,25 @@ INSERT INTO `panier` (`id_panier`, `id_produit`, `quantite`, `id_utilisateur`) V
 -- Structure de la table `produit`
 --
 
-DROP TABLE IF EXISTS `produit`;
-CREATE TABLE IF NOT EXISTS `produit` (
-  `id_produit` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `produit` (
+  `id_produit` int(11) NOT NULL,
   `nom_produit` varchar(250) NOT NULL,
   `description_produit` varchar(600) NOT NULL,
   `prix_produit` float(10,2) NOT NULL,
-  `id_categorie` int NOT NULL,
-  `id_sous_catégorie` int NOT NULL,
-  `id_couleur` int NOT NULL,
-  `id_produit_type` int NOT NULL,
+  `id_categorie` int(11) NOT NULL,
+  `id_sous_catégorie` int(11) NOT NULL,
+  `id_couleur` int(11) NOT NULL,
+  `id_produit_type` int(11) NOT NULL,
   `file_images` text NOT NULL,
-  `qte_stock` varchar(200) NOT NULL,
-  PRIMARY KEY (`id_produit`),
-  KEY `id_categorie` (`id_categorie`),
-  KEY `id_couleur` (`id_couleur`),
-  KEY `id_sous_catégorie` (`id_sous_catégorie`),
-  KEY `id_produit_type` (`id_produit_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb3;
+  `qte_stock` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `produit`
 --
 
 INSERT INTO `produit` (`id_produit`, `nom_produit`, `description_produit`, `prix_produit`, `id_categorie`, `id_sous_catégorie`, `id_couleur`, `id_produit_type`, `file_images`, `qte_stock`) VALUES
-(29, 'Havaianas Top Logomania Mid Tech', 'Couleurs vibrantes et confort durable ? Cela doit être Havaianas… Avec le logo Havaianas sous la semelle et les lanières décorées avec les mêmes motifs de l\'année de lancement, vous n\'aurez pas des doutes. Presque 60 ans de clients satisfaits. Ils ne peuvent pas avoir tort !', 25.00, 26, 12, 4, 1, '714609.jpg', '50'),
+(29, 'Havaianas Top Logomania Mid Tech', 'undefined', 25.00, 26, 12, 4, 1, '714609.jpg', '50'),
 (31, 'Logomania 2', ' Les Havaianas Top Logomania 2 rapportent le contraste des lanières et des semelles dans des couleurs fascinant créant un modèle moderne éblouissant.', 23.00, 26, 14, 3, 2, '205006.jpg', '45'),
 (32, 'Havaianas Slim Nautical', 'Oh, capitaine ! Embarquement pour le lancement de Havaianas Slim Nautical. Doté d\'imprimés classiques inspirés de l\'océan, ce modèle apporte un raz-de-marée de style à votre tenue.', 23.00, 29, 10, 1, 2, '244830.jpg', '12'),
 (33, 'Havaianas Slim Nautical', 'Oh, capitaine ! Embarquement pour le lancement de Havaianas Slim Nautical. Doté d\'imprimés classiques inspirés de l\'océan, ce modèle apporte un raz-de-marée de style à votre tenue.', 23.00, 29, 10, 1, 2, '441401.jpg', '12'),
@@ -180,7 +161,9 @@ INSERT INTO `produit` (`id_produit`, `nom_produit`, `description_produit`, `prix
 (45, 'Havaianas Top Max Concept', 'Les Havaianas Kids Max Concept privilégient le confort avec de larges lanières et nos fameuses semelles souples. Elles sont également très élégantes avec leurs imprimés aux couleurs vives de palmiers tropicaux. Le choix parfait pour les jeunes amoureux de la nature.', 23.00, 26, 11, 11, 1, 'Havaianas Top Max Concept.jpg', '120'),
 (46, 'Havaianas You St Tropez', 'Êtes-vous à la recherche d\'une nouvelle paire élégante ? Les Havaianas You St Tropez sont pour vous. La semelle en caoutchouc et la lanière en tissu en forme de noeud sont irrésistibles. Disponible dans une gamme des modèles attirants, ce modèle est également résistant à l\'eau et séche rapidement. Vos pieds ne voudront pas être sans elles !', 29.00, 29, 9, 11, 1, 'Havaianas You St Tropez.jpg', '115'),
 (47, 'You St Tropez', 'Êtes-vous à la recherche d\'une nouvelle paire élégante ? Les Havaianas You St Tropez sont pour vous. La semelle en caoutchouc et la lanière en tissu en forme de noeud sont irrésistibles. Disponible dans une gamme des modèles attirants, ce modèle est également résistant à l\'eau et séche rapidement. Vos pieds ne voudront pas être sans elles !\r\n', 120.00, 29, 10, 9, 2, 'You St Tropez.jpg', '19'),
-(48, 'Slippers Femmes Furry Fluffy Slippers Extérieur Indoor Home Flat Shoes Female Casual Flip Flops Slides', 'Semelle extérieure matériel : unité centrale\r\nModèle Type : Solid\r\nSaison : été\r\nHauteur de talon : plat (≤1cm)\r\nMatériau de rebasage : aucun\r\nMatériel : fourrure supérieure\r\nNuméro de modèle: chaussures pour femme\r\nLieu : extérieur il y a lieu\r\nAjustement : ajustement fidèle à taille\r\nType de talon : plat avec\r\nPlateformes : non\r\nSemelle intérieure matériel : unité centrale\r\nChaussures Type : Basic\r\nTaille: Longueur du pied', 100.00, 43, 31, 10, 2, 'Slippers Femmes Furry Fluffy Slippers Extérieur Indoor Home Flat Shoes Female Casual Flip Flops Slides.jpeg', '34');
+(48, 'Slippers Femmes Furry Fluffy Slippers Extérieur Indoor Home Flat Shoes Female Casual Flip Flops Slides', 'Semelle extérieure matériel : unité centrale\r\nModèle Type : Solid\r\nSaison : été\r\nHauteur de talon : plat (≤1cm)\r\nMatériau de rebasage : aucun\r\nMatériel : fourrure supérieure\r\nNuméro de modèle: chaussures pour femme\r\nLieu : extérieur il y a lieu\r\nAjustement : ajustement fidèle à taille\r\nType de talon : plat avec\r\nPlateformes : non\r\nSemelle intérieure matériel : unité centrale\r\nChaussures Type : Basic\r\nTaille: Longueur du pied', 100.00, 43, 31, 10, 2, 'Slippers Femmes Furry Fluffy Slippers Extérieur Indoor Home Flat Shoes Female Casual Flip Flops Slides.jpeg', '34'),
+(50, 'Gracosy', 'Gracosy Sandales Plates Femmes, Chaussures Été Confortable à Talons Plats Nu Pieds Mode Tongs Plages Claquettes Semelle Matelassée Bout Ouvert Tressée Noir Bleu Marine', 24.00, 28, 32, 12, 2, 'Gracosy.jpg', '145'),
+(52, 'KuaiLu Kaki Tongs', 'KuaiLu Kaki Tongs Femmes Sandales en Cuir de Mode été Avec Support de Orthopédique Tongs de Plage et Claquettes de Piscine Taille 38EU', 45.00, 28, 33, 10, 1, 'KuaiLu Kaki Tongs.gif', '123');
 
 -- --------------------------------------------------------
 
@@ -188,12 +171,10 @@ INSERT INTO `produit` (`id_produit`, `nom_produit`, `description_produit`, `prix
 -- Structure de la table `produit_type`
 --
 
-DROP TABLE IF EXISTS `produit_type`;
-CREATE TABLE IF NOT EXISTS `produit_type` (
-  `id_produit_type` int NOT NULL AUTO_INCREMENT,
-  `nom_produit_type` varchar(255) NOT NULL,
-  PRIMARY KEY (`id_produit_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+CREATE TABLE `produit_type` (
+  `id_produit_type` int(11) NOT NULL,
+  `nom_produit_type` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `produit_type`
@@ -210,14 +191,12 @@ INSERT INTO `produit_type` (`id_produit_type`, `nom_produit_type`) VALUES
 -- Structure de la table `recuperation`
 --
 
-DROP TABLE IF EXISTS `recuperation`;
-CREATE TABLE IF NOT EXISTS `recuperation` (
-  `id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `recuperation` (
+  `id` int(11) NOT NULL,
   `mail` varchar(255) NOT NULL,
-  `code` int NOT NULL,
-  `id_utilisateur` int NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+  `code` int(11) NOT NULL,
+  `id_utilisateur` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `recuperation`
@@ -233,14 +212,11 @@ INSERT INTO `recuperation` (`id`, `mail`, `code`, `id_utilisateur`) VALUES
 -- Structure de la table `sous_catégorie`
 --
 
-DROP TABLE IF EXISTS `sous_catégorie`;
-CREATE TABLE IF NOT EXISTS `sous_catégorie` (
-  `id_sous_catégorie` int NOT NULL AUTO_INCREMENT,
-  `id_categorie` int NOT NULL,
-  `nom_sous_catégorie` varchar(255) NOT NULL,
-  PRIMARY KEY (`id_sous_catégorie`),
-  KEY `id_categorie` (`id_categorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb3;
+CREATE TABLE `sous_catégorie` (
+  `id_sous_catégorie` int(11) NOT NULL,
+  `id_categorie` int(11) NOT NULL,
+  `nom_sous_catégorie` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `sous_catégorie`
@@ -254,7 +230,9 @@ INSERT INTO `sous_catégorie` (`id_sous_catégorie`, `id_categorie`, `nom_sous_c
 (14, 26, 'miami claquette'),
 (24, 23, ' Slim Summer'),
 (25, 40, 'Espadrille Eco I'),
-(31, 43, 'Fluffy');
+(31, 43, 'Fluffy'),
+(32, 28, 'Summer women'),
+(33, 28, 'Summer men');
 
 -- --------------------------------------------------------
 
@@ -262,22 +240,20 @@ INSERT INTO `sous_catégorie` (`id_sous_catégorie`, `id_categorie`, `nom_sous_c
 -- Structure de la table `utilisateurs`
 --
 
-DROP TABLE IF EXISTS `utilisateurs`;
-CREATE TABLE IF NOT EXISTS `utilisateurs` (
-  `id_utilisateur` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `utilisateurs` (
+  `id_utilisateur` int(11) NOT NULL,
   `firstname` varchar(250) NOT NULL,
   `lastname` varchar(250) NOT NULL,
   `mail` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `phone` int NOT NULL,
+  `phone` int(11) NOT NULL,
   `city` varchar(255) NOT NULL,
-  `postal_code` int NOT NULL,
+  `postal_code` int(11) NOT NULL,
   `address` varchar(255) DEFAULT NULL,
   `birthday` date NOT NULL,
   `avatar` varchar(250) DEFAULT NULL,
-  `admin` int NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id_utilisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb3;
+  `admin` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `utilisateurs`
@@ -300,6 +276,143 @@ INSERT INTO `utilisateurs` (`id_utilisateur`, `firstname`, `lastname`, `mail`, `
 (16, 'alexa', 'salex', 'a@a.a', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 60040403, 'lyon', 76000, NULL, '2000-06-13', 'avatar.png', 0);
 
 --
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id_categorie`);
+
+--
+-- Index pour la table `commandes`
+--
+ALTER TABLE `commandes`
+  ADD PRIMARY KEY (`id_commande`),
+  ADD KEY `id_utilisateur` (`id_utilisateur`);
+
+--
+-- Index pour la table `commentaires`
+--
+ALTER TABLE `commentaires`
+  ADD PRIMARY KEY (`id_commentaire`),
+  ADD KEY `id_produit` (`id_produit`),
+  ADD KEY `id_utilisateur` (`id_utilisateur`);
+
+--
+-- Index pour la table `couleur`
+--
+ALTER TABLE `couleur`
+  ADD PRIMARY KEY (`id_couleur`);
+
+--
+-- Index pour la table `panier`
+--
+ALTER TABLE `panier`
+  ADD PRIMARY KEY (`id_panier`),
+  ADD KEY `id_produit` (`id_produit`);
+
+--
+-- Index pour la table `produit`
+--
+ALTER TABLE `produit`
+  ADD PRIMARY KEY (`id_produit`),
+  ADD KEY `id_categorie` (`id_categorie`),
+  ADD KEY `id_couleur` (`id_couleur`),
+  ADD KEY `id_sous_catégorie` (`id_sous_catégorie`),
+  ADD KEY `id_produit_type` (`id_produit_type`);
+
+--
+-- Index pour la table `produit_type`
+--
+ALTER TABLE `produit_type`
+  ADD PRIMARY KEY (`id_produit_type`);
+
+--
+-- Index pour la table `recuperation`
+--
+ALTER TABLE `recuperation`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `sous_catégorie`
+--
+ALTER TABLE `sous_catégorie`
+  ADD PRIMARY KEY (`id_sous_catégorie`),
+  ADD KEY `id_categorie` (`id_categorie`);
+
+--
+-- Index pour la table `utilisateurs`
+--
+ALTER TABLE `utilisateurs`
+  ADD PRIMARY KEY (`id_utilisateur`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id_categorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+
+--
+-- AUTO_INCREMENT pour la table `commandes`
+--
+ALTER TABLE `commandes`
+  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `commentaires`
+--
+ALTER TABLE `commentaires`
+  MODIFY `id_commentaire` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `couleur`
+--
+ALTER TABLE `couleur`
+  MODIFY `id_couleur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT pour la table `panier`
+--
+ALTER TABLE `panier`
+  MODIFY `id_panier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT pour la table `produit`
+--
+ALTER TABLE `produit`
+  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+
+--
+-- AUTO_INCREMENT pour la table `produit_type`
+--
+ALTER TABLE `produit_type`
+  MODIFY `id_produit_type` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT pour la table `recuperation`
+--
+ALTER TABLE `recuperation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT pour la table `sous_catégorie`
+--
+ALTER TABLE `sous_catégorie`
+  MODIFY `id_sous_catégorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+--
+-- AUTO_INCREMENT pour la table `utilisateurs`
+--
+ALTER TABLE `utilisateurs`
+  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
 -- Contraintes pour les tables déchargées
 --
 
@@ -307,7 +420,7 @@ INSERT INTO `utilisateurs` (`id_utilisateur`, `firstname`, `lastname`, `mail`, `
 -- Contraintes pour la table `commandes`
 --
 ALTER TABLE `commandes`
-  ADD CONSTRAINT `commandes_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateurs` (`id_utilisateur`) ON DELETE CASCADE;
+  ADD CONSTRAINT `commandes_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateurs` (`id_utilisateur`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `commentaires`
@@ -334,7 +447,7 @@ ALTER TABLE `produit`
 -- Contraintes pour la table `sous_catégorie`
 --
 ALTER TABLE `sous_catégorie`
-  ADD CONSTRAINT `sous_catégorie_ibfk_1` FOREIGN KEY (`id_categorie`) REFERENCES `categories` (`id_categorie`) ON DELETE CASCADE;
+  ADD CONSTRAINT `sous_catégorie_ibfk_1` FOREIGN KEY (`id_categorie`) REFERENCES `categories` (`id_categorie`) ON DELETE CASCADE ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

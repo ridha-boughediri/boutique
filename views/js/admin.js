@@ -8,6 +8,9 @@ $(document).ready(function () {
   $(".add-produit").click(function () {
     window.location = "admin/add-produit";
   });
+  $(".update-produit").click(function () {
+    window.location = "admin/update-produit";
+  });
   $(".produit").click(function () {
     window.location = "admin/produit";
   });
