@@ -18,4 +18,3 @@ class DataBase
   }
 }
 
-// $database = new DataBase();
