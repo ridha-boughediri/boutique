@@ -1,7 +1,6 @@
 <?php
 session_start();
 extract($_POST);
-extract($_FILES);
 
 require("../vendor/autoload.php");
 
@@ -17,14 +16,9 @@ $user = new User();
 
 
 
+$id_catégorie = intval($_POST['id']);
+$nom_sous_catégorie = htmlspecialchars($_POST['nom_sous_catégorie']);
+$id_sous_catégorie = htmlspecialchars($_POST['id_sous_catégorie']);
 
 
-$id_categorie= intval($_POST['id']);
-$nom_categorie= htmlspecialchars($_POST['categorie']);
-
-
-
-
-
-
-echo $categorie->UpdateCategorie($nom_categorie, $id_categorie);
+echo $souscategorie->updatewithIdcate($id_categorie, $nom_sous_catégorie, $id_sous_catégorie);
