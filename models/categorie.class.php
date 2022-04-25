@@ -37,6 +37,7 @@ class Categorie extends DataBase
     $sql = "UPDATE `categories` SET `nom_categorie`= ? Where `id_categorie` = ?";
     $stmt = $this->connect()->prepare($sql);
     $stmt->execute([$nom_categorie, $id_categorie]);
+    return 'La Catégorie a été modifié !';
   }
 
   public function DeleCate($id_categorie)
