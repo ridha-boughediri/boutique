@@ -14,8 +14,8 @@
           <div class="body-admin-lign" data-id="<?= $category["id_categorie"] ?>">
             <p class="admin-text-p"><?= $category["id_categorie"] ?></p>
             <input type="text" id="namecategorie" class="admin-input" placeholder="Nom du produit" value="<?= $category["nom_categorie"]  ?>">
-            <button class="button-first submit-delete-categorie" data-id="<?= $category["id_categorie"] ?>">Supprimer</button>
-            <button class="button-secondary submit-edit-categorie" data-id="<?= $category["id_categorie"] ?>">Modifier</button>
+            <button class="button-edit-admin submit-delete-categorie" data-id="<?= $category["id_categorie"] ?>">Supprimer</button>
+            <button class="button-delete-admin submit-edit-categorie" data-id="<?= $category["id_categorie"] ?>">Modifier</button>
           </div>
         <?php endforeach; ?>
       </div>

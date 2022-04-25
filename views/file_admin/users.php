@@ -17,8 +17,8 @@
         <h3 class="title-top-admin-bar">Date de naissance</h3> -->
         <!-- <h3 class="title-top-admin-bar">Avatar</h3> -->
         <h3 class="title-top-admin-bar">Admin</h3>
-        <h3 class="title-top-admin-bar">Supprimer</h3>
         <h3 class="title-top-admin-bar">Modifier</h3>
+        <h3 class="title-top-admin-bar">Supprimer</h3>
       </div>
       <div class="body-admin-bar">
         <?php foreach ($user->getClient() as $userinfox) : ?>
@@ -43,8 +43,8 @@
               <option value="0">Non</option>
             </select>
 
-            <button class="button-first submit-delete-user" data-id="<?= $userinfox["id_utilisateur"] ?>">Supprimer</button>
-            <button class="button-secondary submit-edit-user" data-id="<?= $userinfox["id_utilisateur"] ?>">Modifier</button>
+            <button class="button-edit-admin submit-edit-user" data-id="<?= $userinfox["id_utilisateur"] ?>">Modifier</button>
+            <button class="button-delete-admin submit-delete-user" data-id="<?= $userinfox["id_utilisateur"] ?>">Supprimer</button>
           </div>
         <?php endforeach; ?>
       </div>
