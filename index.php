@@ -1,7 +1,7 @@
 <?php
 session_start();
-
 $servername = explode('/', $_SERVER['SCRIPT_NAME']);
+// var_dump($servername);
 
 require("./vendor/autoload.php");
 
@@ -13,6 +13,7 @@ $monproduit = new Produit();
 $souscategorie = new Souscategorie();
 $type = new Type();
 $user = new User();
+
 
 
 
