@@ -34,21 +34,26 @@ class User extends DataBase
 
                     if ($mail == $confirm_mail) {
 
-                        if ($password == $confirm_password) {
-                            $getmail = $this->connect()->prepare("SELECT * FROM utilisateurs WHERE mail = ?");
-                            $getmail->execute(array($mail));
-                            $getmailcount = $getmail->rowCount();
-                            if ($getmailcount == 0) {
-                                $register = $this->connect()->prepare("INSERT INTO utilisateurs (firstname, lastname, mail, password, phone, city, postal_code, birthday, avatar, admin) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                                $register->execute(array($firstname, $lastname, $mail, $password, $phone, $city, $postal_code, $birthday, 'avatar.png', 0));
-                                $success = "Votre Compte à été créer";
-                                return $success;
+                        if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+                            if ($password == $confirm_password) {
+                                $getmail = $this->connect()->prepare("SELECT * FROM utilisateurs WHERE mail = ?");
+                                $getmail->execute(array($mail));
+                                $getmailcount = $getmail->rowCount();
+                                if ($getmailcount == 0) {
+                                    $register = $this->connect()->prepare("INSERT INTO utilisateurs (firstname, lastname, mail, password, phone, city, postal_code, birthday, avatar, admin) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                                    $register->execute(array($firstname, $lastname, $mail, $password, $phone, $city, $postal_code, $birthday, 'avatar.png', 0));
+                                    $success = "Votre Compte à été créer";
+                                    return $success;
+                                } else {
+                                    $erreur = "Veuillez vous connecter !";
+                                    return $erreur;
+                                }
                             } else {
-                                $erreur = "Veuillez vous connecter !";
+                                $erreur = "Vos Mot de Passe ne sont pas identique";
                                 return $erreur;
                             }
                         } else {
-                            $erreur = "Vos Mot de Passe ne sont pas identique";
+                            $erreur = "Votre E-mail n'est pas correct";
                             return $erreur;
                         }
                     } else {
@@ -80,7 +85,7 @@ class User extends DataBase
             $getmail->execute(array($mail));
             $mailcount = $getmail->rowCount();
 
-            if ($mailcount == 1) {
+            if ($mailcount == 1 and filter_var($mail, FILTER_VALIDATE_EMAIL)) {
                 $getusers = $this->connect()->prepare("SELECT * FROM utilisateurs WHERE mail = ? AND password = ?");
                 $getusers->execute(array($mail, $password));
                 $usersexist = $getusers->rowCount();
@@ -104,8 +109,6 @@ class User extends DataBase
         }
     }
 
-
-
     public function disconnect()
     {
         session_destroy();
@@ -126,7 +129,11 @@ class User extends DataBase
 
     public function update($firstname, $lastname, $mail, $password, $phone, $avatarname, $avatartype, $avatartmp_name, $avatarerror, $avatarsize)
     {
-        if (!empty($firstname)) {
+        $getallinfos = $this->connect()->prepare("SELECT * FROM utilisateurs WHERE id_utilisateur = ?");
+        $getallinfos->execute(array($_SESSION['id']));
+        $getallinfosinfo = $getallinfos->fetch();
+
+        if (!empty($firstname) && $getallinfosinfo['firstname'] != $firstname) {
             $firstnamelenght = strlen($_POST['firstname']);
             if ($firstnamelenght >= 2 && $firstnamelenght <= 18) {
                 $updatefirstname = $this->connect()->prepare("UPDATE utilisateurs SET firstname = ? WHERE id_utilisateur = ?");
@@ -142,7 +149,7 @@ class User extends DataBase
             // return $erreurfirst;
         }
 
-        if (!empty($lastname)) {
+        if (!empty($lastname) && $getallinfosinfo['lastname'] != $lastname) {
             $lastnamelenght = strlen($_POST['lastname']);
             if ($lastnamelenght >= 2 && $lastnamelenght <= 18) {
                 $updatelastname = $this->connect()->prepare("UPDATE utilisateurs SET lastname = ? WHERE id_utilisateur = ?");
@@ -158,25 +165,30 @@ class User extends DataBase
             // return $erreurname;
         }
 
-        if (!empty($mail)) {
-            $getmail = $this->connect()->prepare("SELECT * FROM utilisateurs WHERE mail = ?");
-            $getmail->execute(array($mail));
-            $mailcount = $getmail->rowCount();
-            if ($mailcount == 0) {
-                $updatemail = $this->connect()->prepare("UPDATE utilisateurs SET mail = ? WHERE id_utilisateur = ?");
-                $updatemail->execute(array($mail, $_SESSION['id']));
-                $successmail = "Votre E-mail a bien été modifié !";
-                // return $successmail;
+        if (!empty($mail) && $getallinfosinfo['mail'] != $mail) {
+            if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+                $getmail = $this->connect()->prepare("SELECT * FROM utilisateurs WHERE mail = ?");
+                $getmail->execute(array($mail));
+                $mailcount = $getmail->rowCount();
+                if ($mailcount == 0) {
+                    $updatemail = $this->connect()->prepare("UPDATE utilisateurs SET mail = ? WHERE id_utilisateur = ?");
+                    $updatemail->execute(array($mail, $_SESSION['id']));
+                    $successmail = "Votre E-mail a bien été modifié !";
+                    // return $successmail;
+                } else {
+                    $erreurmail = "Nous n'avons pas pu changé votre E-mail !";
+                    // return $erreurmail;
+                }
             } else {
-                $erreurmail = "Votre E-mail déja éxistant !";
-                // return $erreurmail;
+                $erreur = "Votre E-mail n'est pas correct";
+                return $erreur;
             }
         } else {
             $erreurmail = "Votre E-mail n'a pas été modifié !";
             // return $erreurmail;
         }
 
-        if (!empty($password) && $password != 'da39a3ee5e6b4b0d3255bfef95601890afd80709') {
+        if (!empty($password) && $getallinfosinfo['password'] != $password && $password != 'da39a3ee5e6b4b0d3255bfef95601890afd80709') {
             $updatepassword = $this->connect()->prepare("UPDATE utilisateurs SET password = ? WHERE id_utilisateur = ?");
             $updatepassword->execute(array($password, $_SESSION['id']));
             $successpass = "Votre mot de passe a bien été modifié !";
@@ -186,7 +198,7 @@ class User extends DataBase
             // return $erreurpass;
         }
 
-        if (!empty($phone)) {
+        if (!empty($phone) && $getallinfosinfo['phone'] != $phone) {
             $updatephone = $this->connect()->prepare("UPDATE utilisateurs SET phone = ? WHERE id_utilisateur = ?");
             $updatephone->execute(array($phone, $_SESSION['id']));
             $successphone = "Votre numero de téléphone a bien été modifié !";

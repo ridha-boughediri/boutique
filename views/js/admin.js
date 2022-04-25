@@ -8,6 +8,9 @@ $(document).ready(function () {
   $(".add-produit").click(function () {
     window.location = "admin/add-produit";
   });
+  $(".update-produit").click(function () {
+    window.location = "admin/update-produit";
+  });
   $(".produit").click(function () {
     window.location = "admin/produit";
   });
@@ -38,7 +41,6 @@ $(document).ready(function () {
 
   $(".addpcate").change(function () {
     let categorie = $(this).children("option:selected").val();
-    // alert("You have selected the country - " + selectedCountry);
     $.post(
       "./controllers/process_souscategorie.php",
       {

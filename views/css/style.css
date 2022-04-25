@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: "Ubuntu";
 }
 
 html {
@@ -15,7 +16,6 @@ html {
 
 body {
   box-sizing: border-box;
-  font-family: "Havana";
 }
 
 /* SCROLLBAR START */
@@ -133,57 +133,6 @@ button::-moz-focus-inner {
   font: inherit;
 }
 
-@-webkit-keyframes progressSpin {
-  to {
-    transform: rotate(1turn);
-  }
-}
-
-@keyframes progressSpin {
-  to {
-    transform: rotate(1turn);
-  }
-}
-
-@-webkit-keyframes progressPulse {
-  0% {
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-    opacity: 0.1;
-  }
-
-  31% {
-    -webkit-animation-timing-function: linear;
-    animation-timing-function: linear;
-    opacity: 1;
-  }
-
-  to {
-    -webkit-animation-timing-function: ease-out;
-    animation-timing-function: ease-out;
-    opacity: 0.1;
-  }
-}
-
-@keyframes progressPulse {
-  0% {
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-    opacity: 0.1;
-  }
-
-  31% {
-    -webkit-animation-timing-function: linear;
-    animation-timing-function: linear;
-    opacity: 1;
-  }
-
-  to {
-    -webkit-animation-timing-function: ease-out;
-    animation-timing-function: ease-out;
-    opacity: 0.1;
-  }
-}
 
 body {
   -moz-osx-font-smoothing: grayscale;
@@ -195,110 +144,6 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-
-@-webkit-keyframes lds-ellipsis1 {
-  0% {
-    transform: scale(0);
-  }
-
-  to {
-    transform: scale(1);
-  }
-}
-
-@keyframes lds-ellipsis1 {
-  0% {
-    transform: scale(0);
-  }
-
-  to {
-    transform: scale(1);
-  }
-}
-
-@-webkit-keyframes lds-ellipsis3 {
-  0% {
-    transform: scale(1);
-  }
-
-  to {
-    transform: scale(0);
-  }
-}
-
-@keyframes lds-ellipsis3 {
-  0% {
-    transform: scale(1);
-  }
-
-  to {
-    transform: scale(0);
-  }
-}
-
-@-webkit-keyframes lds-ellipsis2 {
-  0% {
-    transform: translate(0);
-  }
-
-  to {
-    transform: translate(19px);
-  }
-}
-
-@keyframes lds-ellipsis2 {
-  0% {
-    transform: translate(0);
-  }
-
-  to {
-    transform: translate(19px);
-  }
-}
-
-@-webkit-keyframes lds-ripple {
-  0% {
-    height: 0;
-    left: 28px;
-    opacity: 1;
-    top: 28px;
-    width: 0;
-  }
-
-  to {
-    height: 58px;
-    left: -1px;
-    opacity: 0;
-    top: -1px;
-    width: 58px;
-  }
-}
-
-@keyframes lds-ripple {
-  0% {
-    height: 0;
-    left: 28px;
-    opacity: 1;
-    top: 28px;
-    width: 0;
-  }
-
-  to {
-    height: 58px;
-    left: -1px;
-    opacity: 0;
-    top: -1px;
-    width: 58px;
-  }
-}
-
-#app_body_content {
-  -webkit-font-smoothing: antialiased;
-  align-items: stretch;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
 }
 
 main {
@@ -322,50 +167,14 @@ main {
   padding: 0vw;
 }
 
-#app_body_content:-ms-fullscreen {
-  height: 100%;
-  max-height: 100%;
-  max-width: 100%;
-  width: 100%;
-}
-
-#app_body_content:-moz-full-screen {
-  height: 100%;
-  max-height: 100%;
-  max-width: 100%;
-  width: 100%;
-}
-
-#app_body_content:-webkit-full-screen {
-  height: 100%;
-  max-height: 100%;
-  max-width: 100%;
-  width: 100%;
-}
-
-#app_body_content:-webkit-full-screen
-  .btm-media-client.debug-active-aspect-ratio--border:before,
-#app_body_content:-webkit-full-screen
-  .btm-media-client.debug-active-aspect-ratio--fill:before {
-  box-sizing: border-box;
-  content: "";
-  height: var(--active-aspect-ratio-height);
-  left: 50%;
-  margin-left: calc(var(--active-aspect-ratio-width) / -2);
-  margin-top: calc(var(--active-aspect-ratio-height) / -2);
-  position: absolute;
-  top: 50%;
-  width: var(--active-aspect-ratio-width);
-}
-
-#app_body_content:fullscreen {
-  height: 100%;
-  max-height: 100%;
-  max-width: 100%;
-  width: 100%;
-}
 
 @font-face {
-  font-family: "Havana";
-  src: url("../font/Havana.ttf");
+  font-family: "Ubuntu";
+  src: url("../font/Ubuntu-Regular.ttf");
+}
+
+img.test{
+
+  height: 100%;
+  width: 100%;
 }

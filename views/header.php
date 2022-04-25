@@ -11,7 +11,11 @@ $panier = new Panier();
 
 if (isset($_SESSION['id'])) {
     $headermessage = 'Bon retour parmi nous ' . $userinfos['firstname'] . ' ' . $userinfos['lastname'];
-    if ($params[0] == 'admin' & $userinfos['admin'] != 1) {
+    if ($params[0] == 'admin' && $userinfos['admin'] != 1) {
+        header("Refresh:0; url= .");
+    }
+    
+    if ($params[0] == 'sign-in' || $params[0] == 'sign-up' ) {
         header("Refresh:0; url= .");
     }
 
@@ -22,6 +26,10 @@ if (isset($_SESSION['id'])) {
     $headermessage = 'BIENVENUE SUR LA HAVANE';
 
     if ($params[0] == 'admin' && !isset($_SESSION['id'])) {
+        header("Refresh:0; url= .");
+    }
+
+    if ($params[0] == 'account' || $params[0] == 'cart' || $params[0] == 'checkout') {
         header("Refresh:0; url= .");
     }
 }

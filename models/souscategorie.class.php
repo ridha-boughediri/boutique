@@ -19,6 +19,7 @@ class Souscategorie extends DataBase
     $sql = "SELECT * FROM sous_catégorie where id_categorie = ?";
     $stmt = $this->connect()->prepare($sql);
     $stmt->execute(["$id_categorie"]);
+
     return $stmt;
   }
 
@@ -40,7 +41,7 @@ class Souscategorie extends DataBase
     return $result;
   }
 
-  public function ShowIdSubcate($id_categorie, $nom_sous_catégorie, $id_sous_catégorie)
+  public function updatewithIdcate($id_categorie, $nom_sous_catégorie, $id_sous_catégorie)
   {
     // var_dump("ridha");
     $sql = "UPDATE sous_catégorie SET id_categorie=?,nom_sous_catégorie=? WHERE id_sous_catégorie= ?";
@@ -86,5 +87,3 @@ class Souscategorie extends DataBase
     return $result;
   }
 }
-
-// $souscategorie = new Souscategorie();

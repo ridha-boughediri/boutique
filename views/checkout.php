@@ -1,46 +1,30 @@
 <main>
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css">
-
-<div class="wrapper">
-  <div class="payment">
-    <div class="payment-logo">
-      <p>p</p>
-    </div>
-    
-    
-    <h2>Payment Gateway</h2>
-    <div class="form">
-      <div class="card space icon-relative">
-        <label class="label">Card holder:</label>
-        <input type="text" class="input" placeholder="Coding Market">
-        <i class="fas fa-user"></i>
-      </div>
-      <div class="card space icon-relative">
-        <label class="label">Card number:</label>
-        <input type="text" class="input" data-mask="0000 0000 0000 0000" placeholder="Card Number">
-        <i class="far fa-credit-card"></i>
-      </div>
-      <div class="card-grp space">
-        <div class="card-item icon-relative">
-          <label class="label">Expiry date:</label>
-          <input type="text" name="expiry-data" class="input"  placeholder="00 / 00">
-          <i class="far fa-calendar-alt"></i>
+  <div class="container-checkout">
+    <div class="card-checkout">
+      <h1 class="title-checkout">PAIEMENT</h1>
+      <div class="form-checkout">
+        <div class="mini-space">
+          <div class="card-space">
+            <label for="card-cart" class="label-cart">NUMÉRO DE CARTE:</label>
+            <input maxlength="19" name="CARD_NUMBER" type="text" placeholder="XXXX XXXX XXXX XXXX" class="input-cart" id="card-cart">
+          </div>
         </div>
-        <div class="card-item icon-relative">
-          <label class="label">CVC:</label>
-          <input type="text" class="input" data-mask="000" placeholder="000">
-          <i class="fas fa-lock"></i>
+        <div class="mini-space">
+          <div class="date-space">
+            <label for="card-cart" class="label-cart">DATE D'EXPIRATION:</label>
+            <input maxlength="5" pattern="[0-9]+" name="EXPIRATION" placeholder="MM/AA" type="tel" class="input-cart" id="exp-cart">
+          </div>
+          <div class="cvv-space">
+            <label for="card-cart" class="label-cart">CODE DE SÉCURITÉ:</label>
+            <input maxlength="4" pattern="[0-9]+" name="CSC" placeholder="CVV" type="text" class="input-cart" id="cvv-cart">
+          </div>
+        </div>
+        <div class="button-case-first">
+          <button type="button" class="button-first">Pay</button>
         </div>
       </div>
-        
-      <div class="btn">
-        Pay
-      </div> 
-      
     </div>
   </div>
-</div>
 
 
 </main>

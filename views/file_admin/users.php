@@ -1,41 +1,3 @@
-<!-- <h2>table client</h2>
-
-<table style="width:100%">
-  <tr>
-    <th>id_utilisateur</th>
-    <th>firstname</th>
-    <th>lastname</th>
-    <th>mail</th>
-    <th>phone</th>
-    <th>postal_code</th>
-
-    <th>supprimer</th>
-    <th>modifier</th>
-
-  </tr>
-
-
-  <tr>
-    <th><?= $userinfox["id_utilisateur"] ?></th>
-    <th><?= $userinfox["firstname"] ?></th>
-    <th><?= $userinfox["lastname"] ?></th>
-    <th><?= $userinfox["mail"] ?></th>
-    <th><?= $userinfox["phone"] ?></th>
-    <th><?= $userinfox["postal_code"] ?></th>
-
-
-
-
-
-
-
-
-  </tr>
-
-
-</table> -->
-
-
 <div class="space-admin-container-big">
   <h2 class="space-admin-title-top">Les Clients</h2>
   <div class="space-admin-view">
@@ -55,8 +17,8 @@
         <h3 class="title-top-admin-bar">Date de naissance</h3> -->
         <!-- <h3 class="title-top-admin-bar">Avatar</h3> -->
         <h3 class="title-top-admin-bar">Admin</h3>
-        <h3 class="title-top-admin-bar">Supprimer</h3>
         <h3 class="title-top-admin-bar">Modifier</h3>
+        <h3 class="title-top-admin-bar">Supprimer</h3>
       </div>
       <div class="body-admin-bar">
         <?php foreach ($user->getClient() as $userinfox) : ?>
@@ -81,8 +43,8 @@
               <option value="0">Non</option>
             </select>
 
-            <button class="button-first submit-delete-user" data-id="<?= $userinfox["id_utilisateur"] ?>">Supprimer</button>
-            <button class="button-secondary submit-edit-user" data-id="<?= $userinfox["id_utilisateur"] ?>">Modifier</button>
+            <button class="button-edit-admin submit-edit-user" data-id="<?= $userinfox["id_utilisateur"] ?>">Modifier</button>
+            <button class="button-delete-admin submit-delete-user" data-id="<?= $userinfox["id_utilisateur"] ?>">Supprimer</button>
           </div>
         <?php endforeach; ?>
       </div>

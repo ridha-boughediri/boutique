@@ -97,6 +97,22 @@ class Panier extends DataBase
 
       return $produitcount;
    }
+
+   public function updateQuantite($quantite, $id_panier){
+
+    $getproduit = $this->connect()->prepare("UPDATE panier SET quantite  WHERE id_panier = ?");
+ 
+   
+    $getproduit->execute(array($quantite, $id_panier));
+ 
+    $getproduit->execute(array($_SESSION['id']));
+      $produitcount = $getproduit->fetchAll();
+
+      return $produitcount;
+
+
+
+   }
   
 }
 

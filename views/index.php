@@ -22,7 +22,14 @@
                         <h3><?= $allproduit["nom_produit"] ?></h3>
                         <p><?= $allproduit["prix_produit"] ?>€</p>
                     </div>
-                    <button class="button-secondary addocart" data-id="<?= $allproduit["id_produit"] ?>">Ajouter au panier 🛒</button>
+
+                    <?php if (isset($_SESSION['id']) && $allproduit["qte_stock"] > 0) { ?>
+                        <button class="button-secondary buy-container" data-id="<?= $allproduit["id_produit"] ?>">Ajouter au panier <img src="views/img/carttrolley.png" alt=""></button>
+                    <?php } else if (isset($_SESSION['id']) && $allproduit["qte_stock"] < 0) { ?>
+                        <button class="button-secondary cursor-none" title="Veuillez vous connecter">Ajouter au panier <img src="views/img/carttrolley.png" alt=""></button>
+                    <?php } else { ?>
+                        <button class="button-secondary cursor-none" title="Stock Épuisée">Ajouter au panier <img src="views/img/carttrolley.png" alt=""></button>
+                    <?php } ?>
                 </div>
             <?php } ?>
         </div>

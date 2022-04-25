@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+$servername = explode('/', $_SERVER['SCRIPT_NAME']);
 
 require("./vendor/autoload.php");
 
@@ -12,7 +13,6 @@ $monproduit = new Produit();
 $souscategorie = new Souscategorie();
 $type = new Type();
 $user = new User();
-
 
 
 if (isset($_SESSION['id'])) {
@@ -33,7 +33,7 @@ $params = explode('/', $_GET['p']);
 <html lang="fr-FR">
 
 <head>
-    <base href="/app/" target="_blank">
+    <base href="/<?=$servername[1]?>/" target="_blank">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta http-equiv="Cache-Control" content="no-cache">
@@ -44,7 +44,6 @@ $params = explode('/', $_GET['p']);
     <link rel="shortcut icon" href="views/img/fav.png">
     <link rel="stylesheet" href="views/css/style.css">
     <link rel="stylesheet" href="views/css/styles.css">
-    <link rel="stylesheet" href="views/css/checkoutcss.css">
     <script src="views/js/jquery-3.6.0.js"></script>
     <script src="views/js/slick.js"></script>
     <script src="views/js/header.js"></script>
@@ -59,8 +58,10 @@ $params = explode('/', $_GET['p']);
     <script src="views/js/addcolor.js"></script>
     <script src="views/js/color.js"></script>
     <script src="views/js/cart.js"></script>
+    <script src="views/js/categorie.js"></script>
+
+    <script src="views/js/editesouscategorie.js"></script>
     <script src="views/js/souscategorie.js"></script>
-    <script src="views/js/checkout.js"></script>
     <script src="views/js/filtercolor.js"></script>
     <title>La Havane | Bienvenue sur l'accueil.</title>
 </head>

@@ -2,8 +2,8 @@
   <h2 class="space-admin-title-top">Les couleurs</h2>
   <div class="space-admin-view">
 
+    <button class="button-secondary add-color">Ajouter une Couleur</button>
     <div class="panel-admin-container">
-      <p class="field"></p>
       <div class="top-admin-bar">
         <h3 class="title-top-admin-bar">Id Couleur</h3>
         <h3 class="title-top-admin-bar">Nom Couleur</h3>
