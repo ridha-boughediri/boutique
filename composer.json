@@ -12,6 +12,7 @@
         "classmap": ["models","views/css/"]
     },
     "require": {
-        "stripe/stripe-php": "^7.123"
+        "stripe/stripe-php": "^7.123",
+        "phpmailer/phpmailer": "^6.6"
     }
 }

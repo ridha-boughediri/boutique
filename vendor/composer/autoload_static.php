@@ -11,6 +11,10 @@ class ComposerStaticInitb4b7bc92557b61e27f634823ae5daace
         array (
             'Stripe\\' => 7,
         ),
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -18,19 +22,19 @@ class ComposerStaticInitb4b7bc92557b61e27f634823ae5daace
         array (
             0 => __DIR__ . '/..' . '/stripe/stripe-php/lib',
         ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
     );
 
     public static $classMap = array (
-        'Cart' => __DIR__ . '/../..' . '/models/testcart.class.php',
-        'CartItem' => __DIR__ . '/../..' . '/models/testelelementdupanier.class.php',
-        // 'Carte' => __DIR__ . '/../..' . '/models/testcardsession.class.php',
         'Categorie' => __DIR__ . '/../..' . '/models/categorie.class.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Couleur' => __DIR__ . '/../..' . '/models/couleur.class.php',
         'DataBase' => __DIR__ . '/../..' . '/models/database.class.php',
         'Panier' => __DIR__ . '/../..' . '/models/panier.class.php',
         'Produit' => __DIR__ . '/../..' . '/models/produit.class.php',
-        // 'Session' => __DIR__ . '/../..' . '/models/session.class.php',
         'Souscategorie' => __DIR__ . '/../..' . '/models/souscategorie.class.php',
         'Type' => __DIR__ . '/../..' . '/models/type.class.php',
         'User' => __DIR__ . '/../..' . '/models/user.class.php',
