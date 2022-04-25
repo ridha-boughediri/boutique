@@ -1,9 +1,5 @@
 $(document).ready(function () {
-
-// A refaire
-
-
-  $(".submit-edit-produit").click(function (e) {
+  $(".submit-update-produit").click(function (e) {
     e.preventDefault();
     var fd = new FormData();
     id = $(this).attr("data-id");
@@ -28,7 +24,6 @@ $(document).ready(function () {
     fd.append("type", type);
     fd.append("qtestock", qtestock);
 
-
     $.ajax({
       url: "./controllers/process_produit.php",
       type: "post",
@@ -36,29 +31,32 @@ $(document).ready(function () {
       contentType: false,
       processData: false,
       success: function (response) {
-        console.log(response);
 
-        if (response != "") {
-          $(".field").removeClass("success");
+        // if (response != "") {
+        //   $(".field").removeClass("success");
 
-          $(".field").removeClass("error");
-          if (response.includes("Votre produit à été modifié")) {
-            $(".field").addClass("success");
-            $(".success").empty();
-            $(".success").append(response);
-          } else {
-            $(".field").addClass("error");
-            $(".error").empty();
-            $(".error").append(response);
-          }
-        }
+        //   $(".field").removeClass("error");
+        //   if (response.includes("Votre produit à été modifié")) {
+        //     $(".field").addClass("success");
+        //     $(".success").empty();
+        //     $(".success").append(response);
+        //   } else {
+        //     $(".field").addClass("error");
+        //     $(".error").empty();
+        //     $(".error").append(response);
+        //   }
+        // }
       },
     });
   });
 
+  $(".submit-edit-produit").click(function (e) {
+    id = $(this).attr("data-id");
+    window.location = "admin/produit/" + id;
+  });
+
   $(".submit-delete-produit").on("click", function () {
     id = $(this).attr("data-id");
-alert("okttestbin");
     $.post(
       "./controllers/process_delete_produit.php",
       {
@@ -83,5 +81,3 @@ alert("okttestbin");
     );
   });
 });
-
-

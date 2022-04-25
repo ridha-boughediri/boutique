@@ -19,7 +19,7 @@ $user = new User();
 
 
 
-$idproduit = intval($_get['id']);
+$idproduit = intval($_POST['id']);
 $nameproduit = htmlspecialchars($_POST['nameproduit']);
 $idcategorie = intval($_POST['idcategorie']);
 $idsouscategorie = intval($_POST['idsouscategorie']);

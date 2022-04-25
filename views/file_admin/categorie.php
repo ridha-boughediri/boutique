@@ -1,9 +1,8 @@
 <div class="space-admin-container-big">
   <h2 class="space-admin-title-top">Les Categories</h2>
   <div class="space-admin-view">
-
+    <button class="button-secondary add-categorie">Ajouter une Catégories</button>
     <div class="panel-admin-container">
-      <p class="field"></p>
       <div class="top-admin-bar">
         <h3 class="title-top-admin-bar">Id Categorie</h3>
         <h3 class="title-top-admin-bar">Nom Categorie</h3>

@@ -85,7 +85,7 @@ class User extends DataBase
             $getmail->execute(array($mail));
             $mailcount = $getmail->rowCount();
 
-            if ($mailcount == 1) {
+            if ($mailcount == 1 and filter_var($mail, FILTER_VALIDATE_EMAIL)) {
                 $getusers = $this->connect()->prepare("SELECT * FROM utilisateurs WHERE mail = ? AND password = ?");
                 $getusers->execute(array($mail, $password));
                 $usersexist = $getusers->rowCount();
@@ -108,8 +108,6 @@ class User extends DataBase
             return $erreur;
         }
     }
-
-
 
     public function disconnect()
     {
