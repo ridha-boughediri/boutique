@@ -1,15 +1,14 @@
 $(document).ready(function () {
   $(".submit-add-sous-categorie").click(function (e) {
     e.preventDefault();
-    id = $(this).attr("data-id");
-    nameproduit = $("#nameproduit").val();
     idcategorie = $("#idcategorie").val();
-    idsouscategorie = $("#idsouscategorie").val();
+    namesouscategorie = $("#namesous-categorie").val();
 
     $.post(
       "./controllers/process_add_souscategorie.php",
       {
-        id: id,
+        idcategorie: idcategorie,
+        namesouscategorie: namesouscategorie,
       },
       function (data) {
         if (data != "") {
@@ -24,9 +23,9 @@ $(document).ready(function () {
             $(".error").empty();
             $(".error").append(data);
           }
-          $(".view-container-admin").load(
-            location.href + " .view-container-admin"
-          );
+          // $(".view-container-admin").load(
+          //   location.href + " .view-container-admin"
+          // );
         }
       }
     );
@@ -35,14 +34,13 @@ $(document).ready(function () {
   $(".submit-update-sous-categorie").click(function (e) {
     e.preventDefault();
     id = $(this).attr("data-id");
-    nameproduit = $("#nameproduit").val();
-    idcategorie = $("#idcategorie").val();
-    idsouscategorie = $("#idsouscategorie").val();
+    namesouscategorie = $("#namesouscategorie").val();
 
     $.post(
-      "./controllers/process_update_souscategorie.php",
+      "./controllers/process_edit_souscategorie.php",
       {
         id: id,
+        namesouscategorie: namesouscategorie,
       },
       function (data) {
         if (data != "") {
@@ -57,9 +55,6 @@ $(document).ready(function () {
             $(".error").empty();
             $(".error").append(data);
           }
-          $(".view-container-admin").load(
-            location.href + " .view-container-admin"
-          );
         }
       }
     );
@@ -92,9 +87,7 @@ $(document).ready(function () {
             $(".error").empty();
             $(".error").append(data);
           }
-          $(".view-container-admin").load(
-            location.href + " .view-container-admin"
-          );
+          $(".body-admin-bar").load(location.href + " .body-admin-bar");
         }
       }
     );

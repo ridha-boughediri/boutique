@@ -23,30 +23,32 @@ class Souscategorie extends DataBase
     return $stmt;
   }
 
-  public function CreateCateSOU($id_categorie, $nom_sous_catégorie)
+  public function CreateCateSOU($idcategorie, $nomsouscategorie)
   {
 
-    $sql = "INSERT INTO sous_catégorie(id_categorie,nom_sous_catégorie) VALUES (?,?)";
+    $sql = "INSERT INTO sous_catégorie(id_categorie, nom_sous_catégorie) VALUES (?, ?)";
     $stmt = $this->connect()->prepare($sql);
-    $stmt->execute([$id_categorie, $nom_sous_catégorie]);
+    $stmt->execute([$idcategorie, $nomsouscategorie]);
+    return 'La Sous-Catégorie a été crée !';
   }
 
 
-  public function EditeSouscategorie($id_sous_catégorie)
+  public function getSouscategorie($id_sous_catégorie)
   {
     $sql = "SELECT * FROM sous_catégorie where id_sous_catégorie =?";
     $stmt = $this->connect()->prepare($sql);
-    $stmt->execute(["$id_sous_catégorie"]);
+    $stmt->execute([$id_sous_catégorie]);
     $result = $stmt->fetch();
     return $result;
   }
 
-  public function updatewithIdcate($id_categorie, $nom_sous_catégorie, $id_sous_catégorie)
+  public function updatewithIdcate($id_sous_catégorie, $nom_sous_catégorie)
   {
     // var_dump("ridha");
-    $sql = "UPDATE sous_catégorie SET id_categorie=?,nom_sous_catégorie=? WHERE id_sous_catégorie= ?";
+    $sql = "UPDATE sous_catégorie SET nom_sous_catégorie = ? WHERE id_sous_catégorie = ?";
     $stmt = $this->connect()->prepare($sql);
-    $stmt->execute([$id_categorie, $nom_sous_catégorie, $id_sous_catégorie]);
+    $stmt->execute([$nom_sous_catégorie, $id_sous_catégorie]);
+    return 'La Sous-Catégorie a été modifié !';
   }
 
 

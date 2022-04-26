@@ -35,7 +35,7 @@
           <?php foreach ($categorie->getCate() as $category) : ?>
             <div class="body-admin-lign" data-id="<?= $category["id_categorie"] ?>">
               <p class="admin-text-p"><?= $category["id_categorie"] ?></p>
-              <input type="text" id="namecategorie" class="admin-input" placeholder="Nom du produit" value="<?= $category["nom_categorie"]  ?>">
+              <p class="admin-text-p"><?= $category["nom_categorie"] ?></p>
               <button class="button-edit-admin submit-edit-categorie" data-id="<?= $category["id_categorie"] ?>">Modifier</button>
               <button class="button-delete-admin submit-delete-categorie" data-id="<?= $category["id_categorie"] ?>">Supprimer</button>
             </div>
@@ -43,6 +43,7 @@
         </div>
       </div>
     </div>
+    <p class="field"></p>
   </div>
 
 <?php } ?>

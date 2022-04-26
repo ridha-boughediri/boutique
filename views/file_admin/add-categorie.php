@@ -4,7 +4,7 @@
 
     <div class="inputs-container">
 
-      <input type="text" id="categorie" class="login-input" placeholder="Nom de la Categorie*">
+      <input type="text" id="namecategorie" class="login-input" placeholder="Nom de la Categorie*">
 
       <p class="field"></p>
 

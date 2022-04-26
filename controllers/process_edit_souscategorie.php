@@ -16,8 +16,7 @@ $user = new User();
 
 
 
-
-$idcategorie = htmlspecialchars($_POST['idcategorie']);
+$id = intval($_POST['id']);
 $namesouscategorie = htmlspecialchars($_POST['namesouscategorie']);
 
-echo $souscategorie->CreateCateSOU($idcategorie, $namesouscategorie);
+echo $souscategorie->updatewithIdcate($id, $namesouscategorie);

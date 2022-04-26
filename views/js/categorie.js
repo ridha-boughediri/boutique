@@ -1,13 +1,11 @@
 $(document).ready(function () {
   $(".submit-add-categorie").click(function (e) {
     e.preventDefault();
-    id = $(this).attr("data-id");
     namecategorie = $("#namecategorie").val();
 
     $.post(
       "./controllers/process_add_categorie.php",
       {
-        id: id,
         namecategorie: namecategorie,
       },
       function (data) {
@@ -21,7 +19,7 @@ $(document).ready(function () {
           } else {
             $(".field").addClass("error");
             $(".error").empty();
-            $(".success").append(data);
+            $(".error").append(data);
           }
         }
       }
@@ -34,7 +32,7 @@ $(document).ready(function () {
     namecategorie = $("#namecategorie").val();
 
     $.post(
-      "./controllers/process_editer_categorie.php",
+      "./controllers/process_edit_categorie.php",
       {
         id: id,
         namecategorie: namecategorie,
@@ -62,10 +60,10 @@ $(document).ready(function () {
     window.location = "admin/categorie/" + id;
   });
 
-  $(".submit-delete-produit").on("click", function () {
+  $(".submit-delete-categorie").on("click", function () {
     id = $(this).attr("data-id");
     $.post(
-      "./controllers/process_delete_produit.php",
+      "./controllers/process_delete_categorie.php",
       {
         id: id,
       },

@@ -17,8 +17,8 @@ $user = new User();
 
 
 
-$categorie = htmlspecialchars($_POST['categorie']);
+$namecategorie = htmlspecialchars($_POST['namecategorie']);
 
-echo $categories->CreateCate($categorie);
+echo $categorie->CreateCate($namecategorie);
 
 

@@ -18,6 +18,7 @@ class Categorie extends DataBase
     $sql = "INSERT INTO categories(nom_categorie) VALUES (?)";
     $stmt = $this->connect()->prepare($sql);
     $stmt->execute([$nom_categorie]);
+    return 'La Catégorie a été crée !';
   }
 
   
@@ -45,7 +46,6 @@ class Categorie extends DataBase
     $sql = "DELETE FROM categories WHERE id_categorie=?";
     $stmt = $this->connect()->prepare($sql);
     $stmt->execute([$id_categorie]);
+    return 'La Catégorie a été supprimé !';
   }
 }
-
-// $categorie = new Categorie();

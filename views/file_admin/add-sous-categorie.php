@@ -13,7 +13,7 @@
                 <?php endforeach; ?>
             </select>
 
-            <input type="text" id="sous-categorie" class="login-input" placeholder="Nom de la Sous-Categorie*">
+            <input type="text" id="namesous-categorie" class="login-input" placeholder="Nom de la Sous-Categorie*">
 
             <p class="field"></p>
 
