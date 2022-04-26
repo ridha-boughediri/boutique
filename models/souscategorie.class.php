@@ -41,7 +41,7 @@ class Souscategorie extends DataBase
     return $result;
   }
 
-  public function ShowIdSubcate($id_categorie, $nom_sous_catégorie, $id_sous_catégorie)
+  public function updatewithIdcate($id_categorie, $nom_sous_catégorie, $id_sous_catégorie)
   {
     // var_dump("ridha");
     $sql = "UPDATE sous_catégorie SET id_categorie=?,nom_sous_catégorie=? WHERE id_sous_catégorie= ?";
