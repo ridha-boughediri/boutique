@@ -1,5 +1,5 @@
 <?php if (isset($params[2])) { ?>
-  <?php
+  <?php     
   $produitinfos = $monproduit->getProduitById($params[2]);
   ?>
 
