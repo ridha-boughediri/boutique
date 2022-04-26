@@ -26,15 +26,17 @@ class Couleur extends DataBase
 
   public function ShowIDCoul($id_couleur)
   {
-    $sql = "SELECT * FROM couleur where id_couleur =?";
-    $stmt = $this->connect()->prepare($sql);
-    $stmt->execute(["$id_couleur"]);
+    $stmt = $this->connect()->prepare("SELECT * FROM couleur where id_couleur =?");
+    $stmt->execute([$id_couleur]);
     $result = $stmt->fetch();
     return $result;
   }
 
   public function DeleCoul($id_couleur)
   {
+    $delprodforcolor = $this->connect()->prepare("DELETE FROM produit WHERE id_couleur = ?");
+    $delprodforcolor->execute([$id_couleur]);
+
     $sql = "DELETE FROM couleur WHERE id_couleur=?";
     $stmt = $this->connect()->prepare($sql);
     $stmt->execute([$id_couleur]);

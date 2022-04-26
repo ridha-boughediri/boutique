@@ -1,14 +1,14 @@
 $(document).ready(function () {
-  $(".submit-update-categorie").click(function (e) {
+  $(".submit-add-categorie").click(function (e) {
     e.preventDefault();
     id = $(this).attr("data-id");
     namecategorie = $("#namecategorie").val();
 
     $.post(
-      "./controllers/process_editer_categorie.php",
+      "./controllers/process_add_categorie.php",
       {
         id: id,
-        namecategorie: namecategorie
+        namecategorie: namecategorie,
       },
       function (data) {
         if (data != "") {
@@ -23,7 +23,35 @@ $(document).ready(function () {
             $(".error").empty();
             $(".success").append(data);
           }
-          
+        }
+      }
+    );
+  });
+
+  $(".submit-update-categorie").click(function (e) {
+    e.preventDefault();
+    id = $(this).attr("data-id");
+    namecategorie = $("#namecategorie").val();
+
+    $.post(
+      "./controllers/process_editer_categorie.php",
+      {
+        id: id,
+        namecategorie: namecategorie,
+      },
+      function (data) {
+        if (data != "") {
+          $(".field").removeClass("success");
+          $(".field").removeClass("error");
+          if (data.includes("a été modifié !")) {
+            $(".field").addClass("success");
+            $(".success").empty();
+            $(".success").append(data);
+          } else {
+            $(".field").addClass("error");
+            $(".error").empty();
+            $(".success").append(data);
+          }
         }
       }
     );
@@ -52,7 +80,7 @@ $(document).ready(function () {
           } else {
             $(".field").addClass("error");
             $(".error").empty();
-            $(".body-admin-lign").append(data);
+            $(".error").append(data);
           }
           $(".body-admin-bar").load(location.href + " .body-admin-bar");
         }

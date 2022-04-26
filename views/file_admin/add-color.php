@@ -4,7 +4,7 @@
 
         <div class="inputs-container">
 
-            <input type="text" id="color" class="login-input" placeholder="Nom de la couleur*">
+            <input type="text" id="namecolor" class="login-input" placeholder="Nom de la couleur*">
 
             <p class="field"></p>
 
