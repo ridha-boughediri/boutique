@@ -16,18 +16,12 @@ $monproduit = new Produit();
 $souscategorie = new Souscategorie();
 $type = new Type();
 $user = new User();
+$paiement = new Paiement();
 
 //lesinfos a rentre dans la database pour leshistorique cammande 
 
-$id_utilsator = htmlspecialchars($_SESSION['id']);
-$quantity = htmlspecialchars($_POST['quantity']);
-$nameproduit = htmlspecialchars($_POST['nameproduit']);
-$descriptionproduit = htmlspecialchars($_POST['descriptionproduit']);
-$prixproduit = floatval($_POST['prixproduit']);
+$cardcart = htmlspecialchars($_POST['cardcart']);
+$expcart = htmlspecialchars($_POST['expcart']);
+$cvvcart = intval($_POST['cvvcart']);
 
-
-
-$id = htmlspecialchars($_POST['id']);
-
-
-echo $panier->addCart($id);
+echo $paiement->addPaiement($cardcart, $expcart, $cvvcart);

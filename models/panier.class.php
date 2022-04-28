@@ -4,7 +4,7 @@
 
 class Panier extends DataBase
 {
-  public function addCart($idproduitd)
+   public function addCart($idproduitd)
    {
 
       $getproduit = $this->connect()->prepare("SELECT * FROM panier WHERE id_produit = ? AND id_utilisateur = ?");
@@ -33,6 +33,43 @@ class Panier extends DataBase
 
          return $produitc;
       }
+   }
+
+
+
+   public function updateCart($idproduitd, $quantite)
+   {
+      $updatecart = $this->connect()->prepare("UPDATE panier SET quantite = ? WHERE id_produit = ? AND id_utilisateur = ?");
+      $updatecart->execute(array($quantite, $idproduitd, $_SESSION['id']));
+      
+      
+      $prixproduitallttc = 0;
+      $getproduit = $this->connect()->prepare("SELECT * FROM produit WHERE id_produit = ?");
+      $getproduit->execute(array($idproduitd));
+      $produitinfos = $getproduit->fetch();
+
+
+      $getpanier = $this->connect()->prepare("SELECT * FROM panier WHERE id_produit = ? AND id_utilisateur = ?");
+      $getpanier->execute(array($idproduitd, $_SESSION['id']));
+      $panierinfos = $getpanier->fetch();
+
+      $prixproduitsolottc = $produitinfos['prix_produit'];
+      $prixproduitsoloht = $produitinfos['prix_produit'] / (1 + 20);
+
+      $prixproduitsolohtarrondaudiz = number_format($prixproduitsoloht, 2);
+
+      $prixproduitallttc += $produitinfos['prix_produit'] * $panierinfos['quantite'];
+      $prixproduitallht = $prixproduitallttc / (1 + 20);
+
+      $prixproduitallhtarrondaudiz = number_format($prixproduitallht, 2);
+
+
+
+      $prixglobal = $prixproduitallttc - $prixproduitallhtarrondaudiz;
+
+      $prixglobalarrondaudiz = number_format($prixglobal, 2);
+
+      return $prixproduitsolohtarrondaudiz . '/' . $prixproduitsolottc . '/' . $prixglobalarrondaudiz . '/' . $prixproduitallhtarrondaudiz . '/' . $prixproduitallttc;
    }
 
 
@@ -97,7 +134,4 @@ class Panier extends DataBase
 
       return $produitcount;
    }
-  
 }
-
-

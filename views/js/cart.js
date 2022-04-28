@@ -24,6 +24,33 @@ $(document).ready(function () {
     );
   });
 
+  $(".quantotics").on("change", function () {
+
+    id = $(this).attr("data-idprod");
+    idquantity = $(this).val();
+
+    $.post(
+      "./controllers/process_edit_cart.php",
+      {
+        id: id,
+        idquantity: idquantity,
+      },
+      function () {
+        // $(".totals").reload();
+        // let datanum = data.split("/");
+
+        // $("#cart-subtotal").empty();
+        // $("#cart-subtotal").append(datanum[2]+'€');
+
+        // $("#cart-tax").empty();
+        // $("#cart-tax").append(datanum[3]+'€');
+
+        // $("#cart-total").empty();
+        // $("#cart-total").append(datanum[4]+'€');
+      }
+    );
+  });
+
   $(".deletecart").on("click", function () {
     id = $(this).attr("data-id");
 
@@ -54,7 +81,7 @@ $(document).ready(function () {
       .replace(/[^\dA-Z]/g, "")
       .replace(/(.{4})/g, "$1 ")
       .trim();
-      console.log(e.keyCode);
+    console.log(e.keyCode);
   });
 
   $("#cvv-cart").on("keypress change", function (event) {
@@ -79,5 +106,4 @@ $(document).ready(function () {
       }
     }
   });
-
 });

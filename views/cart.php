@@ -35,12 +35,12 @@
             <img src="views/img/admin/<?= $produitinfox['file_images'] ?>" data-id="<?= $produitinfox['file_images'] ?>">
           </div>
           <div class="product-details">
-            <div class="product-title" data-id="<?= $produitinfox['nom_produit'] ?>"><?= $produitinfox['nom_produit'] ?> </div>
+            <div class="product-title" data-id="<?= $produitinfox['nom_produit'] ?>"><?= $produitinfox['nom_produit'] ?></div>
             <p class="product-description"><?= $produitinfox['description_produit'] ?></p>
           </div>
-          <div class="product-price"  data-id="<?= $htpricex ?>"><?= $htpricex ?>€</div>
+          <div class="product-price" data-id="<?= $htpricex ?>"><?= $htpricex ?>€</div>
           <div class="product-quantity">
-            <input type="number" data-id="<?= $produitinfo['quantite'] ?>" value="<?= $produitinfo['quantite'] ?>" min="1" class="login-input">
+            <input type="number" data-id="<?= $produitinfo['quantite'] ?>" data-idprod="<?= $produitinfo['id_produit'] ?>" value="<?= $produitinfo['quantite'] ?>" min="1" max="<?= $produitinfox['qte_stock'] ?>" class="login-input quantotics" id="quantities">
           </div>
           <div class="product-removal">
             <button class="remove-product deletecart" data-id="<?= $produitinfox['id_produit'] ?>"><img src="views/img/bin.png" class="cart-bin-produit"></button>
@@ -76,7 +76,7 @@
       }
       ?>
       <div class="totals-item">
-        <label>Sous-Total</label>
+        <label>Prix HT</label>
         <div class="totals-value" id="cart-subtotal"><?= $htpriceglobi ?>€</div>
       </div>
       <div class="totals-item">

@@ -20,7 +20,7 @@
           </div>
         </div>
         <div class="button-case-first">
-          <button type="button" class="button-first">Pay</button>
+          <button type="button" class="button-first payment-submitted">Pay</button>
         </div>
       </div>
     </div>

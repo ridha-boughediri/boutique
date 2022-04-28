@@ -26,9 +26,9 @@
                     <?php if (isset($_SESSION['id']) && $allproduit["qte_stock"] > 0) { ?>
                         <button class="button-secondary buy-container" data-id="<?= $allproduit["id_produit"] ?>">Ajouter au panier <img src="views/img/carttrolley.png" alt=""></button>
                     <?php } else if (isset($_SESSION['id']) && $allproduit["qte_stock"] < 0) { ?>
-                        <button class="button-secondary cursor-none" title="Veuillez vous connecter">Ajouter au panier <img src="views/img/carttrolley.png" alt=""></button>
-                    <?php } else { ?>
                         <button class="button-secondary cursor-none" title="Stock Épuisée">Ajouter au panier <img src="views/img/carttrolley.png" alt=""></button>
+                    <?php } else { ?>
+                        <button class="button-secondary cursor-none" title="Veuillez vous connecter">Ajouter au panier <img src="views/img/carttrolley.png" alt=""></button>
                     <?php } ?>
                 </div>
             <?php } ?>

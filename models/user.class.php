@@ -155,14 +155,11 @@ class User extends DataBase
                 $updatelastname = $this->connect()->prepare("UPDATE utilisateurs SET lastname = ? WHERE id_utilisateur = ?");
                 $updatelastname->execute(array($lastname, $_SESSION['id']));
                 $successname = "Votre nom a bien été modifié !";
-                // return $successname;
             } else {
                 $erreurname = "Votre nom est soit trop court ou soit trop long !";
-                // return $erreurname;
             }
         } else {
             $erreurname = "Votre nom n'a pas été modifié !";
-            // return $erreurname;
         }
 
         if (!empty($mail) && $getallinfosinfo['mail'] != $mail) {
@@ -174,18 +171,14 @@ class User extends DataBase
                     $updatemail = $this->connect()->prepare("UPDATE utilisateurs SET mail = ? WHERE id_utilisateur = ?");
                     $updatemail->execute(array($mail, $_SESSION['id']));
                     $successmail = "Votre E-mail a bien été modifié !";
-                    // return $successmail;
                 } else {
                     $erreurmail = "Nous n'avons pas pu changé votre E-mail !";
-                    // return $erreurmail;
                 }
             } else {
-                $erreur = "Votre E-mail n'est pas correct";
-                return $erreur;
+                $erreurmail = "Votre E-mail n'est pas correct";
             }
         } else {
             $erreurmail = "Votre E-mail n'a pas été modifié !";
-            // return $erreurmail;
         }
 
         if (!empty($password) && $getallinfosinfo['password'] != $password && $password != 'da39a3ee5e6b4b0d3255bfef95601890afd80709') {
@@ -215,7 +208,6 @@ class User extends DataBase
             if ($avatarsize <= $tailleMax) {
                 $extensionUpload = strtolower(substr(strrchr($avatarname, '.'), 1));
                 if (in_array($extensionUpload, $extensionsValide)) {
-                    // $chemin = "../img/avatar/" . $_SESSION['id'] . "." . $extensionUpload;
                     $chemin = "../views/img/avatar/" . $_SESSION['id'] . "." . $extensionUpload;
                     $resultat = move_uploaded_file($avatartmp_name, $chemin);
                     if ($resultat) {
@@ -223,22 +215,17 @@ class User extends DataBase
                         $modavatar = $this->connect()->prepare("UPDATE utilisateurs SET avatar = ? WHERE id_utilisateur = ?");
                         $modavatar->execute(array($nameofavatar, $_SESSION['id']));
                         $successfile = "Votre photo de profil a bien été modifié !";
-                        // return $successfile;
                     } else {
                         $erreurfile = "Il y a eu une erreur pendant l'importation du fichier !";
-                        // return $erreurfile;
                     }
                 } else {
                     $erreurfile = "Votre photo de profil doit être au format jpg jpeg gif ou png !";
-                    // return $erreurfile;
                 }
             } else {
                 $erreurfile = "Votre photo de profil ne doit pas dépasser 2 mo !";
-                // return $erreurfile;
             }
         } else {
             $erreurfile = "Votre photo de profil n'a pas été modifié !";
-            // return $erreurfile;
         }
 
         if (isset($successfirst)) {
