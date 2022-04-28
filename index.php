@@ -41,9 +41,14 @@ $params = explode('/', $_GET['p']);
     <meta http-equiv="Expires" content="-1">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+
+
     <link rel="shortcut icon" href="views/img/fav.png">
     <link rel="stylesheet" href="views/css/style.css">
-    <link rel="stylesheet" href="views/css/styles.css">
+    <link rel="stylesheet" href="views/css/styles.css">    
+    
     <script src="views/js/jquery-3.6.0.js"></script>
     <script src="views/js/slick.js"></script>
     <script src="views/js/header.js"></script>
