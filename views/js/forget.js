@@ -29,3 +29,4 @@ $(document).ready(function () {
     );
   });
 });
+//verification de js faites possibilité de faire la totalité avec le fetch
